@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+   <title>CourseConnect-Curse</title>
+   <link rel="stylesheet" type="text/css" href="css/styles.css" />
+   <link rel="stylesheet" type="text/css" href="css/curse.css" />
+   <link rel="icon" type="icon" href="images/icon.png" />
+
+</h:head>
+<h:body>
+   <div class="header">
+      <div class="logo">
+         <a href="index.xhtml"><img src="images/imagotipo.png" alt="logo"/></a>
+      </div>
+   </div>
+
+   <div class="container-curse">
+      <h1 class="curse">Curso</h1>
+      <h1 class="titleCurse">Pruebas automatizadas</h1>
+      <div class="curseInfo">
+
+         <p> Descripción: Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis numquam corrupti maxime officia exercitationem ea impedit ab labore ducimus nisi, sit quo ratione enim distinctio facere quidem autem nemo ipsam.</p>
+      </div>
+      <div class="card-img">
+         <img src="images/ec3.jpg" class="card-img-top" alt="Curso de Ejemplo"></img>
+      </div>
+      <div class="content">
+         <h2>Contenidos del Curso</h2>
+      </div>
+      <div class="course-details">
+         <div class="cards-course">
+
+            <div class="card-course">
+               <h2>Módulo 1: Introducción a las Pruebas Automatizadas</h2>
+               <p>¿Qué son las pruebas automatizadas? Beneficios y desafíos. Herramientas más populares.</p>
+            </div>
+            <div class="card-course">
+               <h2>Módulo 2: Configuración del Entorno</h2>
+               <p>Instalación de herramientas necesarias (Selenium, JUnit, etc.). Configuración de proyectos.</p>
+            </div>
+            <div class="card-course">
+               <h2>Módulo 3: Tipos de Pruebas Automatizadas</h2>
+               <ul>
+                  <li>Pruebas unitarias</li>
+                  <li>Pruebas de integración</li>
+                  <li>Pruebas funcionales</li>
+               </ul>
+            </div>
+            <div class="card-course">
+               <h2>Módulo 4: Creación de Pruebas Automatizadas</h2>
+               <p>Escritura de pruebas efectivas. Uso de aserciones. Mantenimiento de pruebas.</p>
+            </div>
+            <div class="card-course">
+               <h2>Módulo 5: Mejores Prácticas</h2>
+               <p>Estrategias para mantener la calidad del código. Evitar falsos positivos y negativos. Organización y estructura de pruebas.</p>
+            </div>
+            <div class="card-course">
+               <h2>Módulo 6: Integración Continua</h2>
+               <p>Conceptos de CI/CD. Herramientas para integración continua.</p>
+            </div>
+            <div class="card-course">
+               <h2>Módulo 7: Casos de Estudio</h2>
+               <p>Análisis de ejemplos reales. Lecciones aprendidas.</p>
+            </div>
+            <div class="card-course">
+               <h2>Módulo 8: Proyecto Final</h2>
+               <p>Desarrollo de un proyecto que implemente pruebas automatizadas. Presentación y evaluación del proyecto.</p>
+            </div>
+
+         </div></div>
+      <div class="content">
+         <h2>Docentes</h2>
+      </div>
+      <div class="card-docents">
+
+         <p>Nuestros docentes son profesionales con amplia experiencia en el campo de las pruebas automatizadas. Aquí te presentamos a algunos de ellos:</p>
+         <div class="docent-list">
+            <div class="docent-card">
+               <img src="images/dc.jpeg" alt="Docente 1" class="docent-img"></img>
+               <h3>Dr. Juan Pérez</h3>
+               <p>Experto en pruebas de software y desarrollo ágil.</p>
+            </div>
+            <div class="docent-card">
+               <img src="images/dc.jpeg" alt="Docente 2" class="docent-img"></img>
+               <h3>Ing. María López</h3>
+               <p>Especialista en herramientas de automatización y CI/CD.</p>
+            </div>
+            <div class="docent-card">
+               <img src="images/dc.jpeg" alt="Docente 3" class="docent-img"></img>
+               <h3>Ing. Carlos Leal</h3>
+               <p>Consultor en calidad de software y formación de equipos.</p>
+            </div>
+         </div>
+      </div>
+      <div class="card-container">
+         <div class="card-general">
+            <h2>Información General</h2>
+            <span class="pi pi-bitcoin"><strong> Valor de Inscripción:</strong> $100</span>
+            <span class="pi pi-code"><strong> Modalidad:</strong> Presencial</span>
+            <span class="pi pi-calendar-minus"><strong> Fechas de Inicio</strong> 1 de noviembre</span>
+            <span class="pi pi-calendar-plus"><strong> Fechas de Fin:</strong> 15 de diciembre</span>
+         </div>
+
+         <div class="card-class">
+            <h2>Horarios de Clase</h2>
+            <span class="pi pi-calendar-times"><strong> Lunes, Miércoles y Viernes:</strong> 18:00 - 20:00</span>
+            <span class="pi pi-dollar"><strong> Costos del Curso:</strong> $300</span>
+         </div>
+      </div>
+
+
+
+
+      <div class="content">
+         <h3> Comentarios Y calificaciones</h3>
+      </div>
+      <div class="card-coments">
+         <p:card class="comment">
+            <p><strong>Estudiante 1 </strong> <span class="rating"></span></p>
+            <p:rating id="ratingReadOnly" value="#{ratingView.rating3}" readonly="true"/>
+            <p>Un curso excelente, muy recomendado.</p>
+         </p:card>
+
+         <p:card class="comment">
+            <p><strong>Estudiante 1 </strong> <span class="rating"></span></p>
+            <p:rating id="ratingReadOnly2" value="#{ratingView.rating3}" readonly="true"/>
+            <p>Muy interesante, aunque podría ser más extenso.</p>
+         </p:card>
+
+         <p:card class="comment">
+
+            <p><strong>Estudiante 1 </strong> <span class="rating"></span></p>
+            <p:rating id="ratingReadOnly3" value="#{ratingView.rating3}" readonly="true"/>
+            <p>Los profesores son muy buenos y se explican muy bien.</p>
+         </p:card>
+      </div>
+   </div>
+   <div class="footer">
+      <p>
+         &copy; 2024 CourseConnect&nbsp; &nbsp;Programación 2&nbsp; &nbsp;Universidad
+         El Bosque
+      </p>
+   </div>
+
+
+</h:body>
+</html>

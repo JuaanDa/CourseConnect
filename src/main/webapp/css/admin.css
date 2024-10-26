@@ -1,0 +1,161 @@
+body {
+    transition: margin-left 0.5s ease;
+    background-color: #ffffff;
+}
+body.menu-open {
+    background-color: #ffffff;
+    margin-left: 200px;
+    transition: margin-left 0.5s ease;
+}
+.adminlogo {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    height: auto;
+    padding: 0;
+    margin-top: 20px;
+    position: relative;
+
+}
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0px 200px;
+    color: #000;
+}
+.menu-container {
+    position: relative; 
+    flex: 1;
+}
+.logo {
+    display: flex;
+    margin: 0 auto;
+    flex: 1;
+}
+.admin {
+    cursor: pointer;
+    padding: 15px;
+    margin-left: -170px;
+}
+.line {
+    width: 30px;
+    height: 3px;
+    text-align: left;
+    background-color: white;
+    margin: 5px 0;
+}
+.menu {
+    position: absolute;
+    left: -400px;
+    width: 200px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    transition: left 0.3s ease;
+    margin-top: -80px;
+    height: calc(126vh - 200px); /* Ajusta según la altura del header */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.menu li {
+    padding: 10px;
+}
+.menu li a {
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: margin-left 0.5s ease;
+}
+.menu li a:hover {
+    padding: 20px;
+
+    background-color: #324a5e;
+}
+.titlemenu {
+    font-size: 2rem;
+    font-weight: 650;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+    margin-left:-10px ;
+    margin-right:-10px ;
+    margin-top: -50px;
+    margin-bottom: 20px;
+}
+.admin-panel {
+    flex: 1;
+    color: #000;
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow-y: auto;
+}
+.menu ul ul {
+    margin-left: -25px;
+    display: none;
+    position: absolute;
+    background-color: #324a5e;
+    color: #000;
+}
+.menu ul li:hover > ul,
+.menu ul li.active > ul {
+    display: block;
+}
+.menu ul li.active > a {
+    background-color: #f0f0f0;
+}
+.menu ul li {
+    position: relative;
+}
+.menu ul ul {
+    margin-left: 0;
+    left: 100%;
+    top: 0;
+}
+.menu ul ul {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.menu ul li:hover > ul,
+.menu ul li.active > ul {
+    opacity: 1;
+    visibility: visible;
+}
+.menu ul ul {
+    display: grid;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.menu ul ul {
+    background-color: #3c8dbc;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.menu ul ul li {
+    padding: 10px 20px;
+}
+.menu ul ul li a:hover {
+    background-color: #2e6da4;
+}
+.menu ul ul li a {
+    color: white;
+    text-decoration: none;
+}
+.menu ul ul {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+}
