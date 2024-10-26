@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>CourseConnect</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/catalog.css" />
+    <link rel="icon" type="icon" href="images/icon.png" />
+
+</h:head>
+<h:body>
+    <div class="header">
+    <div class="logo">
+        <a href="index.xhtml"><img src="images/imagotipo.png" alt="logo"/></a>
+    </div>
+
+</div>
+
+    <div class="container-catalog">
+        <div class="scontainer">
+            <h:form >
+                <div class="select-wrapper">
+                    <p:selectOneMenu id="curseType" name="curseType" style=" border-radius:20px;border:none; margin-left: 20px">
+                        <f:selectItem itemValue="" itemLabel="Tipo de Curso" noSelectionOption="true"   />
+                        <f:selectItem itemValue="Educación Continua" itemLabel="Educación Continua"/>
+                        <f:selectItem itemValue="Micro Credenciales" itemLabel="Micro Credenciales"/>
+                        <f:selectItem itemValue="Macro Credenciales" itemLabel="Macro Credenciales"/>
+                    </p:selectOneMenu>
+                </div>
+
+                <div class="line">
+                </div>
+
+                <p:inputText
+                        type="text"
+                        id="topic"
+                        name="topic"
+                        placeholder="Tema"
+                />
+                <div class="line">
+
+                </div>
+
+                <p:inputText
+                        type="text"
+                        id="hability"
+                        name="hability"
+                        placeholder="Habilidad"
+                />
+                <div class="line">
+
+                </div>
+
+                <p:inputText
+                        type="date"
+                        id="date"
+                        name="date" style=" border-radius:20px; border:none"/>
+
+
+                <div class="line">
+
+                </div>
+
+
+                <div class="select-wrapper">
+                    <p:selectOneMenu id="Modality" name="Modality" style="border-radius:20px; border:none">
+                        <f:selectItem itemValue="" itemLabel="Modalidad" noSelectionOption="true"/>
+                        <f:selectItem itemValue="Presencial" itemLabel="Presencial"/>
+                        <f:selectItem itemValue="Híbrido" itemLabel="Híbrido"/>
+                        <f:selectItem itemValue="Online en vivo" itemLabel="Online en vivo"/>
+                        <f:selectItem itemValue="Virtual" itemLabel="Virtual"/>
+                    </p:selectOneMenu>
+
+                </div>
+
+                <p:commandButton type="button" icon="pi pi-search" styleClass="rounded-button ui-button-success" style="padding:20px; margin: 10px" />
+
+            </h:form>
+        </div>
+
+        <div class="curses">
+
+            <!-- Perfil 1 -->
+
+            <div class="curse">
+
+                <div class="card curse-card">
+                    <div class="card-img-wrapper">
+                <a href="curse.xhtml" class ="info-select">
+                        <img src="images/ec.png" class="card-img-top" alt="Curso de Ejemplo">
+                        </img>
+                </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="cardName">Bienvenido a la Tierra </h5>
+                        <p class="cardDate"><strong>Fecha de inicio:</strong> 10 de noviembre 2024</p>
+                        <p class="cardType"><strong>Tipo de curso:</strong> Educación Continua</p>
+                        <p class="cardModality"><strong>Modalidad:</strong> Hibirdo</p>
+                        <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="curse">
+
+                <div class="card curse-card">
+                    <div class="card-img-wrapper">
+                        <a href="curse.xhtml" class ="info-select">
+
+                        <img src="images/ec1.jpg" class="card-img-top" alt="Curso de Ejemplo">
+                        </img>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="cardName">Creatividad e innovacion</h5>
+                        <p class="cardDate"><strong>Fecha de inicio:</strong> 10 de noviembre 2024</p>
+                        <p class="cardType"><strong>Tipo de curso:</strong> Educación Continua</p>
+                        <p class="cardModality"><strong>Modalidad:</strong> Online en vivo</p>
+                        <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
+                    </div>
+                </div>
+            </div>
+            <div class="curse">
+
+                <div class="card curse-card">
+
+                    <div class="card-img-wrapper">
+                        <a href="curse.xhtml" class ="info-select">
+                        <img src="images/ec2.jpg" class="card-img-top" alt="Curso de Ejemplo">
+                        </img>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="cardName">Modelado de datos y ETL</h5>
+                        <p class="cardDate"><strong>Fecha de inicio:</strong> 10 de noviembre 2024</p>
+                        <p class="cardType"><strong>Tipo de curso:</strong> Educación Continua</p>
+                        <p class="cardModality"><strong>Modalidad:</strong> Presencial</p>
+                        <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="curse">
+
+                <div class="card curse-card">
+
+                    <div class="card-img-wrapper">
+                        <a href="curse.xhtml" class ="info-select">
+                        <img src="images/ec3.jpg" class="card-img-top" alt="Curso de Ejemplo">
+                        </img>
+                        </a>
+
+                    </div>
+                    <div class="card-body">
+                        <h5 class="cardName">Pruebas automatizadas</h5>
+                        <p class="cardDate"><strong>Fecha de inicio:</strong> 10 de noviembre 2024</p>
+                        <p class="cardType"><strong>Tipo de curso:</strong> Educación Continua</p>
+                        <p class="cardModality"><strong>Modalidad:</strong> Presencial</p>
+                        <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="pagination">
+        <ul>
+            <li><a href="index.xhtml">&#60;</a></li>
+            <li><a href="index.xhtml">1</a></li>
+            <li><a href="index.xhtml">2</a></li>
+            <li><a href="index.xhtml">3</a></li>
+            <li><a href="index.xhtml"> &#62;</a></li>
+        </ul>
+    </div>
+
+
+    <div class="footer">
+        <p>
+            &copy; 2024 CourseConnect&nbsp; &nbsp;Programación 2&nbsp; &nbsp;Universidad
+            El Bosque
+        </p>
+        <a  href="admin.xhtml"> <img src="images/user.png" alt="user" class="btn-icon"/></a>
+
+    </div>
+
+</h:body>
+</html>
