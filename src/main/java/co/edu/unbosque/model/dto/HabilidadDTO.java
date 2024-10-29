@@ -1,6 +1,6 @@
 package co.edu.unbosque.model.dto;
 
-public class HabilidadesDTO {
+public class HabilidadDTO {
 
     private int idHabilidad;
     private String nombreHabilidad;

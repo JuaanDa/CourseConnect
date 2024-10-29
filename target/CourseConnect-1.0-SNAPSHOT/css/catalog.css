@@ -16,7 +16,6 @@
     height: 30px;
 }
 
-
 .scontainer {
     padding: 0;
     max-width: 100%;
@@ -81,7 +80,6 @@ select option {
     background-color: #59A52C;
     border-radius: 50%;
     border: none;
-    padding-right: 22px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -114,11 +112,13 @@ select option {
 
 .card.curse-card {
     border: 1px solid #000000;
-    background:rgb(61, 61, 61);
+    background:rgb(255, 255, 255);
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0px 12px 30px rgb(0, 0, 0);
     transition: transform 0.2s, box-shadow 0.2s;
+    height: 360px;
+
 }
 .card.curse-card:hover {
     transform: translateY(-3px);
@@ -128,6 +128,7 @@ select option {
 .card-body {
     padding: 5px;
     background-color: #ffffff;
+
 
 }
 
@@ -151,6 +152,9 @@ select option {
     font-size: 1.3rem;
     font-weight: bold;
     color: #1c6f7e;
+    min-height: 60px;
+
+
 }
 
 .cardDate, .cardType, .cardModality {
@@ -197,6 +201,9 @@ select option {
     margin-top: 0;
     margin-bottom: 20px;
 }
+.footer p{
+    margin-left: 100px;
+}
 
 .pagination ul {
     list-style: none;
@@ -222,7 +229,6 @@ select option {
     background-color: #d4d4d4;
     color: #000;
 }
-
 
 
 

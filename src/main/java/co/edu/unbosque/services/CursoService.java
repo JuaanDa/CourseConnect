@@ -10,6 +10,7 @@ import jakarta.inject.Named;
 import org.modelmapper.ModelMapper;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,4 +63,31 @@ public class CursoService implements CursoServiceInterface {
     public void updateCurso(CursoDTO cursos) {
 
     }
+
+    public List<CursoDTO> FiltrarCurso(String tipoCurso, String descripcionTema, String nombreHabilidad, LocalDate fechaInicio, String modalidadCurso) {
+        List<Curso> cursos = daoCurso.findAll();
+        List<CursoDTO> cursoDTOs = new ArrayList<>();
+        for (Curso curso : cursos) {
+            boolean matches = true;
+            String query = "SELECT c FROM Curso c LEFT JOIN c.tema t LEFT JOIN c.habilidad h WHERE 1=1";
+
+            if (tipoCurso != null && !tipoCurso.isEmpty()) {
+                query += " AND c.tipoCurso = :tipoCurso";
+            }
+            if (descripcionTema != null && !descripcionTema.isEmpty()) {
+                query += " AND t.descripcionTema = :descripcionTema";
+            }
+            if (nombreHabilidad != null && !nombreHabilidad.isEmpty()) {
+                query += " AND h.nombreHabilidad = :nombreHabilidad";
+            }
+            if (fechaInicio != null) {
+                query += " AND c.fechaInicio = :fechaInicio";
+            }
+            if (modalidadCurso != null && !modalidadCurso.isEmpty()) {
+                query += " AND c.modalidadCurso = :modalidadCurso";
+            }
+        }
+        return cursoDTOs;
+    }
+
 }

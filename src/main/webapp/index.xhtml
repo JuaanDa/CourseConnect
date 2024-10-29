@@ -25,13 +25,13 @@
         <div class="scontainer">
             <h:form >
                 <div class="select-wrapper">
-                    <p:selectOneMenu id="curseType" name="curseType" style=" border-radius:20px;border:none; margin-left: 20px">
-                        <f:selectItem itemValue="" itemLabel="Tipo de Curso" noSelectionOption="true"   />
-                        <f:selectItem itemValue="Educación Continua" itemLabel="Educación Continua"/>
-                        <f:selectItem itemValue="Micro Credenciales" itemLabel="Micro Credenciales"/>
-                        <f:selectItem itemValue="Macro Credenciales" itemLabel="Macro Credenciales"/>
+                    <p:selectOneMenu id="curseType" value="#{CursoView.cursoDTO.tipoCurso}" required="true" label="program" style=" border-radius:20px;border:none; margin-left: 20px">
+                    <f:selectItem itemValue="" itemLabel="Tipo de Curso" noSelectionOption="true" />
+                    <f:selectItems value="#{CursoView.cursosTipo}"/>
                     </p:selectOneMenu>
+
                 </div>
+
 
                 <div class="line">
                 </div>
@@ -39,6 +39,7 @@
                 <p:inputText
                         type="text"
                         id="topic"
+                        value="#{CursoView.temaDTO.descripcionTema}"
                         name="topic"
                         placeholder="Tema"
                 />
@@ -50,6 +51,7 @@
                         type="text"
                         id="hability"
                         name="hability"
+                        value="#{CursoView.habilidadDTO.nombreHabilidad}"
                         placeholder="Habilidad"
                 />
                 <div class="line">
@@ -59,8 +61,8 @@
                 <p:inputText
                         type="date"
                         id="date"
+                        value="#{CursoView.cursoDTO.fechaInicio}"
                         name="date" style=" border-radius:20px; border:none"/>
-
 
                 <div class="line">
 
@@ -68,17 +70,15 @@
 
 
                 <div class="select-wrapper">
-                    <p:selectOneMenu id="Modality" name="Modality" style="border-radius:20px; border:none">
-                        <f:selectItem itemValue="" itemLabel="Modalidad" noSelectionOption="true"/>
-                        <f:selectItem itemValue="Presencial" itemLabel="Presencial"/>
-                        <f:selectItem itemValue="Híbrido" itemLabel="Híbrido"/>
-                        <f:selectItem itemValue="Online en vivo" itemLabel="Online en vivo"/>
-                        <f:selectItem itemValue="Virtual" itemLabel="Virtual"/>
+                    <p:selectOneMenu id="Modality" value="#{CursoView.cursoDTO.modalidadCurso}" required="true" label="program" style=" border-radius:20px;border:none">
+                        <f:selectItem itemValue="" itemLabel="Modalidad" noSelectionOption="true" />
+
+                        <f:selectItems value="#{CursoView.cursosModalidad}"/>
                     </p:selectOneMenu>
 
                 </div>
 
-                <p:commandButton type="button" icon="pi pi-search" styleClass="rounded-button ui-button-success" style="padding:20px; margin: 10px" />
+                <p:commandButton action="#{CursoView.filtrar()}" type="button" icon="pi pi-search" styleClass="rounded-button ui-button-success" style="padding:20px; margin: 10px" />
 
             </h:form>
         </div>
@@ -86,7 +86,6 @@
 
 
         <div class="curses">
-            <!-- Perfil 1 -->
             <ui:repeat value="#{CursoView.cursos}" var="curso">
                 <div class="curse">
                     <div class="card curse-card">
@@ -105,86 +104,6 @@
                     </div>
                 </div>
             </ui:repeat>
-
-
-            <div class="curse">
-
-                <div class="card curse-card">
-                    <div class="card-img-wrapper">
-                <a href="curse.xhtml" class ="info-select">
-                        <img src="images/ec.png" class="card-img-top" alt="Curso de Ejemplo">
-                        </img>
-                </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="cardName">Bienvenido a la Tierra </h5>
-                        <p class="cardDate"><strong>Fecha de inicio:</strong> 10 de noviembre 2024</p>
-                        <p class="cardType"><strong>Tipo de curso:</strong> Educación Continua</p>
-                        <p class="cardModality"><strong>Modalidad:</strong> Hibirdo</p>
-                        <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="curse">
-
-                <div class="card curse-card">
-                    <div class="card-img-wrapper">
-                        <a href="curse.xhtml" class ="info-select">
-
-                        <img src="images/ec1.jpg" class="card-img-top" alt="Curso de Ejemplo">
-                        </img>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="cardName">Creatividad e innovacion</h5>
-                        <p class="cardDate"><strong>Fecha de inicio:</strong> 10 de noviembre 2024</p>
-                        <p class="cardType"><strong>Tipo de curso:</strong> Educación Continua</p>
-                        <p class="cardModality"><strong>Modalidad:</strong> Online en vivo</p>
-                        <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
-                    </div>
-                </div>
-            </div>
-            <div class="curse">
-
-                <div class="card curse-card">
-
-                    <div class="card-img-wrapper">
-                        <a href="curse.xhtml" class ="info-select">
-                        <img src="images/ec2.jpg" class="card-img-top" alt="Curso de Ejemplo">
-                        </img>
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="cardName">Modelado de datos y ETL</h5>
-                        <p class="cardDate"><strong>Fecha de inicio:</strong> 10 de noviembre 2024</p>
-                        <p class="cardType"><strong>Tipo de curso:</strong> Educación Continua</p>
-                        <p class="cardModality"><strong>Modalidad:</strong> Presencial</p>
-                        <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="curse">
-
-                <div class="card curse-card">
-
-                    <div class="card-img-wrapper">
-                        <a href="curse.xhtml" class ="info-select">
-                        <img src="images/ec3.jpg" class="card-img-top" alt="Curso de Ejemplo">
-                        </img>
-                        </a>
-
-                    </div>
-                    <div class="card-body">
-                        <h5 class="cardName">Pruebas automatizadas</h5>
-                        <p class="cardDate"><strong>Fecha de inicio:</strong> 10 de noviembre 2024</p>
-                        <p class="cardType"><strong>Tipo de curso:</strong> Educación Continua</p>
-                        <p class="cardModality"><strong>Modalidad:</strong> Presencial</p>
-                        <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>
