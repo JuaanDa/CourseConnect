@@ -14,7 +14,7 @@ public class Tema {
     private int idTema;
 
     @Column(name = "fecha_creacion", nullable = false)
-    @Temporal(TemporalType.DATE)
+   // @Temporal(TemporalType.DATE)
     private LocalDate fechaCreacion;
     @ManyToOne
     @JoinColumn(name = "creado_por", nullable = false, referencedColumnName = "username")

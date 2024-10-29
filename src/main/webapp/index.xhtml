@@ -83,9 +83,29 @@
             </h:form>
         </div>
 
-        <div class="curses">
 
+
+        <div class="curses">
             <!-- Perfil 1 -->
+            <ui:repeat value="#{CursoView.cursos}" var="curso">
+                <div class="curse">
+                    <div class="card curse-card">
+                        <div class="card-img-wrapper">
+                            <a href="curse.xhtml" class="info-select">
+                                <img src="#{curso.urlImagenCurso}" class="card-img-top" alt="#{curso.tituloCurso}" />
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="cardName">#{curso.tituloCurso}</h5>
+                            <p class="cardDate"><strong>Fecha de inicio:</strong> #{curso.fechaInicio}</p>
+                            <p class="cardType"><strong>Tipo de curso:</strong> #{curso.tipoCurso}</p>
+                            <p class="cardModality"><strong>Modalidad:</strong> #{curso.modalidadCurso}</p>
+                            <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
+                        </div>
+                    </div>
+                </div>
+            </ui:repeat>
+
 
             <div class="curse">
 

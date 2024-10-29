@@ -14,7 +14,7 @@ public class CertificadoCurso {
     private String idEstudiante;
 
     @Column(name = "fecha_expedicion_certificado", nullable = false)
-    @Temporal(TemporalType.DATE)
+  //  @Temporal(TemporalType.DATE)
     private LocalDate fechaExpedicionCertificado;
 
     @Column(name = "url_descarga_certificado", nullable = false, length = 150)

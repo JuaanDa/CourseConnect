@@ -18,7 +18,7 @@ public class Inscripcion {
     private String idEstudiante;
 
     @Column(name = "fecha_inscripcion", nullable = false)
-    @Temporal(TemporalType.DATE)
+  //  @Temporal(TemporalType.DATE)
     private LocalDate fechaInscripcion;
 
     @Column(name = "url_link_confirmacion", nullable = false, length = 150)

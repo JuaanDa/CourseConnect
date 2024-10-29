@@ -5,7 +5,9 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "CURSOS")
-
+@NamedQueries({
+        @NamedQuery(name="Curso.findAll", query = "SELECT c FROM Curso c")
+})
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +29,11 @@ public class Curso {
     private String horarioCurso;
 
     @Column(name = "fecha_inicio", nullable = false)
-    @Temporal(TemporalType.DATE)
+  //  @Temporal(TemporalType.DATE)
     private LocalDate fechaInicio;
 
     @Column(name = "fecha_fin", nullable = false)
-    @Temporal(TemporalType.DATE)
+   // @Temporal(TemporalType.DATE)
     private LocalDate fechaFin;
 
     @Column(name = "horas_curso", nullable = false)
@@ -44,7 +46,7 @@ public class Curso {
     private String estadoCurso;
 
     @Column(name = "fecha_creacion", nullable = false)
-    @Temporal(TemporalType.DATE)
+   // @Temporal(TemporalType.DATE)
     private LocalDate fechaCreacion;
 
     @ManyToOne

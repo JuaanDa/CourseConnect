@@ -20,11 +20,11 @@ public class Usuario {
     private String tipoUsuario;
 
     @Column(name = "fecha_registro", nullable = false)
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     private LocalDate fechaRegistro;
 
     @Column(name = "ultimo_acceso")
-    @Temporal(TemporalType.TIMESTAMP)
+ //   @Temporal(TemporalType.TIMESTAMP)
     private LocalDate ultimoAcceso;
 
     @Column(name = "estado_usuario", nullable = false, length = 15)
