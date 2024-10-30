@@ -56,6 +56,7 @@ public class Curso {
     public Curso() {
     }
 
+
     public Curso(int id_curso, String tituloCurso, String urlImagenCurso, String tipoCurso, String modalidadCurso, String horarioCurso, LocalDate fechaInicio, LocalDate fechaFin, int horasCurso, double costoCurso, String estadoCurso, LocalDate fechaCreacion, Usuario creadoPor) {
         this.id_curso = id_curso;
         this.tituloCurso = tituloCurso;

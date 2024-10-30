@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:form id="cursoForm" enctype="multipart/form-data">
+
+
+
+        <p:outputLabel for="titulo_curso" value="Titulo del curso"/>
+        <p:inputText id="titulo_curso" value="#{cursoView.cursoDTO.tituloCurso}" required="true"/>
+        <br /><br/>
+
+        <p:outputLabel for="url_imagen_curso" value="Url imagen del curso " styleClass="block" required="true"/>
+        <p:inputText id="url_imagen_curso" value="#{cursoView.cursoDTO.urlImagenCurso}" />
+        <br /><br/>
+
+        <p:outputLabel for="tipo_curso" value="Tipo de curso " styleClass="block" required="true"/>
+        <p:selectOneMenu id="tipo_curso" value="#{cursoView.cursoDTO.tipoCurso}" required="true" label="Tipo de curso" >
+            <f:selectItems value="#{cursoView.cursosTipo}"/>
+        </p:selectOneMenu>
+        <br /><br/>
+
+
+        <p:outputLabel for="modalidad_curso" value="Modalidad " styleClass="block" required="true"/>
+        <p:selectOneMenu id="modalidad_curso" value="#{cursoView.cursoDTO.modalidadCurso}" required="true" label="Modalidad" >
+            <f:selectItems value="#{cursoView.cursosModalidad}"/>
+        </p:selectOneMenu>
+        <br /><br/>
+
+        <p:outputLabel for="horario_curso" value="horario de curso " styleClass="block" required="true"/>
+        <p:inputText id="horario_curso" value="#{cursoView.cursoDTO.horarioCurso}" />
+        <br /><br/>
+
+        <h:outputLabel for="fecha_inicio" value="Fecha Incio Curso " styleClass="block" required="true"/>
+        <p:calendar id="fecha_inicio" value="#{cursoView.cursoDTO.fechaInicio}" />
+        <br /><br/>
+
+        <h:outputLabel for="fecha_fin" value="Fecha Fin Curso " styleClass="block" required="true"/>
+        <p:calendar id="fecha_fin" value="#{cursoView.cursoDTO.fechaFin}"  />
+        <br /><br/>
+
+        <p:outputLabel for="horas_curso" value="horas curso " styleClass="block" required="true"/>
+        <p:inputText id="horas_curso" value="#{cursoView.cursoDTO.horasCurso}" />
+        <br /><br/>
+
+        <p:outputLabel for="costo_curso" value="Costo curso " styleClass="block" required="true"/>
+        <p:inputText id="costo_curso" value="#{cursoView.cursoDTO.costoCurso}" />
+        <br /><br/>
+
+
+        <p:outputLabel for="estado_curso" value="Estado curso " styleClass="block" required="true"/>
+        <p:inputText id="estado_curso" value="#{cursoView.cursoDTO.estadoCurso}" />
+        <br /><br/>
+
+        <h:outputLabel for="fecha_creacion" value="Fecha Creacion " styleClass="block" required="true"/>
+        <p:calendar id="fecha_creacion" value="#{cursoView.cursoDTO.fechaCreacion}"  />
+        <br /><br/>
+
+        <p:commandButton value="Crear" action="#{cursoView.crearCurso()}"/>
+
+    </h:form>
+
+</html>

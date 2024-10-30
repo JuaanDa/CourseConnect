@@ -7,6 +7,9 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "USUARIOS")
 
+@NamedQueries({
+        @NamedQuery(name="Usuario.findAll", query = "SELECT u FROM Usuario u")
+})
 public class Usuario {
 
     @Id

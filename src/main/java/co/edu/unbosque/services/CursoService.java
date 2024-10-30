@@ -3,7 +3,9 @@ package co.edu.unbosque.services;
 
 import co.edu.unbosque.model.dao.DAO;
 import co.edu.unbosque.model.dto.CursoDTO;
+import co.edu.unbosque.model.dto.UsuarioDTO;
 import co.edu.unbosque.model.entities.Curso;
+import co.edu.unbosque.model.entities.Usuario;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -22,6 +24,8 @@ import static org.modelmapper.config.Configuration.AccessLevel.PRIVATE;
 public class CursoService implements CursoServiceInterface {
     @Inject
     private DAO<Curso, Integer> daoCurso;
+    @Inject
+    private DAO<Usuario, String> daoUsuario;
     private final ModelMapper dataMapper;
 
     public CursoService() {
@@ -30,13 +34,13 @@ public class CursoService implements CursoServiceInterface {
 
     }
 
-
     @Override
-    public void save(CursoDTO cursDTO) {
-        Curso curso = dataMapper.map(cursDTO, Curso.class);
+    public void saveCurse(CursoDTO cursoDTO) {
+
+        Curso  curso = dataMapper.map(cursoDTO, Curso.class);
         daoCurso.save(curso);
-        dataMapper.map(cursDTO, Curso.class);
-    }
+        dataMapper.map(cursoDTO, Curso.class);
+        }
 
     @Override
     public CursoDTO getCurso(int id) {
@@ -53,6 +57,16 @@ public class CursoService implements CursoServiceInterface {
         }
         return cursoDTOs;
     }
+    public List<UsuarioDTO> getAllUsuarios() {
+        List<Usuario> usuarios = daoUsuario.findAll();
+        List<UsuarioDTO> usuarioDTOs = new ArrayList<>();
+        for (Usuario usuario : usuarios) {
+            usuarioDTOs.add(dataMapper.map(usuario, UsuarioDTO.class));
+
+        }
+        return usuarioDTOs;
+    }
+
 
     @Override
     public void deleteCurso(int id) {
@@ -60,7 +74,7 @@ public class CursoService implements CursoServiceInterface {
     }
 
     @Override
-    public void updateCurso(CursoDTO cursos) {
+    public void updateCurso(CursoDTO cursoDTO) {
 
     }
 

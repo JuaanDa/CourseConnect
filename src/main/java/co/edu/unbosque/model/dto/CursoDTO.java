@@ -20,6 +20,26 @@ public class CursoDTO {
     private LocalDate fechaCreacion;
     private Usuario creadoPor;
 
+    public CursoDTO(){
+
+    }
+
+    public CursoDTO(int id_curso, String tituloCurso, String urlImagenCurso, String tipoCurso, String modalidadCurso, String horarioCurso, LocalDate fechaInicio, LocalDate fechaFin, int horasCurso, double costoCurso, String estadoCurso, LocalDate fechaCreacion, Usuario creadoPor) {
+        this.id_curso = id_curso;
+        this.tituloCurso = tituloCurso;
+        this.urlImagenCurso = urlImagenCurso;
+        this.tipoCurso = tipoCurso;
+        this.modalidadCurso = modalidadCurso;
+        this.horarioCurso = horarioCurso;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.horasCurso = horasCurso;
+        this.costoCurso = costoCurso;
+        this.estadoCurso = estadoCurso;
+        this.fechaCreacion = fechaCreacion;
+        this.creadoPor = creadoPor;
+    }
+
     public int getId_curso() {
         return id_curso;
     }

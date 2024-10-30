@@ -11,6 +11,18 @@ public class UsuarioDTO {
     private LocalDate ultimoAcceso;
     private String estadoUsuario;
 
+    public UsuarioDTO() {
+
+    }
+
+    public UsuarioDTO(String username, String userpass, String tipoUsuario, LocalDate fechaRegistro, LocalDate ultimoAcceso, String estadoUsuario) {
+        this.username = username;
+        this.userpass = userpass;
+        this.tipoUsuario = tipoUsuario;
+        this.fechaRegistro = fechaRegistro;
+        this.ultimoAcceso = ultimoAcceso;
+        this.estadoUsuario = estadoUsuario;
+    }
 
     public String getUsername() {
         return username;

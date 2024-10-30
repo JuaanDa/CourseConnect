@@ -3,7 +3,10 @@ package co.edu.unbosque.view;
 import co.edu.unbosque.model.dto.CursoDTO;
 import co.edu.unbosque.model.dto.HabilidadDTO;
 import co.edu.unbosque.model.dto.TemaDTO;
+import co.edu.unbosque.model.dto.UsuarioDTO;
+import co.edu.unbosque.model.entities.Usuario;
 import co.edu.unbosque.services.CursoService;
+import co.edu.unbosque.services.UsuarioService;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -15,19 +18,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Named("CursoView")
+@Named("cursoView")
 @RequestScoped
 public class CursoView implements Serializable {
     private ArrayList<CursoDTO> cursos;
+    private ArrayList<UsuarioDTO> usuarios;
     private CursoDTO cursoDTO;
     private TemaDTO temaDTO;
+    private UsuarioDTO usuarioDTO;
     private HabilidadDTO habilidadDTO;
     private Map<String, String> cursosTipo = new HashMap<>();
     private Map<String, String> cursosModalidad = new HashMap<>();
 
     @Inject
     private CursoService cursoService;
-
+    @Inject
+    private UsuarioService usuarioService;
     @PostConstruct
     public void init() {
         cursosTipo = new HashMap<>();
@@ -42,12 +48,18 @@ public class CursoView implements Serializable {
         cursosModalidad.put("Virtual","virtual");
 
         cursos  = (ArrayList<CursoDTO>) cursoService.getAllCursos();
+        usuarios = (ArrayList<UsuarioDTO>) cursoService.getAllUsuarios();
+
+
     }
 
     public CursoView(){
         cursoDTO = new CursoDTO();
         temaDTO = new TemaDTO();
         habilidadDTO = new HabilidadDTO();
+        usuarioDTO = new UsuarioDTO();
+
+
     }
 
     public Map<String, String> getCursosTipo() {
@@ -90,8 +102,19 @@ public class CursoView implements Serializable {
         this.habilidadDTO = habilidadDTO;
     }
 
+    public UsuarioDTO getUsuarioDTO() {
+        return usuarioDTO;
+    }
+
+    public void setUsuarioDTO(UsuarioDTO usuarioDTO) {
+        this.usuarioDTO = usuarioDTO;
+    }
+
     public List<CursoDTO> getCursos() {
         return cursos;
+    }
+    public List<UsuarioDTO> getUsuarios() {
+        return usuarios;
     }
 
     public String filtrar(){
@@ -104,5 +127,24 @@ public class CursoView implements Serializable {
         );
         return "index.html";
     }
+    public Usuario convertUsuario(UsuarioDTO usuarioDTO) {
+        return usuarioService.saveUsuario(usuarioDTO);
+
+
+    }
+
+
+    public String crearCurso() {
+        UsuarioDTO usuarioDTO = usuarios.get(0);
+        Usuario creadoPor = usuarioService.saveUsuario(usuarioDTO);
+        cursoDTO.setCreadoPor(creadoPor);
+
+        cursoService.saveCurse(cursoDTO);
+        return null;
+    }
+
+
+
+
 
 }

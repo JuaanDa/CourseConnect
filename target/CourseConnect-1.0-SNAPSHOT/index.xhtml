@@ -25,9 +25,9 @@
         <div class="scontainer">
             <h:form >
                 <div class="select-wrapper">
-                    <p:selectOneMenu id="curseType" value="#{CursoView.cursoDTO.tipoCurso}" required="true" label="program" style=" border-radius:20px;border:none; margin-left: 20px">
+                    <p:selectOneMenu id="tipo_curso" value="#{cursoView.cursoDTO.tipoCurso}" required="true" label="program" style=" border-radius:20px;border:none; margin-left: 20px">
                     <f:selectItem itemValue="" itemLabel="Tipo de Curso" noSelectionOption="true" />
-                    <f:selectItems value="#{CursoView.cursosTipo}"/>
+                    <f:selectItems value="#{cursoView.cursosTipo}"/>
                     </p:selectOneMenu>
 
                 </div>
@@ -38,9 +38,9 @@
 
                 <p:inputText
                         type="text"
-                        id="topic"
-                        value="#{CursoView.temaDTO.descripcionTema}"
-                        name="topic"
+                        id="nombre_tema"
+                        value="#{cursoView.temaDTO.descripcionTema}"
+                        name="nombre_tema"
                         placeholder="Tema"
                 />
                 <div class="line">
@@ -49,9 +49,9 @@
 
                 <p:inputText
                         type="text"
-                        id="hability"
-                        name="hability"
-                        value="#{CursoView.habilidadDTO.nombreHabilidad}"
+                        id="nombre_habilidad"
+                        name="nombre_habilidad"
+                        value="#{cursoView.habilidadDTO.nombreHabilidad}"
                         placeholder="Habilidad"
                 />
                 <div class="line">
@@ -60,8 +60,8 @@
 
                 <p:inputText
                         type="date"
-                        id="date"
-                        value="#{CursoView.cursoDTO.fechaInicio}"
+                        id="fecha_inicio"
+                        value="#{cursoView.cursoDTO.fechaInicio}"
                         name="date" style=" border-radius:20px; border:none"/>
 
                 <div class="line">
@@ -70,15 +70,15 @@
 
 
                 <div class="select-wrapper">
-                    <p:selectOneMenu id="Modality" value="#{CursoView.cursoDTO.modalidadCurso}" required="true" label="program" style=" border-radius:20px;border:none">
+                    <p:selectOneMenu id="modalidad_curso" value="#{cursoView.cursoDTO.modalidadCurso}" required="true" label="program" style=" border-radius:20px;border:none">
                         <f:selectItem itemValue="" itemLabel="Modalidad" noSelectionOption="true" />
 
-                        <f:selectItems value="#{CursoView.cursosModalidad}"/>
+                        <f:selectItems value="#{cursoView.cursosModalidad}"/>
                     </p:selectOneMenu>
 
                 </div>
 
-                <p:commandButton action="#{CursoView.filtrar()}" type="button" icon="pi pi-search" styleClass="rounded-button ui-button-success" style="padding:20px; margin: 10px" />
+                <p:commandButton action="#{cursoView.filtrar()}" type="button" icon="pi pi-search" styleClass="rounded-button ui-button-success" style="padding:20px; margin: 10px" />
 
             </h:form>
         </div>
@@ -86,7 +86,7 @@
 
 
         <div class="curses">
-            <ui:repeat value="#{CursoView.cursos}" var="curso">
+            <ui:repeat value="#{cursoView.cursos}" var="curso">
                 <div class="curse">
                     <div class="card curse-card">
                         <div class="card-img-wrapper">

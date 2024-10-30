@@ -9,12 +9,13 @@ import java.util.List;
 
 @Stateless
 public class CursoDAO implements DAO<Curso, Integer>{
+
     @PersistenceContext(unitName = "CourseConnect")
     private EntityManager em;
+
     @Override
     public void save(Curso entity) {
-    em.persist(entity);
-
+        em.persist(entity);
     }
 
     @Override
