@@ -34,6 +34,7 @@ public class CursoView implements Serializable {
     private CursoService cursoService;
     @Inject
     private UsuarioService usuarioService;
+
     @PostConstruct
     public void init() {
         cursosTipo = new HashMap<>();

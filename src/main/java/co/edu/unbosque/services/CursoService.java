@@ -7,6 +7,7 @@ import co.edu.unbosque.model.dto.UsuarioDTO;
 import co.edu.unbosque.model.entities.Curso;
 import co.edu.unbosque.model.entities.Usuario;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.annotation.ManagedProperty;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.modelmapper.ModelMapper;

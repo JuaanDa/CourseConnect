@@ -1,5 +1,4 @@
 DROP DATABASE courseconnect;
-
 CREATE DATABASE courseconnect;
 USE courseconnect;
 

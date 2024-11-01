@@ -24,13 +24,13 @@
 
    <div class="container-curse">
       <h1 class="curse">Curso</h1>
-      <h1 class="titleCurse">Pruebas automatizadas</h1>
+      <h1 class="titleCurse">#{cursoInfoView.cursoDTO.tituloCurso}</h1>
       <div class="curseInfo">
 
-         <p> Descripción: Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis numquam corrupti maxime officia exercitationem ea impedit ab labore ducimus nisi, sit quo ratione enim distinctio facere quidem autem nemo ipsam.</p>
+         <p> Descripción: #{cursoInfoView.temaDTO.descripcionTema}</p>
       </div>
       <div class="card-img">
-         <img src="images/ec3.jpg" class="card-img-top" alt="Curso de Ejemplo"></img>
+         <img src="#{cursoInfoView.cursoDTO.urlImagenCurso}" class="card-img-top" alt="Curso"></img>
       </div>
       <div class="content">
          <h2>Contenidos del Curso</h2>
@@ -104,15 +104,15 @@
          <div class="card-general">
             <h2>Información General</h2>
             <span class="pi pi-bitcoin"><strong> Valor de Inscripción:</strong> $100</span>
-            <span class="pi pi-code"><strong> Modalidad:</strong> Presencial</span>
-            <span class="pi pi-calendar-minus"><strong> Fechas de Inicio</strong> 1 de noviembre</span>
-            <span class="pi pi-calendar-plus"><strong> Fechas de Fin:</strong> 15 de diciembre</span>
+            <span class="pi pi-code"><strong> Modalidad:</strong> #{cursoInfoView.cursoDTO.modalidadCurso}</span>
+            <span class="pi pi-calendar-minus"><strong> Fechas de Inicio</strong> #{cursoInfoView.cursoDTO.fechaInicio}</span>
+            <span class="pi pi-calendar-plus"><strong> Fechas de Fin:</strong> #{cursoInfoView.cursoDTO.fechaFin}</span>
          </div>
 
          <div class="card-class">
             <h2>Horarios de Clase</h2>
-            <span class="pi pi-calendar-times"><strong> Lunes, Miércoles y Viernes:</strong> 18:00 - 20:00</span>
-            <span class="pi pi-dollar"><strong> Costos del Curso:</strong> $300</span>
+            <span class="pi pi-calendar-times"><strong> #{cursoInfoView.cursoDTO.horarioCurso}</strong></span>
+            <span class="pi pi-dollar"><strong> Costos del Curso:</strong> $#{cursoInfoView.cursoDTO.costoCurso}</span>
          </div>
       </div>
 
