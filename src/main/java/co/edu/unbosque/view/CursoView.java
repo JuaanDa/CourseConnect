@@ -30,10 +30,6 @@ public class CursoView implements Serializable {
     private Map<String, String> cursosTipo = new HashMap<>();
     private Map<String, String> cursosModalidad = new HashMap<>();
 
-    //paginacion
-    private int currentPage;
-    private int pageSize = 2;
-    private int totalPages;
 
     @Inject
     private CursoService cursoService;
@@ -42,7 +38,6 @@ public class CursoView implements Serializable {
 
     @PostConstruct
     public void init() {
-        currentPage = 0;
         cursosTipo = new HashMap<>();
         cursosTipo.put("Educación Continua","EduContinua");
         cursosTipo.put("Micro Credenciales","Microcredencial");
@@ -55,7 +50,6 @@ public class CursoView implements Serializable {
         cursosModalidad.put("Virtual","virtual");
 
         cursos  = (ArrayList<CursoDTO>) cursoService.getAllCursos();
-        totalPages = (int) Math.ceil((double) cursos.size() / pageSize);
         usuarios = (ArrayList<UsuarioDTO>) cursoService.getAllUsuarios();
 
 
@@ -68,49 +62,6 @@ public class CursoView implements Serializable {
         usuarioDTO = new UsuarioDTO();
 
 
-    }
-    public List<CursoDTO> getCursos() {
-        int start = currentPage * pageSize;
-        int end = (Math.min(start + pageSize, cursos.size()));
-        return cursos.subList(start, end);
-    }
-
-
-    public int getTotalPages() {
-        return totalPages;
-    }
-
-    public int getCurrentPage() {
-        return currentPage;
-    }
-
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
-    }
-
-
-
-    public void nextPage() {
-
-        if (currentPage < totalPages - 1) {
-            currentPage++;
-
-        }
-
-    }
-
-    public void prevPage() {
-        if (currentPage > 0) {
-            currentPage--;
-        }
-    }
-
-    public List<Integer> getPageNumbers() {
-        List<Integer> pages = new ArrayList<>();
-        for (int i = 1; i <= totalPages; i++) {
-            pages.add(i);
-        }
-        return pages;
     }
 
     public Map<String, String> getCursosTipo() {
