@@ -37,4 +37,6 @@ public class CursoDAO implements DAO<Curso, Integer>{
     public List<Curso> findAll() {
         return em.createNamedQuery("Curso.findAll", Curso.class).getResultList();
     }
+
+
 }

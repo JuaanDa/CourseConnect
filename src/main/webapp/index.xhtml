@@ -83,14 +83,14 @@
             </h:form>
         </div>
 
-
+        <h:form id="curseform" styleClass="curseForm">
 
         <div class="curses">
             <ui:repeat value="#{cursoView.cursos}" var="curso">
                 <div class="curse">
                     <div class="card curse-card">
                         <div class="card-img-wrapper">
-                            <a href="curse.xhtml?cursoId=#{curso.id_curso}" class="info-select" >
+                            <a href="curse.xhtml?cursoId=#{curso.id_curso}" class="info-select">
                                 <img src="#{curso.urlImagenCurso}" class="card-img-top" alt="#{curso.tituloCurso}" />
                             </a>
                         </div>
@@ -106,18 +106,26 @@
             </ui:repeat>
 
         </div>
-    </div>
-
     <div class="pagination">
         <ul>
-            <li><a href="index.xhtml">&#60;</a></li>
-            <li><a href="index.xhtml">1</a></li>
-            <li><a href="index.xhtml">2</a></li>
-            <li><a href="index.xhtml">3</a></li>
-            <li><a href="index.xhtml"> &#62;</a></li>
+            <li>
+                <p:commandButton value="&lt;" action="#{cursoView.prevPage()}" disabled="#{cursoView.currentPage == 0}" update=":curseform" styleClass="a" />
+            </li>
+
+            <ui:repeat value="#{cursoView.pageNumbers}" var="page">
+                <li>
+                    <p:commandButton value="#{page}" action="#{cursoView.setCurrentPage(page - 1)}" update=":curseform"
+                                     styleClass="a #{cursoView.currentPage == (page - 1) ? 'active' : ''}"
+                    />
+                </li>
+            </ui:repeat>
+            <li>
+                <p:commandButton value="&gt;" action="#{cursoView.nextPage()}" disabled="#{cursoView.currentPage == cursoView.totalPages - 1}" update=":curseform" styleClass="a" />
+            </li>
         </ul>
     </div>
-
+        </h:form>
+    </div>
 
     <div class="footer">
         <p>

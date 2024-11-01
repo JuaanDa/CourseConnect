@@ -79,7 +79,7 @@ public class CursoService implements CursoServiceInterface {
 
     }
 
-    public List<CursoDTO> FiltrarCurso(String tipoCurso, String descripcionTema, String nombreHabilidad, LocalDate fechaInicio, String modalidadCurso) {
+    public List<CursoDTO> filtrarCurso(String tipoCurso, String descripcionTema, String nombreHabilidad, LocalDate fechaInicio, String modalidadCurso) {
         List<Curso> cursos = daoCurso.findAll();
         List<CursoDTO> cursoDTOs = new ArrayList<>();
         for (Curso curso : cursos) {
