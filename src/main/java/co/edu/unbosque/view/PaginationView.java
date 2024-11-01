@@ -16,6 +16,7 @@ import java.util.List;
 @ViewScoped
 public class PaginationView implements Serializable {
     private ArrayList<CursoDTO> cursos;
+    private ArrayList<CursoDTO> allCursos; // Para almacenar todos los cursos
 
     //paginacion
     private int currentPage = 0;
@@ -26,6 +27,7 @@ public class PaginationView implements Serializable {
 
     @PostConstruct
     public void init() {
+        allCursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
         cursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
         cursos.sort(Comparator.comparing(CursoDTO::getTituloCurso, String.CASE_INSENSITIVE_ORDER));
 
@@ -73,6 +75,11 @@ public class PaginationView implements Serializable {
             pages.add(i);
         }
         return pages;
+    }
+
+    public void setCursos(List<CursoDTO> cursos) {
+        this.cursos = new ArrayList<>(cursos); // Actualiza la lista de cursos
+        this.currentPage = 0; // Reinicia la página al filtrar
     }
 }
 

@@ -29,13 +29,15 @@ public class CursoView implements Serializable {
     private HabilidadDTO habilidadDTO;
     private Map<String, String> cursosTipo = new HashMap<>();
     private Map<String, String> cursosModalidad = new HashMap<>();
+    private boolean filtroAplicado;
 
 
     @Inject
     private CursoService cursoService;
     @Inject
     private UsuarioService usuarioService;
-
+    @Inject
+    private PaginationView paginationView;
     @PostConstruct
     public void init() {
         cursosTipo = new HashMap<>();
@@ -51,11 +53,12 @@ public class CursoView implements Serializable {
 
         cursos  = (ArrayList<CursoDTO>) cursoService.getAllCursos();
         usuarios = (ArrayList<UsuarioDTO>) cursoService.getAllUsuarios();
-
+        filtroAplicado = false;
 
     }
 
     public CursoView(){
+        filtroAplicado = false;
         cursoDTO = new CursoDTO();
         temaDTO = new TemaDTO();
         habilidadDTO = new HabilidadDTO();
@@ -116,13 +119,25 @@ public class CursoView implements Serializable {
         return usuarios;
     }
 
+
     public String filtrar(){
-        return "index.html";
+        System.out.println("filtrando");
+        List<CursoDTO> filteredCursos = (ArrayList<CursoDTO>) cursoService.getCursosByTipo(cursoDTO.getTipoCurso());
+        filtroAplicado = true;
+        // Actualiza la lista de cursos en PaginationView
+        paginationView.setCursos(filteredCursos);
+
+        return null;
     }
     public Usuario convertUsuario(UsuarioDTO usuarioDTO) {
         return usuarioService.saveUsuario(usuarioDTO);
 
 
+    }
+    public void quitarFiltro() {
+        System.out.println("Quitando filtro");
+        cursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
+        filtroAplicado = false; // Restablece el estado del filtro
     }
 
     public String crearCurso() {

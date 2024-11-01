@@ -23,15 +23,15 @@
 
     <div class="container-catalog">
         <div class="scontainer">
-            <h:form >
+            <h:form id="filtrarform">
                 <div class="select-wrapper">
-                    <p:selectOneMenu id="tipo_curso" value="#{cursoView.cursoDTO.tipoCurso}" required="true" label="program" style=" border-radius:20px;border:none; margin-left: 20px">
-                    <f:selectItem itemValue="" itemLabel="Tipo de Curso" noSelectionOption="true" />
+                    <p:selectOneMenu id="tipo_curso" value="#{cursoView.cursoDTO.tipoCurso}" required="true" label="tipo_curso" style=" border-radius:20px;border:none; margin-left: 20px">
+                    <f:selectItem itemValue="ipo_curso" itemLabel="Tipo de Curso" noSelectionOption="true" />
                     <f:selectItems value="#{cursoView.cursosTipo}"/>
                     </p:selectOneMenu>
 
                 </div>
-
+<!--
 
                 <div class="line">
                 </div>
@@ -54,6 +54,7 @@
                         value="#{cursoView.habilidadDTO.nombreHabilidad}"
                         placeholder="Habilidad"
                 />
+
                 <div class="line">
 
                 </div>
@@ -77,55 +78,60 @@
                     </p:selectOneMenu>
 
                 </div>
-
-                <p:commandButton action="#{cursoView.filtrar()}" type="button" icon="pi pi-search" styleClass="rounded-button ui-button-success" style="padding:20px; margin: 10px" />
+         -->
+            <p:commandButton action="#{cursoView.filtrar()}" icon="pi pi-search" styleClass="rounded-button ui-button-success" update=":curseform" style="padding:20px; margin: 10px" />
 
             </h:form>
+
         </div>
 
         <h:form id="curseform" styleClass="curseForm">
 
-        <div class="curses">
-            <ui:repeat value="#{paginationView.cursos}" var="curso">
-                <div class="curse">
-                    <div class="card curse-card">
-                        <div class="card-img-wrapper">
-                            <a href="curse.xhtml?cursoId=#{curso.id_curso}" class="info-select">
-                                <img src="#{curso.urlImagenCurso}" class="card-img-top" alt="#{curso.tituloCurso}" />
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="cardName">#{curso.tituloCurso}</h5>
-                            <p class="cardDate"><strong>Fecha de inicio:</strong> #{curso.fechaInicio}</p>
-                            <p class="cardType"><strong>Tipo de curso:</strong> #{curso.tipoCurso}</p>
-                            <p class="cardModality"><strong>Modalidad:</strong> #{curso.modalidadCurso}</p>
-                            <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
-                        </div>
+                    <div class="curses">
+                        <ui:repeat value="#{paginationView.cursos}" var="curso">
+                            <div class="curse">
+                                <div class="card curse-card">
+                                    <div class="card-img-wrapper">
+                                        <a href="curse.xhtml?cursoId=#{curso.id_curso}" class="info-select">
+                                            <img src="#{curso.urlImagenCurso}" class="card-img-top" alt="#{curso.tituloCurso}" />
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="cardName">#{curso.tituloCurso}</h5>
+                                        <p class="cardDate"><strong>Fecha de inicio:</strong> #{curso.fechaInicio}</p>
+                                        <p class="cardType"><strong>Tipo de curso:</strong> #{curso.tipoCurso}</p>
+                                        <p class="cardModality"><strong>Modalidad:</strong> #{curso.modalidadCurso}</p>
+                                        <a href="register.xhtml" class="btn-custom-p">Inscribirse</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </ui:repeat>
+
                     </div>
+                <div class="pagination">
+                    <ul>
+                        <li>
+                            <p:commandButton value="&lt;" action="#{paginationView.prevPage()}" disabled="#{paginationView.currentPage == 0}" update=":curseform" styleClass="a" />
+                        </li>
+
+                        <ui:repeat value="#{paginationView.pageNumbers}" var="page">
+                            <li>
+                                <p:commandButton value="#{page}" action="#{paginationView.setCurrentPage(page - 1)}" update=":curseform"
+                                                 styleClass="a #{paginationView.currentPage == (page - 1) ? 'active' : ''}"
+                                />
+                            </li>
+                        </ui:repeat>
+                        <li>
+                            <p:commandButton value="&gt;" action="#{paginationView.nextPage()}" disabled="#{paginationView.currentPage == paginationView.totalPages - 1}" update=":curseform" styleClass="a" />
+                        </li>
+                    </ul>
                 </div>
-            </ui:repeat>
-
-        </div>
-    <div class="pagination">
-        <ul>
-            <li>
-                <p:commandButton value="&lt;" action="#{paginationView.prevPage()}" disabled="#{paginationView.currentPage == 0}" update=":curseform" styleClass="a" />
-            </li>
-
-            <ui:repeat value="#{paginationView.pageNumbers}" var="page">
-                <li>
-                    <p:commandButton value="#{page}" action="#{paginationView.setCurrentPage(page - 1)}" update=":curseform"
-                                     styleClass="a #{paginationView.currentPage == (page - 1) ? 'active' : ''}"
-                    />
-                </li>
-            </ui:repeat>
-            <li>
-                <p:commandButton value="&gt;" action="#{paginationView.nextPage()}" disabled="#{paginationView.currentPage == paginationView.totalPages - 1}" update=":curseform" styleClass="a" />
-            </li>
-        </ul>
-    </div>
         </h:form>
-    </div>
+
+
+
+
+</div>
 
     <div class="footer">
         <p>

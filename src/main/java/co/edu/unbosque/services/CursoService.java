@@ -10,6 +10,8 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.annotation.ManagedProperty;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.modelmapper.ModelMapper;
 
 
@@ -78,29 +80,12 @@ public class CursoService implements CursoServiceInterface {
     public void updateCurso(CursoDTO cursoDTO) {
 
     }
-
-    public List<CursoDTO> filtrarCurso(String tipoCurso, String descripcionTema, String nombreHabilidad, LocalDate fechaInicio, String modalidadCurso) {
-        List<Curso> cursos = daoCurso.findAll();
+    public List<CursoDTO> getCursosByTipo(String tipo) {
+        List<Curso> cursos = daoCurso.findByTipo(tipo);
         List<CursoDTO> cursoDTOs = new ArrayList<>();
         for (Curso curso : cursos) {
-            boolean matches = true;
-            String query = "SELECT c FROM Curso c LEFT JOIN c.tema t LEFT JOIN c.habilidad h WHERE 1=1";
-
-            if (tipoCurso != null && !tipoCurso.isEmpty()) {
-                query += " AND c.tipoCurso = :tipoCurso";
-            }
-            if (descripcionTema != null && !descripcionTema.isEmpty()) {
-                query += " AND t.descripcionTema = :descripcionTema";
-            }
-            if (nombreHabilidad != null && !nombreHabilidad.isEmpty()) {
-                query += " AND h.nombreHabilidad = :nombreHabilidad";
-            }
-            if (fechaInicio != null) {
-                query += " AND c.fechaInicio = :fechaInicio";
-            }
-            if (modalidadCurso != null && !modalidadCurso.isEmpty()) {
-                query += " AND c.modalidadCurso = :modalidadCurso";
-            }
+            cursoDTOs.add(dataMapper.map(curso, CursoDTO.class));
+            System.out.println(curso);
         }
         return cursoDTOs;
     }

@@ -9,4 +9,5 @@ public interface DAO <T, K> {
     T find(K id);
     List<T> findAll();
 
+    List<T> findByTipo(String tipo);
 }

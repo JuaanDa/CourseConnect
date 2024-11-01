@@ -4,6 +4,7 @@ import co.edu.unbosque.model.entities.Curso;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
@@ -36,6 +37,12 @@ public class CursoDAO implements DAO<Curso, Integer>{
     @Override
     public List<Curso> findAll() {
         return em.createNamedQuery("Curso.findAll", Curso.class).getResultList();
+    }
+
+    public List<Curso> findByTipo(String tipoCurso) {
+        TypedQuery<Curso> query = em.createNamedQuery("Curso.findByTipo", Curso.class);
+        query.setParameter("tipoCurso", tipoCurso);
+        return query.getResultList();
     }
 
 

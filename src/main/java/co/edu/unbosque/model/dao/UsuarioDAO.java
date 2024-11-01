@@ -37,4 +37,9 @@ public class UsuarioDAO implements DAO<Usuario, String>  {
     public List<Usuario> findAll() {
         return em.createNamedQuery("Usuario.findAll", Usuario.class).getResultList();
     }
+
+    @Override
+    public List<Usuario> findByTipo(String tipo) {
+        return List.of();
+    }
 }
