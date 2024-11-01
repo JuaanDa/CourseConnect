@@ -9,6 +9,7 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Named("paginationView")
@@ -26,6 +27,7 @@ public class PaginationView implements Serializable {
     @PostConstruct
     public void init() {
         cursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
+        cursos.sort(Comparator.comparing(CursoDTO::getTituloCurso, String.CASE_INSENSITIVE_ORDER));
 
     }
 
