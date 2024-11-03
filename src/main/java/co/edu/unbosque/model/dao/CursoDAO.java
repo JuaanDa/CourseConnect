@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Stateless
@@ -39,11 +40,15 @@ public class CursoDAO implements DAO<Curso, Integer>{
         return em.createNamedQuery("Curso.findAll", Curso.class).getResultList();
     }
 
-    public List<Curso> findByTipo(String tipoCurso) {
-        TypedQuery<Curso> query = em.createNamedQuery("Curso.findByTipo", Curso.class);
-        query.setParameter("tipoCurso", tipoCurso);
-        return query.getResultList();
-    }
+    @Override
+    public List<Curso> findCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
+        TypedQuery<Curso> query = em.createNamedQuery("Curso.findByFilters", Curso.class);
+        query.setParameter("tipo", tipo);
+        query.setParameter("tema", tema);
+        query.setParameter("habilidad", habilidad);
+        query.setParameter("fecha", fecha);
+        query.setParameter("modalidad", modalidad);
+        return query.getResultList();    }
 
 
 }

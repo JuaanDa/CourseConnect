@@ -5,6 +5,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Stateless
@@ -39,7 +40,9 @@ public class UsuarioDAO implements DAO<Usuario, String>  {
     }
 
     @Override
-    public List<Usuario> findByTipo(String tipo) {
+    public List<Usuario> findCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
         return List.of();
     }
+
+
 }

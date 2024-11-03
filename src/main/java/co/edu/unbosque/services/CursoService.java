@@ -80,12 +80,11 @@ public class CursoService implements CursoServiceInterface {
     public void updateCurso(CursoDTO cursoDTO) {
 
     }
-    public List<CursoDTO> getCursosByTipo(String tipo) {
-        List<Curso> cursos = daoCurso.findByTipo(tipo);
+    public List<CursoDTO> getCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
+        List<Curso> cursos = daoCurso.findCursos(tipo, tema, habilidad, fecha, modalidad);
         List<CursoDTO> cursoDTOs = new ArrayList<>();
         for (Curso curso : cursos) {
             cursoDTOs.add(dataMapper.map(curso, CursoDTO.class));
-            System.out.println(curso);
         }
         return cursoDTOs;
     }

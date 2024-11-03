@@ -25,13 +25,13 @@
         <div class="scontainer">
             <h:form id="filtrarform">
                 <div class="select-wrapper">
-                    <p:selectOneMenu id="tipo_curso" value="#{cursoView.cursoDTO.tipoCurso}" required="true" label="tipo_curso" style=" border-radius:20px;border:none; margin-left: 20px">
+                    <p:selectOneMenu id="tipo_curso" value="#{cursoView.cursoDTO.tipoCurso}"  label="tipo_curso" style=" border-radius:20px;border:none; margin-left: 20px">
                     <f:selectItem itemValue="ipo_curso" itemLabel="Tipo de Curso" noSelectionOption="true" />
                     <f:selectItems value="#{cursoView.cursosTipo}"/>
                     </p:selectOneMenu>
 
                 </div>
-<!--
+
 
                 <div class="line">
                 </div>
@@ -59,26 +59,28 @@
 
                 </div>
 
-                <p:inputText
-                        type="date"
+                <p:calendar
+                        placeholder="dd/mm/aaaa"
                         id="fecha_inicio"
+                        navigator="true"
+                        inline="true"
                         value="#{cursoView.cursoDTO.fechaInicio}"
-                        name="date" style=" border-radius:20px; border:none"/>
-
+                        name="date" style=" border-radius:20px; border:none; color:black; max-width: 100px"/>
+                    <i class="pi pi-calendar" style=" color: black"></i>
                 <div class="line">
 
                 </div>
 
 
                 <div class="select-wrapper">
-                    <p:selectOneMenu id="modalidad_curso" value="#{cursoView.cursoDTO.modalidadCurso}" required="true" label="program" style=" border-radius:20px;border:none">
+                    <p:selectOneMenu id="modalidad_curso" value="#{cursoView.cursoDTO.modalidadCurso}"  label="program" style=" border-radius:20px;border:none">
                         <f:selectItem itemValue="" itemLabel="Modalidad" noSelectionOption="true" />
 
                         <f:selectItems value="#{cursoView.cursosModalidad}"/>
                     </p:selectOneMenu>
 
                 </div>
-         -->
+
             <p:commandButton action="#{cursoView.filtrar()}" icon="pi pi-search" styleClass="rounded-button ui-button-success" update=":curseform" style="padding:20px; margin: 10px" />
 
             </h:form>
@@ -86,7 +88,9 @@
         </div>
 
         <h:form id="curseform" styleClass="curseForm">
-
+            <h:panelGroup rendered="#{empty paginationView.cursos}">
+                <h:outputText value="No hay cursos disponibles." styleClass="no-cursos-message" />
+            </h:panelGroup>
                     <div class="curses">
                         <ui:repeat value="#{paginationView.cursos}" var="curso">
                             <div class="curse">

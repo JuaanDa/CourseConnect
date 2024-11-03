@@ -7,8 +7,12 @@ import java.time.LocalDate;
 @Table(name = "CURSOS")
 @NamedQueries({
         @NamedQuery(name="Curso.findAll", query = "SELECT c FROM Curso c"),
-        @NamedQuery(name = "Curso.findByTipo", query = "SELECT c FROM Curso c WHERE c.tipoCurso = :tipoCurso")
-
+        @NamedQuery(name = "Curso.findByFilters", query = "SELECT c FROM Curso c WHERE "
+                + "(:tipo IS NULL OR c.tipoCurso = :tipo) AND "
+                + "(:tema IS NULL OR c.horarioCurso = :tema) AND "
+                + "(:habilidad IS NULL OR c.tituloCurso = :habilidad) AND "
+                + "(:fecha IS NULL OR c.fechaInicio = :fecha) AND "
+                + "(:modalidad IS NULL OR c.modalidadCurso = :modalidad)")
 })
 public class Curso {
     @Id
