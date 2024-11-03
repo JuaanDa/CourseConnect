@@ -7,6 +7,9 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "INSCRIPCIONES")
 //@IdClass(InscripcionId.class)
+@NamedQueries({
+        @NamedQuery(name="Inscripcion.findAll", query = "SELECT i FROM Inscripcion i")
+})
 public class Inscripcion {
 
     @Id

@@ -23,11 +23,12 @@
    </div>
 
    <div class="container-curse">
+
       <h1 class="curse">Curso</h1>
       <h1 class="titleCurse">#{cursoInfoView.cursoDTO.tituloCurso}</h1>
       <div class="curseInfo">
 
-         <p> Descripción: #{cursoInfoView.temaDTO.descripcionTema}</p>
+         <p> Descripción: #{cursoInfoView.temaDTO.nombreTema}</p>
       </div>
       <div class="card-img">
          <img src="#{cursoInfoView.cursoDTO.urlImagenCurso}" class="card-img-top" alt="Curso"></img>
@@ -83,21 +84,19 @@
 
          <p>Nuestros docentes son profesionales con amplia experiencia en el campo de las pruebas automatizadas. Aquí te presentamos a algunos de ellos:</p>
          <div class="docent-list">
-            <div class="docent-card">
-               <img src="images/dc.jpeg" alt="Docente 1" class="docent-img"></img>
-               <h3>Dr. Juan Pérez</h3>
-               <p>Experto en pruebas de software y desarrollo ágil.</p>
-            </div>
-            <div class="docent-card">
-               <img src="images/dc.jpeg" alt="Docente 2" class="docent-img"></img>
-               <h3>Ing. María López</h3>
-               <p>Especialista en herramientas de automatización y CI/CD.</p>
-            </div>
-            <div class="docent-card">
-               <img src="images/dc.jpeg" alt="Docente 3" class="docent-img"></img>
-               <h3>Ing. Carlos Leal</h3>
-               <p>Consultor en calidad de software y formación de equipos.</p>
-            </div>
+
+            <ui:repeat value="#{cursoInfoView.profesores}" var="profesor">
+
+               <div class="docent-card">
+             <!--     <img src="images/dc.jpeg" alt="Docente 1" class="docent-img"></img>-->
+                  <h3>#{profesor.nombre} #{profesor.apellidos}</h3>
+                <!--  <h5>#{profesor.correoElectronico}</h5>-->
+                  <p>#{profesor.resumenExperiencia}</p>
+                  <p>#{profesor.correoElectronico}</p>
+
+               </div>
+            </ui:repeat>
+
          </div>
       </div>
       <div class="card-container">

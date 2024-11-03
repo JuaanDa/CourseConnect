@@ -8,11 +8,10 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>CourseConnect-Register</title>
+    <title>CourseConnect - Registro</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <link rel="stylesheet" type="text/css" href="css/register.css" />
     <link rel="icon" type="icon" href="images/icon.png" />
-
 </h:head>
 <h:body>
     <div class="header">
@@ -22,43 +21,44 @@
     </div>
 
     <div class="registerContainer">
-    <div class="header-banner">
-        <h1>Inscripción</h1>
-    </div>
+        <div class="header-banner">
+            <h1>Inscripción</h1>
+        </div>
 
-    <h:form>
-        <p:outputLabel for="id" value="ID" styleClass="block" />
-        <p:inputText id="id" value="" />
-        <br /><br />
-        <p:outputLabel for="name" value="NOMBRE" styleClass="block" />
-        <p:inputText id="name" value="" />
-        <br /><br />
-        <p:outputLabel for="surname" value="APELLIDO" styleClass="block" />
-        <p:inputText id="surname" value="" />
-        <br /><br /><br /><br />
-        <p:outputLabel for="program" value="PROGRAMA"/>
-    <br/><br/>
-        <p:selectOneMenu id="program" name="curseType" >
-            <f:selectItem itemValue="" itemLabel="Programa" noSelectionOption="true"   />
-            <f:selectItem itemValue="Educación Continua" itemLabel="Educación Continua"/>
-            <f:selectItem itemValue="Micro Credenciales" itemLabel="Micro Credenciales"/>
-            <f:selectItem itemValue="Macro Credenciales" itemLabel="Macro Credenciales"/>
-        </p:selectOneMenu>
+        <h:form>
+            <p:outputLabel for="id_curso" value="Identificación del curso: #{cursoInfoView.cursoDTO.id_curso}" styleClass="block" />
+            <p:inputText id="id_curso" value="#{inscripcionView.inscripcionDTO.idCurso}"  />
+            <br /><br />
 
-        <p:outputLabel for="email" value="EMAIL" styleClass="block" />
-        <p:inputText id="email" value="" />
-        <br /><br />
-        <br /><br />
+            <p:outputLabel for="id_estudiante" value="Id estudiante: #{cursoInfoView.estudiantes[0].idEstudiante}" styleClass="block" />
+            <p:inputText id="id_estudiante" value="#{inscripcionView.inscripcionDTO.idEstudiante}" required="true" />
+            <br /><br />
 
-        <p:commandButton type="button" value="Enviar" styleClass="ui-button-outlined ui-button-warning"  />
+            <p:outputLabel for="fecha_inscripcion" value="Fecha de inscripción" styleClass="block" />
+            <p:calendar id="fecha_inscripcion" value="#{inscripcionView.inscripcionDTO.fechaInscripcion}" required="true" style="width: 100%"
+                          />
+            <br /><br />
 
-    </h:form>
+            <p:outputLabel for="url_link_confirmacion" value="URL de confirmación" styleClass="block" />
+            <p:inputText id="url_link_confirmacion" value="#{inscripcionView.inscripcionDTO.urlLinkConfirmacion}" required="true" />
+            <br /><br />
+
+            <p:outputLabel for="estado_inscripcion" value="Estado de inscripción" styleClass="block" />
+            <p:inputText id="estado_inscripcion" value="#{inscripcionView.inscripcionDTO.estadoInscripcion}" required="true" />
+            <br /><br />
+
+            <p:outputLabel for="codigo_para_pago" value="Código para pago" styleClass="block" />
+            <p:inputText id="codigo_para_pago" value="#{inscripcionView.inscripcionDTO.codigoParaPago}" required="true" />
+            <br /><br />
+
+            <p:commandButton value="Enviar" action="#{inscripcionView.crearInscripción()}"
+                             styleClass="submit-button" />
+        </h:form>
     </div>
 
     <div class="footer">
         <p>
-            &copy; 2024 CourseConnect&nbsp; &nbsp;Programación 2&nbsp; &nbsp;Universidad
-            El Bosque
+            &copy; 2024 CourseConnect&nbsp; &nbsp;Programación 2&nbsp; &nbsp;Universidad El Bosque
         </p>
     </div>
 </h:body>

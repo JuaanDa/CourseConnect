@@ -2,10 +2,8 @@ package co.edu.unbosque.services;
 
 
 import co.edu.unbosque.model.dao.DAO;
-import co.edu.unbosque.model.dto.CursoDTO;
-import co.edu.unbosque.model.dto.UsuarioDTO;
-import co.edu.unbosque.model.entities.Curso;
-import co.edu.unbosque.model.entities.Usuario;
+import co.edu.unbosque.model.dto.*;
+import co.edu.unbosque.model.entities.*;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.annotation.ManagedProperty;
 import jakarta.inject.Inject;
@@ -29,6 +27,10 @@ public class CursoService implements CursoServiceInterface {
     private DAO<Curso, Integer> daoCurso;
     @Inject
     private DAO<Usuario, String> daoUsuario;
+    @Inject
+    private DAO<Profesor, String> daoProfesor;
+    @Inject
+    private DAO<Estudiante, String> daoEstudiante;
     private final ModelMapper dataMapper;
 
     public CursoService() {
@@ -69,6 +71,22 @@ public class CursoService implements CursoServiceInterface {
         }
         return usuarioDTOs;
     }
+    public List<ProfesorDTO> getAllProfesores() {
+        List<Profesor> profesores = daoProfesor.findAll();
+        List<ProfesorDTO> profesorDTOs = new ArrayList<>();
+        for (Profesor profesor : profesores) {
+            profesorDTOs.add(dataMapper.map(profesor, ProfesorDTO.class));
+        }
+        return profesorDTOs;
+    }
+    public List<EstudianteDTO> getAllEstudiantes() {
+        List<Estudiante> estudiantes = daoEstudiante.findAll();
+        List<EstudianteDTO> estudianteDTOs = new ArrayList<>();
+        for (Estudiante estudiante : estudiantes) {
+            estudianteDTOs.add(dataMapper.map(estudiante, EstudianteDTO.class));
+        }
+        return estudianteDTOs;
+    }
 
 
     @Override
@@ -88,5 +106,6 @@ public class CursoService implements CursoServiceInterface {
         }
         return cursoDTOs;
     }
+
 
 }
