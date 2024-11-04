@@ -67,6 +67,14 @@ public class CursoView implements Serializable {
 
     }
 
+    public ArrayList<CursoDTO> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(ArrayList<CursoDTO> cursos) {
+        this.cursos = cursos;
+    }
+
     public Map<String, String> getCursosTipo() {
         return cursosTipo;
     }

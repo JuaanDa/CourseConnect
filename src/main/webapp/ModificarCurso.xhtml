@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Administrar Cursos</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+</h:head>
+
+<h:body>
+    <h:form id="cursosForm">
+        <p:panel header="Lista de Cursos" styleClass="cursos-panel">
+            <p:dataTable value="#{cursoView.cursos}" var="curso" rowKey="#{curso.idCurso}">
+                <p:column headerText="ID">
+                    <h:outputText value="#{curso.id_curso}" />
+                </p:column>
+                <p:column headerText="Título">
+                    <h:outputText value="#{curso.tituloCurso}" />
+                </p:column>
+                <p:column headerText="Imagen">
+                    <h:outputText value="#{curso.urlImagenCurso}" />
+                </p:column>
+                <p:column headerText="Tipo">
+                    <h:outputText value="#{curso.tipoCurso}" />
+                </p:column>
+                <p:column headerText="Modalidad">
+                    <h:outputText value="#{curso.modalidadCurso}" />
+                </p:column>
+                <p:column headerText="Horario">
+                    <h:outputText value="#{curso.horarioCurso}" />
+                </p:column>
+                <p:column headerText="Fecha de Inicio">
+                    <h:outputText value="#{curso.fechaInicio}" >
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Fecha de Fin">
+                    <h:outputText value="#{curso.fechaFin}" >
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Horas">
+                    <h:outputText value="#{curso.horasCurso}" />
+                </p:column>
+                <p:column headerText="Costo">
+                    <h:outputText value="#{curso.costoCurso}" />
+                </p:column>
+                <p:column headerText="Estado">
+                    <h:outputText value="#{curso.estadoCurso}" />
+                </p:column>
+                <p:column headerText="Fecha Creacion">
+                    <h:outputText value="#{curso.fechaCreacion}" />
+                </p:column>
+
+                <p:column headerText="Editar">
+                    <p:commandButton icon="pi pi-pencil"
+                                     action="#{adminView.editarCurso(curso.id_curso)}"
+                                     oncomplete="PF('manageProductDialog').show()"
+                                     styleClass="edit-button rounded-button ui-button-success"
+                                     update="@form" />
+                </p:column>
+
+            </p:dataTable>
+        </p:panel>
+        <p:dialog header="Detalles del curso" showEffect="fade" modal="true" widgetVar="manageProductDialog"
+                  responsive="true">
+            <p:outputPanel id="manage-product-content" class="ui-fluid">
+                <p:outputPanel rendered="#{not empty cursoView.cursos}">
+
+                    <div class="field">
+                        <p:outputLabel for="titulo_curso" value="Titulo del curso"/>
+                        <p:inputText id="titulo_curso" value="#{cursoView.cursoDTO.tituloCurso}" />
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="url_imagen_curso" value="Url imagen del curso " styleClass="block" />
+                        <p:inputText id="url_imagen_curso" value="#{cursoView.cursoDTO.urlImagenCurso}" />
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="tipo_curso" value="Tipo de curso " styleClass="block" />
+                        <p:selectOneMenu id="tipo_curso" value="#{cursoView.cursoDTO.tipoCurso}"  label="Tipo de curso" >
+                            <f:selectItems value="#{cursoView.cursosTipo}"/>
+                        </p:selectOneMenu>
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="modalidad_curso" value="Modalidad de Curso " styleClass="block" />
+                        <p:selectOneMenu id="modalidad_curso" value="#{cursoView.cursoDTO.modalidadCurso}"  label="Modalidad" >
+                            <f:selectItems value="#{cursoView.cursosModalidad}"/>
+                        </p:selectOneMenu>
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="horario_curso" value="horario de curso " styleClass="block"/>
+                        <p:inputText id="horario_curso" value="#{cursoView.cursoDTO.horarioCurso}" />
+                    </div>
+                    <div class="field">
+                        <h:outputLabel for="fecha_inicio" value="Fecha Incio Curso " styleClass="block"/>
+                        <p:calendar id="fecha_inicio" value="#{cursoView.cursoDTO.fechaInicio}" />
+
+                    </div>
+                    <div class="field">
+                        <h:outputLabel for="fecha_fin" value="Fecha Fin Curso " styleClass="block"/>
+                        <p:calendar id="fecha_fin" value="#{cursoView.cursoDTO.fechaFin}"  />
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="horas_curso" value="horas curso " styleClass="block" />
+                        <p:inputText id="horas_curso" value="#{cursoView.cursoDTO.horasCurso}" />
+                    </div>
+
+                    <div class="field">
+                        <p:outputLabel for="costo_curso" value="Costo curso " styleClass="block" />
+                        <p:inputText id="costo_curso" value="#{cursoView.cursoDTO.costoCurso}" />
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="estado_curso" value="Estado Curso"/>
+                        <p:inputText id="estado_curso" value="#{cursoView.cursoDTO.estadoCurso}" />
+                    </div>
+
+                </p:outputPanel>
+            </p:outputPanel>
+
+            <f:facet name="footer">
+                <p:commandButton value="Actualizar" icon="pi pi-upload" actionListener="#{cursoView.crearCurso()}"
+                                 update="manage-product-content" process="manage-product-content @this" />
+                <p:commandButton value="Cancelar" icon="pi pi-times" onclick="PF('manageProductDialog').hide()"
+                                 class="ui-button-secondary" type="button" />
+            </f:facet>
+        </p:dialog>
+
+
+    </h:form>
+</h:body>
+</html>
