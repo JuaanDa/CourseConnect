@@ -38,26 +38,27 @@ public class CursoView implements Serializable {
     private UsuarioService usuarioService;
     @Inject
     private PaginationView paginationView;
+
     @PostConstruct
     public void init() {
         cursosTipo = new HashMap<>();
-        cursosTipo.put("Educación Continua","EduContinua");
-        cursosTipo.put("Micro Credenciales","Microcredencial");
-        cursosTipo.put("Macro Credenciales","Macrocredencial");
+        cursosTipo.put("Educación Continua", "EduContinua");
+        cursosTipo.put("Micro Credenciales", "Microcredencial");
+        cursosTipo.put("Macro Credenciales", "Macrocredencial");
 
         cursosModalidad = new HashMap<>();
-        cursosModalidad.put("Presencial","presencial");
+        cursosModalidad.put("Presencial", "presencial");
         cursosModalidad.put("Híbrido", "presencial, online_vivo");
-        cursosModalidad.put("Online en vivo","online_vivo");
-        cursosModalidad.put("Virtual","virtual");
+        cursosModalidad.put("Online en vivo", "online_vivo");
+        cursosModalidad.put("Virtual", "virtual");
 
-        cursos  = (ArrayList<CursoDTO>) cursoService.getAllCursos();
+        cursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
         usuarios = (ArrayList<UsuarioDTO>) cursoService.getAllUsuarios();
         filtroAplicado = false;
 
     }
 
-    public CursoView(){
+    public CursoView() {
         filtroAplicado = false;
         cursoDTO = new CursoDTO();
         temaDTO = new TemaDTO();
@@ -128,19 +129,21 @@ public class CursoView implements Serializable {
     }
 
 
-    public String filtrar(){
-        List<CursoDTO> filteredCursos = (ArrayList<CursoDTO>) cursoService.getCursos(cursoDTO.getTipoCurso(),cursoDTO.getTituloCurso(),cursoDTO.getTituloCurso(),cursoDTO.getFechaInicio(),cursoDTO.getModalidadCurso());
+    public String filtrar() {
+        List<CursoDTO> filteredCursos = (ArrayList<CursoDTO>) cursoService.getCursos(cursoDTO.getTipoCurso(), cursoDTO.getTituloCurso(), cursoDTO.getTituloCurso(), cursoDTO.getFechaInicio(), cursoDTO.getModalidadCurso());
         filtroAplicado = true;
         // Actualiza la lista de cursos en PaginationView
         paginationView.setCursos(filteredCursos);
 
         return null;
     }
+
     public Usuario convertUsuario(UsuarioDTO usuarioDTO) {
         return usuarioService.saveUsuario(usuarioDTO);
 
 
     }
+
     public void quitarFiltro() {
         cursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
         filtroAplicado = false; // Restablece el estado del filtro
@@ -153,6 +156,16 @@ public class CursoView implements Serializable {
         cursoService.saveCurse(cursoDTO);
         return null;
     }
+
+    public String actualizarCurso(int CursoId) {
+        UsuarioDTO usuarioDTO = usuarios.get(1);
+        Usuario creadoPor = usuarioService.updateUsuario(usuarioDTO);
+        cursoDTO.setCreadoPor(creadoPor);
+        cursoDTO.setId_curso(CursoId);
+        cursoService.updateCurso(cursoDTO);
+        return null;
+    }
+
 
 
 

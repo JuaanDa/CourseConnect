@@ -55,6 +55,11 @@
                     <h:outputText value="#{curso.fechaCreacion}" />
                 </p:column>
 
+                <p:column headerText="Creador">
+                    <h:outputText value="#{curso.creadoPor.username}
+" />
+                </p:column>
+
                 <p:column headerText="Editar">
                     <p:commandButton icon="pi pi-pencil"
                                      action="#{adminView.editarCurso(curso.id_curso)}"
@@ -67,6 +72,7 @@
         </p:panel>
         <p:dialog header="Detalles del curso" showEffect="fade" modal="true" widgetVar="manageProductDialog"
                   responsive="true">
+
             <p:outputPanel id="manage-product-content" class="ui-fluid">
                 <p:outputPanel rendered="#{not empty cursoView.cursos}">
 
@@ -117,12 +123,17 @@
                         <p:outputLabel for="estado_curso" value="Estado Curso"/>
                         <p:inputText id="estado_curso" value="#{cursoView.cursoDTO.estadoCurso}" />
                     </div>
+                    <div class="field">
+                        <p:outputLabel for="fecha_creacion" value="Fecha Creacion Curso"/>
+                        <p:calendar id="fecha_creacion" value="#{cursoView.cursoDTO.fechaCreacion}" />
+                    </div>
 
                 </p:outputPanel>
             </p:outputPanel>
 
             <f:facet name="footer">
-                <p:commandButton value="Actualizar" icon="pi pi-upload" actionListener="#{cursoView.crearCurso()}"
+
+                <p:commandButton value="Actualizar" icon="pi pi-upload" actionListener="#{cursoView.actualizarCurso(adminView.cursoId)}"
                                  update="manage-product-content" process="manage-product-content @this" />
                 <p:commandButton value="Cancelar" icon="pi pi-times" onclick="PF('manageProductDialog').hide()"
                                  class="ui-button-secondary" type="button" />
