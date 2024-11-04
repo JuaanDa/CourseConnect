@@ -4,6 +4,7 @@ import co.edu.unbosque.model.dto.CursoDTO;
 import co.edu.unbosque.model.dto.HabilidadDTO;
 import co.edu.unbosque.model.dto.TemaDTO;
 import co.edu.unbosque.model.dto.UsuarioDTO;
+import co.edu.unbosque.model.entities.Curso;
 import co.edu.unbosque.model.entities.Usuario;
 import co.edu.unbosque.services.CursoService;
 import co.edu.unbosque.services.UsuarioService;
@@ -163,6 +164,16 @@ public class CursoView implements Serializable {
         cursoDTO.setCreadoPor(creadoPor);
         cursoDTO.setId_curso(CursoId);
         cursoService.updateCurso(cursoDTO);
+        return null;
+    }
+    public String actualizarCursoPrecio(int CursoId, double CostoCurso){
+        CursoDTO curso = cursoService.getCurso(CursoId);
+        cursoDTO.setId_curso(CursoId);
+        System.out.println(CursoId);
+        curso.setCostoCurso(CostoCurso);
+        System.out.println(curso.getCostoCurso());
+
+        cursoService.updateCurso(curso);
         return null;
     }
 

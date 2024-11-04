@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Modificar Precio de Cursos</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+</h:head>
+
+<h:body>
+    <h:form id="precioForm">
+        <p:panel header="Modificar Precio" styleClass="precio-panel">
+            <p:dataTable value="#{cursoView.cursos}" var="curso" rowKey="#{curso.idCurso}">
+                <p:column headerText="ID">
+                    <h:outputText value="#{curso.id_curso}" />
+                </p:column>
+                <p:column headerText="Título">
+                    <h:outputText value="#{curso.tituloCurso}" />
+                </p:column>
+                <p:column headerText="Costo Actual">
+                    <h:outputText value="#{curso.costoCurso}" />
+                </p:column>
+                <p:column headerText="Modificar Precio">
+                    <p:commandButton icon="pi pi-tag"
+                                     action="#{adminView.editarCursoPrice(curso.id_curso)}"
+                                     oncomplete="PF('precioDialog').show()"
+                                     styleClass="edit-button rounded-button ui-button-success"
+                                     update="@form" />
+                </p:column>
+            </p:dataTable>
+        </p:panel>
+
+        <p:dialog header="Modificar Precio del Curso" widgetVar="precioDialog" modal="true" responsive="true">
+            <p:outputPanel id="precio-content" class="ui-fluid">
+                <div class="field">
+                    <p:outputLabel for="costo_curso" value="Costo curso" />
+                    <p:inputText id="costo_curso" value="#{cursoView.cursoDTO.costoCurso}" />
+                </div>
+            </p:outputPanel>
+
+            <f:facet name="footer">
+                <p:commandButton value="Actualizar Precio" icon="pi pi-upload"
+                                 actionListener="#{cursoView.actualizarCursoPrecio(adminView.cursoId, cursoView.cursoDTO.costoCurso)}"
+                                 update="precio-content" process="@form" />
+                <p:commandButton value="Cancelar" icon="pi pi-times"
+                                 onclick="PF('precioDialog').hide()"
+                                 class="ui-button-secondary" type="button" />
+            </f:facet>
+        </p:dialog>
+    </h:form>
+</h:body>
+</html>

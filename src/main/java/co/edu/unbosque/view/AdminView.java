@@ -16,7 +16,7 @@ public class AdminView implements Serializable {
     @Inject
     private  CursoService cursoService;
     private CursoDTO cursoDTO;
-    private boolean showDashboardPanel, showCrearCurso, showModificarCurso;
+    private boolean showDashboardPanel, showCrearCurso, showModificarCurso, showModificarPrecio;
     private int CursoId;
 
 
@@ -39,6 +39,10 @@ public class AdminView implements Serializable {
         hideAllPanels();
         showModificarCurso = true;
 
+    }
+    public void modificarPrecio(){
+        hideAllPanels();
+        showModificarPrecio = true;
     }
 
     public boolean isShowDashboardPanel() {
@@ -65,16 +69,30 @@ public class AdminView implements Serializable {
         this.showModificarCurso = showModificarCurso;
     }
 
+    public boolean isShowModificarPrecio() {
+        return showModificarPrecio;
+    }
+
+    public void setShowModificarPrecio(boolean showModificarPrecio) {
+        this.showModificarPrecio = showModificarPrecio;
+    }
+
     private void hideAllPanels() {
-        showDashboardPanel = false;
+            showDashboardPanel = false;
           showCrearCurso = false;
           showModificarCurso = false;
+          showModificarPrecio = false;
 
     }
     public void editarCurso(int idCurso){
-        System.out.println(idCurso);
         this.cursoDTO = cursoService.getCurso(idCurso);
         setCursoId(idCurso); // Asignar el valor a CursoId
+
+    }
+    public void editarCursoPrice(int idCurso){
+        cursoDTO.setCostoCurso(cursoDTO.getCostoCurso());
+        this.cursoDTO = cursoService.getCurso(idCurso);
+        setCursoId(idCurso);
 
     }
 

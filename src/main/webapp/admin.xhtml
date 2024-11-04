@@ -37,7 +37,7 @@
                   <p:submenu label="Gestión de Cursos">
                      <p:menuitem value="Crear Curso" action="#{adminView.crearCurso()}" icon="pi pi-file-plus" update="@all"/>
                      <p:menuitem value="Modificar Curso" action="#{adminView.modificarCurso()}" icon="pi pi-file-plus" update="@all"/>
-                     <p:menuitem value="Modificar Precios" action="#{adminView.updatePrices}"/>
+                     <p:menuitem value="Modificar Precios" action="#{adminView.modificarPrecio()}" icon="pi pi-money-bill" update="@all"/>
                      <p:menuitem value="Modificar Modalidades" action="#{adminView.updateModes}"/>
                   </p:submenu>
                   <p:submenu label="Gestión de Inscripciones">
@@ -65,7 +65,7 @@
    <div class="admin-panel" id="admin-panel">
 
       <p:panel id="dashboardPanel" rendered="#{adminView.showDashboardPanel}">
-         <ui:include src="ModificarCurso.xhtml" />
+         <ui:include src="Dashboard.xhtml" />
       </p:panel>
 
 
@@ -75,7 +75,11 @@
 
 
       <p:panel id="modifcarCursoPanel"  rendered="#{adminView.showModificarCurso}">
-         <ui:include src="Dashboard.xhtml" />
+         <ui:include src="ModificarCurso.xhtml" />
+      </p:panel>
+
+      <p:panel id="modifcarPrecioPanel"  rendered="#{adminView.showModificarPrecio}">
+         <ui:include src="ModificarPrecios.xhtml" />
       </p:panel>
 
    </div>

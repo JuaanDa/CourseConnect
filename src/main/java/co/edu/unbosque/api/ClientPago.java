@@ -1,10 +1,13 @@
 package co.edu.unbosque.api;
 
+import jakarta.enterprise.context.RequestScoped;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+@RequestScoped
 public class ClientPago {
 
     public String realizarPago(String jsonInput) throws IOException {
