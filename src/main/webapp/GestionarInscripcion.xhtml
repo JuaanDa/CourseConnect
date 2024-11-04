@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Administrar Inscripciones</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+</h:head>
+
+<h:body>
+    <h:form id="inscripcionesForm">
+        <p:panel header="Lista de Inscripciones" styleClass="inscripciones-panel">
+            <p:dataTable value="#{inscripcionView.inscripciones}" var="inscripcion" rowKey="#{inscripcion.idEstudiante}">
+                <p:column headerText="ID Curso">
+                    <h:outputText value="#{inscripcion.idCurso}" />
+                </p:column>
+                <p:column headerText="ID Estudiante">
+                    <h:outputText value="#{inscripcion.idEstudiante}" />
+                </p:column>
+                <p:column headerText="Fecha Inscripción">
+                    <h:outputText value="#{inscripcion.fechaInscripcion}" />
+                </p:column>
+                <p:column headerText="Link de Confirmación">
+                    <h:outputText value="#{inscripcion.urlLinkConfirmacion}" />
+                </p:column>
+                <p:column headerText="Estado Inscripción">
+                    <h:outputText value="#{inscripcion.estadoInscripcion}" />
+                </p:column>
+                <p:column headerText="Código para Pago">
+                    <h:outputText value="#{inscripcion.codigoParaPago}" />
+                </p:column>
+                <p:column headerText="Editar">
+                    <p:commandButton icon="pi pi-pencil"
+                                     action="#{adminView.editarInscripcion(inscripcion.idCurso, inscripcion.idEstudiante)}"
+                                     oncomplete="PF('manageInscripcionDialog').show()"
+                                     styleClass="edit-button rounded-button ui-button-success"
+                                     update="@form" />
+                </p:column>
+            </p:dataTable>
+        </p:panel>
+
+        <p:dialog header="Detalles de Inscripción" showEffect="fade" modal="true" widgetVar="manageInscripcionDialog"
+                  responsive="true">
+            <p:outputPanel id="manage-inscripcion-content" class="ui-fluid">
+                <div class="field">
+                    <p:outputLabel for="estado_inscripcion" value="Estado Inscripcion " styleClass="block" />
+                    <p:selectOneMenu id="estado_inscripcion" value="#{inscripcionView.inscripcionDTO.estadoInscripcion}"  label="Estado" >
+                        <f:selectItems value="#{inscripcionView.estadoInscripcion}"/>
+                    </p:selectOneMenu>
+                </div>
+
+
+            </p:outputPanel>
+
+            <f:facet name="footer">
+                <p:commandButton value="Actualizar" icon="pi pi-upload" actionListener="#{inscripcionView.actualizarInscripcion(adminView.cursoId, adminView.estudianteId, inscripcionView.inscripcionDTO.estadoInscripcion)}"
+                                 update="manage-inscripcion-content" process="manage-inscripcion-content @this" />
+                <p:commandButton value="Cancelar" icon="pi pi-times" onclick="PF('manageInscripcionDialog').hide()"
+                                 class="ui-button-secondary" type="button" />
+            </f:facet>
+        </p:dialog>
+    </h:form>
+</h:body>
+</html>

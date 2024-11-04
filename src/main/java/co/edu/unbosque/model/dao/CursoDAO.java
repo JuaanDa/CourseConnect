@@ -52,4 +52,5 @@ public class CursoDAO implements DAO<Curso, Integer>{
         return query.getResultList();    }
 
 
+
 }

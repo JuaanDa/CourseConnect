@@ -11,3 +11,4 @@ public interface DAO <T, K> {
     List<T> findAll();
     List<T> findCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad);
 }
+

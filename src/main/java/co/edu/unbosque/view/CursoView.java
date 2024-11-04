@@ -49,7 +49,7 @@ public class CursoView implements Serializable {
 
         cursosModalidad = new HashMap<>();
         cursosModalidad.put("Presencial", "presencial");
-        cursosModalidad.put("Híbrido", "presencial, online_vivo");
+        cursosModalidad.put("Híbrido", "hibirido");
         cursosModalidad.put("Online en vivo", "online_vivo");
         cursosModalidad.put("Virtual", "virtual");
 
@@ -173,6 +173,13 @@ public class CursoView implements Serializable {
         curso.setCostoCurso(CostoCurso);
         System.out.println(curso.getCostoCurso());
 
+        cursoService.updateCurso(curso);
+        return null;
+    }
+    public String actualizarCursoModalidad(int CursoId, String CursoModalidad){
+        CursoDTO curso = cursoService.getCurso(CursoId);
+        cursoDTO.setId_curso(CursoId);
+        curso.setModalidadCurso(CursoModalidad);
         cursoService.updateCurso(curso);
         return null;
     }

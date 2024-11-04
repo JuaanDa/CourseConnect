@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Modificar Modalidades</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+</h:head>
+
+<h:body>
+    <h:form id="ModalidadForm">
+        <p:panel header="Modificar Modalidades" styleClass="modalidad-panel">
+            <p:dataTable value="#{cursoView.cursos}" var="curso" rowKey="#{curso.idCurso}">
+                <p:column headerText="ID">
+                    <h:outputText value="#{curso.id_curso}" />
+                </p:column>
+                <p:column headerText="Título">
+                    <h:outputText value="#{curso.tituloCurso}" />
+                </p:column>
+                <p:column headerText="Modalidad">
+                    <h:outputText value="#{curso.modalidadCurso}" />
+                </p:column>
+                <p:column headerText="Modificar Modalidad">
+                    <p:commandButton icon="pi pi-pencil"
+                                     action="#{adminView.editarCursoModalidades(curso.id_curso)}"
+                                     oncomplete="PF('modalidadDialog').show()"
+                                     styleClass="edit-button rounded-button ui-button-success"
+                                     update="@form" />
+                </p:column>
+            </p:dataTable>
+        </p:panel>
+
+        <p:dialog header="Modificar Modalidad Curso" widgetVar="modalidadDialog" modal="true" responsive="true">
+            <p:outputPanel id="modalidad-content" class="ui-fluid">
+                <div class="field">
+                    <p:outputLabel for="modalidad_curso" value="Modalidad de Curso " styleClass="block" />
+                    <p:selectOneMenu id="modalidad_curso" value="#{cursoView.cursoDTO.modalidadCurso}"  label="Modalidad" >
+                        <f:selectItems value="#{cursoView.cursosModalidad}"/>
+                    </p:selectOneMenu>
+                </div>
+            </p:outputPanel>
+
+            <f:facet name="footer">
+                <p:commandButton value="Actualizar Modalidad" icon="pi pi-upload"
+                                 actionListener="#{cursoView.actualizarCursoModalidad(adminView.cursoId, cursoView.cursoDTO.modalidadCurso)}"
+                                 update="modalidad-content" process="@form" />
+                <p:commandButton value="Cancelar" icon="pi pi-times"
+                                 onclick="PF('modalidadDialog').hide()"
+                                 class="ui-button-secondary" type="button" />
+            </f:facet>
+        </p:dialog>
+    </h:form>
+</h:body>
+</html>

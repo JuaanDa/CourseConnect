@@ -46,4 +46,6 @@ public class ProfesorDAO implements DAO<Profesor, String> {
     public List<Profesor> findCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
         return List.of();
     }
+
+
 }

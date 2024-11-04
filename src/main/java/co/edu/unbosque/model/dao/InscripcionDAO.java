@@ -1,6 +1,7 @@
 package co.edu.unbosque.model.dao;
 
 import co.edu.unbosque.model.entities.Inscripcion;
+import co.edu.unbosque.model.entities.InscripcionId;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Stateless
-public class InscripcionDAO implements DAO<Inscripcion, Integer> {
+public class InscripcionDAO implements DAO<Inscripcion, InscripcionId> {
     @PersistenceContext(unitName = "CourseConnect")
     private EntityManager em;
 
@@ -20,7 +21,7 @@ public class InscripcionDAO implements DAO<Inscripcion, Integer> {
 
     @Override
     public void update(Inscripcion entity) {
-
+        em.merge(entity);
     }
 
     @Override
@@ -29,9 +30,11 @@ public class InscripcionDAO implements DAO<Inscripcion, Integer> {
     }
 
     @Override
-    public Inscripcion find(Integer id) {
-        return null;
+    public Inscripcion find(InscripcionId inscripcionId) {
+        return em.find(Inscripcion.class, inscripcionId);
     }
+
+
 
     @Override
     public List<Inscripcion> findAll() {
@@ -42,4 +45,6 @@ public class InscripcionDAO implements DAO<Inscripcion, Integer> {
     public List<Inscripcion> findCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
         return List.of();
     }
+
+
 }

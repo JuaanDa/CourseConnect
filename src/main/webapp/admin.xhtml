@@ -36,13 +36,12 @@
                   </p:submenu>
                   <p:submenu label="Gestión de Cursos">
                      <p:menuitem value="Crear Curso" action="#{adminView.crearCurso()}" icon="pi pi-file-plus" update="@all"/>
-                     <p:menuitem value="Modificar Curso" action="#{adminView.modificarCurso()}" icon="pi pi-file-plus" update="@all"/>
-                     <p:menuitem value="Modificar Precios" action="#{adminView.modificarPrecio()}" icon="pi pi-money-bill" update="@all"/>
-                     <p:menuitem value="Modificar Modalidades" action="#{adminView.updateModes}"/>
+                     <p:menuitem value="Editar Curso" action="#{adminView.modificarCurso()}" icon="pi pi-file-plus" update="@all"/>
+                     <p:menuitem value="Editar Precio" action="#{adminView.modificarPrecio()}" icon="pi pi-money-bill" update="@all"/>
+                     <p:menuitem value="Editar Modalidad" action="#{adminView.modificarModalidades()}" icon="pi pi-tag" update="@all"/>
                   </p:submenu>
                   <p:submenu label="Gestión de Inscripciones">
-                     <p:menuitem value="Habilitar Inscripciones" action="#{adminView.enableRegistrations}"/>
-                     <p:menuitem value="Deshabilitar Inscripciones" action="#{adminView.disableRegistrations}"/>
+                     <p:menuitem value="Inscripciones" action="#{adminView.gestionarinscripcion()}" icon="pi pi-address-book" update="@all"/>
                   </p:submenu>
                   <p:submenu label="Reportes">
                      <p:menuitem value="Curso Más Vendido" action="#{adminView.bestSellingCourse}"/>
@@ -58,7 +57,7 @@
          </div>
       </div>
       <div class="logo">
-         <a href="index.xhtml"><img src="images/imagotipo.png" alt="Logo" /></a>
+         <a href="admin.xhtml"><img src="images/imagotipo.png" alt="Logo" /></a>
       </div>
    </div>
 
@@ -70,7 +69,7 @@
 
 
       <p:panel id="crearcursoPanel"  rendered="#{adminView.showCrearCurso}">
-         <ui:include src="FormularioCurso.xhtml" />
+         <ui:include src="NuevoCurso.xhtml" />
       </p:panel>
 
 
@@ -81,6 +80,13 @@
       <p:panel id="modifcarPrecioPanel"  rendered="#{adminView.showModificarPrecio}">
          <ui:include src="ModificarPrecios.xhtml" />
       </p:panel>
+      <p:panel id="modifcarModalidadesPanel"  rendered="#{adminView.showModificarModalidades}">
+         <ui:include src="ModificarModalidades.xhtml" />
+      </p:panel>
+      <p:panel id="gestionarInscrpcion"  rendered="#{adminView.showGestionarinscripcion}">
+         <ui:include src="GestionarInscripcion.xhtml" />
+      </p:panel>
+
 
    </div>
 

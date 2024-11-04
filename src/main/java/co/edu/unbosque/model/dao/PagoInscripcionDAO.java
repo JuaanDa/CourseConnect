@@ -42,4 +42,6 @@ public class PagoInscripcionDAO implements DAO<PagoInscripcion, String>{
     public List<PagoInscripcion> findCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
         return List.of();
     }
+
+
 }
