@@ -9,5 +9,5 @@ public interface UsuarioServiceinterface {
     Usuario saveUsuario(UsuarioDTO usuario);
     List<UsuarioDTO> getUsuarios();
     void deleteUsuario(int id);
-    void updateUsuario(UsuarioDTO usuario);
+    Usuario updateUsuario(UsuarioDTO usuario);
 }

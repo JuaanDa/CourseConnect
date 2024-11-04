@@ -22,6 +22,7 @@ public class CursoDAO implements DAO<Curso, Integer>{
 
     @Override
     public void update(Curso entity) {
+        em.merge(entity);
 
     }
 

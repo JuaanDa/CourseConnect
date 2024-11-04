@@ -96,6 +96,9 @@ public class CursoService implements CursoServiceInterface {
 
     @Override
     public void updateCurso(CursoDTO cursoDTO) {
+        Curso curso = dataMapper.map(cursoDTO, Curso.class);
+        daoCurso.update(curso);
+
 
     }
     public List<CursoDTO> getCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {

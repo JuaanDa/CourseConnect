@@ -35,6 +35,12 @@ public class UsuarioService  implements UsuarioServiceinterface {
 
         return usuario;
     }
+    @Override
+    public Usuario updateUsuario(UsuarioDTO usuarioDTO) {
+        Usuario usuario = dataMapper.map(usuarioDTO, Usuario.class);
+        daoUsuario.update(usuario);
+        return usuario;
+        }
 
     @Override
     public List<UsuarioDTO> getUsuarios() {
@@ -46,8 +52,5 @@ public class UsuarioService  implements UsuarioServiceinterface {
 
     }
 
-    @Override
-    public void updateUsuario(UsuarioDTO usuario) {
 
-    }
 }
