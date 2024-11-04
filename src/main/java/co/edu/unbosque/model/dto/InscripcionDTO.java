@@ -10,19 +10,7 @@ public class InscripcionDTO {
     private String urlLinkConfirmacion;
     private String estadoInscripcion;
     private String codigoParaPago;
-
-    public InscripcionDTO() {
-
-    }
-
-    public InscripcionDTO(int idCurso, String idEstudiante, LocalDate fechaInscripcion, String urlLinkConfirmacion, String estadoInscripcion, String codigoParaPago) {
-        this.idCurso = idCurso;
-        this.idEstudiante = idEstudiante;
-        this.fechaInscripcion = fechaInscripcion;
-        this.urlLinkConfirmacion = urlLinkConfirmacion;
-        this.estadoInscripcion = estadoInscripcion;
-        this.codigoParaPago = codigoParaPago;
-    }
+    
 
     public int getIdCurso() {
         return idCurso;
