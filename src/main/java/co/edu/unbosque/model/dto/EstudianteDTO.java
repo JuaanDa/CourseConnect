@@ -9,6 +9,18 @@ public class EstudianteDTO {
     private String celular;
     private String username;
 
+    public EstudianteDTO() {
+
+    }
+
+    public EstudianteDTO(String idEstudiante, String nombre, String apellidos, String correoElectronico, String celular, String username) {
+        this.idEstudiante = idEstudiante;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correoElectronico = correoElectronico;
+        this.celular = celular;
+        this.username = username;
+    }
 
     public String getIdEstudiante() {
         return idEstudiante;

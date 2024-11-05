@@ -29,8 +29,6 @@ public class CursoService implements CursoServiceInterface {
     private DAO<Usuario, String> daoUsuario;
     @Inject
     private DAO<Profesor, String> daoProfesor;
-    @Inject
-    private DAO<Estudiante, String> daoEstudiante;
     private final ModelMapper dataMapper;
 
     public CursoService() {
@@ -79,14 +77,7 @@ public class CursoService implements CursoServiceInterface {
         }
         return profesorDTOs;
     }
-    public List<EstudianteDTO> getAllEstudiantes() {
-        List<Estudiante> estudiantes = daoEstudiante.findAll();
-        List<EstudianteDTO> estudianteDTOs = new ArrayList<>();
-        for (Estudiante estudiante : estudiantes) {
-            estudianteDTOs.add(dataMapper.map(estudiante, EstudianteDTO.class));
-        }
-        return estudianteDTOs;
-    }
+
 
 
     @Override

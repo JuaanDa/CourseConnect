@@ -5,6 +5,10 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "HABILIDADES")
+@NamedQueries({
+        @NamedQuery(name="Habilidad.findAll", query = "SELECT h FROM Habilidad h")
+})
+
 public class Habilidad {
 
     @Id

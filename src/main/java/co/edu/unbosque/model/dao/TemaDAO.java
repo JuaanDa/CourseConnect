@@ -1,11 +1,18 @@
 package co.edu.unbosque.model.dao;
 
 import co.edu.unbosque.model.entities.Tema;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class TemaDAO implements DAO<Tema, String>{
+@Stateless
+public class TemaDAO implements DAO<Tema, Integer>{
+    @PersistenceContext(unitName = "CourseConnect")
+    private EntityManager em;
+
     @Override
     public void save(Tema entity) {
 
@@ -23,13 +30,14 @@ public class TemaDAO implements DAO<Tema, String>{
     }
 
     @Override
-    public Tema find(String id) {
-        return null;
+    public Tema find(Integer id) {
+        return em.find(Tema.class, id);
     }
+
 
     @Override
     public List<Tema> findAll() {
-        return List.of();
+        return em.createNamedQuery("Tema.findAll", Tema.class).getResultList();
     }
 
     @Override

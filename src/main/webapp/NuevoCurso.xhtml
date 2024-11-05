@@ -58,7 +58,9 @@
         <h:outputLabel for="fecha_creacion" value="Fecha Creacion " styleClass="block" required="true"/>
         <p:calendar id="fecha_creacion" value="#{cursoView.cursoDTO.fechaCreacion}"  />
         <br /><br/>
-
+        <p:messages id="messages" showDetail="true" closable="true">
+            <p:autoUpdate/>
+        </p:messages>
         <p:commandButton value="Crear" action="#{cursoView.crearCurso()}"/>
 
     </h:form>

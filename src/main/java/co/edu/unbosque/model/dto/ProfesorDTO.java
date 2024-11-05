@@ -9,6 +9,19 @@ public class ProfesorDTO {
     private String resumenExperiencia;
     private String username;
 
+    public ProfesorDTO() {
+
+    }
+
+    public ProfesorDTO(String idDocente, String nombre, String apellidos, String correoElectronico, String resumenExperiencia, String username) {
+        this.idDocente = idDocente;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correoElectronico = correoElectronico;
+        this.resumenExperiencia = resumenExperiencia;
+        this.username = username;
+    }
+
     public String getIdDocente() {
         return idDocente;
     }

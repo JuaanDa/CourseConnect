@@ -10,6 +10,17 @@ public class TemasCursoDTO {
     private Tema tema;
     private Curso curso;
 
+    public TemasCursoDTO() {
+
+    }
+
+    public TemasCursoDTO(int idTema, int idCurso, Tema tema, Curso curso) {
+        this.idTema = idTema;
+        this.idCurso = idCurso;
+        this.tema = tema;
+        this.curso = curso;
+    }
+
     public int getIdTema() {
         return idTema;
     }

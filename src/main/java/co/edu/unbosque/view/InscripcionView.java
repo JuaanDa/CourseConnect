@@ -64,7 +64,6 @@ public class InscripcionView implements Serializable {
     }
 
     public String crearInscripción(){
-
         System.out.println("creando");
         inscripcionService.saveInscripcion(inscripcionDTO);
         return null;

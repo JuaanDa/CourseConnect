@@ -1,8 +1,7 @@
 package co.edu.unbosque.view;
 
 import co.edu.unbosque.model.dto.*;
-import co.edu.unbosque.services.CursoService;
-import co.edu.unbosque.services.InscripcionService;
+import co.edu.unbosque.services.*;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.annotation.ManagedProperty;
@@ -22,9 +21,16 @@ public class CursoInfoView implements Serializable {
     private TemaDTO temaDTO;
     private ArrayList<ProfesorDTO> profesores;
     private ArrayList<EstudianteDTO> estudiantes;
+    private ArrayList<TemaDTO> temas;
+    private ArrayList<HabilidadDTO> habilidades;
     @Inject
     private CursoService cursoService;
-
+    @Inject
+    private EstudianteService estudianteService;
+    @Inject
+    private TemaService temaService;
+    @Inject
+    private HabilidadesService habilidadesService;
     private int cursoId;
 
     public CursoInfoView() {
@@ -37,8 +43,9 @@ public class CursoInfoView implements Serializable {
         cursoId = Integer.parseInt(context.getExternalContext().getRequestParameterMap().get("cursoId"));
         cursoDTO = cursoService.getCurso(cursoId);
         profesores = (ArrayList<ProfesorDTO>) cursoService.getAllProfesores();
-        estudiantes = (ArrayList<EstudianteDTO>) cursoService.getAllEstudiantes();
-
+        estudiantes = (ArrayList<EstudianteDTO>) estudianteService.getAllStudents();
+        temas = (ArrayList<TemaDTO>) temaService.getAllTemas();
+        habilidades = (ArrayList<HabilidadDTO>) habilidadesService.getAllHabilidades();
     }
 
     public CursoDTO getCursoDTO() {
@@ -71,4 +78,19 @@ public class CursoInfoView implements Serializable {
         this.estudiantes = estudiantes;
     }
 
+    public List<TemaDTO> getTemas() {
+        return temas;
+    }
+
+    public void setTemas(ArrayList<TemaDTO> temas) {
+        this.temas = temas;
+    }
+
+    public List<HabilidadDTO> getHabilidades() {
+        return habilidades;
+    }
+
+    public void setHabilidades(ArrayList<HabilidadDTO> habilidades) {
+        this.habilidades = habilidades;
+    }
 }

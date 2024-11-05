@@ -13,6 +13,19 @@ public class CertificadoCursoDTO {
     private String urlDescargaCertificado;
     private Estudiante estudiante;
     private Curso curso;
+    public CertificadoCursoDTO() {
+
+    }
+
+    public CertificadoCursoDTO(int idCurso, String idEstudiante, LocalDate fechaExpedicionCertificado, String urlDescargaCertificado, Estudiante estudiante, Curso curso) {
+        this.idCurso = idCurso;
+        this.idEstudiante = idEstudiante;
+        this.fechaExpedicionCertificado = fechaExpedicionCertificado;
+        this.urlDescargaCertificado = urlDescargaCertificado;
+        this.estudiante = estudiante;
+        this.curso = curso;
+    }
+    
 
     public int getIdCurso() {
         return idCurso;

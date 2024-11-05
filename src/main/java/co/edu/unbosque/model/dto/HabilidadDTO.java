@@ -6,6 +6,17 @@ public class HabilidadDTO {
     private String nombreHabilidad;
     private String descripcion;
 
+    public HabilidadDTO() {
+
+    }
+
+    public HabilidadDTO(int idHabilidad, String nombreHabilidad, String descripcion) {
+
+        this.idHabilidad = idHabilidad;
+        this.nombreHabilidad = nombreHabilidad;
+        this.descripcion = descripcion;
+    }
+
     public int getIdHabilidad() {
         return idHabilidad;
     }

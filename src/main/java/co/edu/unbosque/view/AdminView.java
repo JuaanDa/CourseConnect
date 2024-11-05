@@ -20,7 +20,7 @@ public class AdminView implements Serializable {
     private  CursoService cursoService;
     private CursoDTO cursoDTO;
     private InscripcionDTO inscripcionDTO;
-    private boolean showDashboardPanel, showCrearCurso, showModificarCurso, showModificarPrecio, showModificarModalidades, showGestionarinscripcion;
+    private boolean showDashboardPanel, showCrearCurso, showModificarCurso, showModificarPrecio, showModificarModalidades, showGestionarinscripcion, showEstudiantesInscritos;
     private int CursoId;
     private String EstudianteId;
     @Named("inscripcionView")
@@ -63,6 +63,10 @@ public class AdminView implements Serializable {
     public void gestionarinscripcion(){
         hideAllPanels();
         showGestionarinscripcion = true;
+    }
+    public void estudiantesInscritos(){
+        hideAllPanels();
+        showEstudiantesInscritos = true;
     }
 
 
@@ -113,6 +117,14 @@ public class AdminView implements Serializable {
         this.showGestionarinscripcion = showGestionarinscripcion;
     }
 
+    public boolean isShowEstudiantesInscritos() {
+        return showEstudiantesInscritos;
+    }
+
+    public void setShowEstudiantesInscritos(boolean showEstudiantesInscritos) {
+        this.showEstudiantesInscritos = showEstudiantesInscritos;
+    }
+
     private void hideAllPanels() {
             showDashboardPanel = false;
           showCrearCurso = false;
@@ -120,6 +132,7 @@ public class AdminView implements Serializable {
           showModificarPrecio = false;
           showModificarModalidades = false;
           showGestionarinscripcion = false;
+          showEstudiantesInscritos = false;
 
     }
     public void editarCurso(int idCurso){
@@ -145,6 +158,9 @@ public class AdminView implements Serializable {
         this.inscripcionDTO = inscripcionService.getInscripcionById(inscripcionId);
          setCursoId(idCurso);
          setEstudianteId(idStudiante);
+    }
+    public void estudiantesInscritos(int idCurso){
+
     }
 
 

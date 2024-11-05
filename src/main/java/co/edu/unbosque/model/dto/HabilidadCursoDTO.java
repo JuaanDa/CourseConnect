@@ -10,6 +10,18 @@ public class HabilidadCursoDTO {
     private Curso curso;
     private Habilidad habilidad;
 
+    public HabilidadCursoDTO() {
+
+    }
+
+    public HabilidadCursoDTO(int idCurso, int idHabilidad, Curso curso, Habilidad habilidad) {
+        this.idCurso = idCurso;
+        this.idHabilidad = idHabilidad;
+        this.curso = curso;
+        this.habilidad = habilidad;
+    }
+
+    
     public int getIdCurso() {
         return idCurso;
     }

@@ -48,7 +48,7 @@
                      <p:menuitem value="Cursos por Vencer" action="#{adminView.expiringCourses}"/>
                   </p:submenu>
                   <p:submenu label="Gestión Estudiantes">
-                     <p:menuitem value="Estudiantes Inscritos" action="#{adminView.registeredStudents}"/>
+                     <p:menuitem value="Alumnos Inscritos" action="#{adminView.estudiantesInscritos()}" icon="pi pi-user-edit" update="@all"/>
                      <p:menuitem value="Pagos Realizados" action="#{adminView.completedPayments}"/>
                      <p:menuitem value="Pagos Pendientes" action="#{adminView.pendingPayments}"/>
                   </p:submenu>
@@ -83,15 +83,21 @@
       <p:panel id="modifcarModalidadesPanel"  rendered="#{adminView.showModificarModalidades}">
          <ui:include src="ModificarModalidades.xhtml" />
       </p:panel>
-      <p:panel id="gestionarInscrpcion"  rendered="#{adminView.showGestionarinscripcion}">
+      <p:panel id="gestionarInscrpcionPanel"  rendered="#{adminView.showGestionarinscripcion}">
          <ui:include src="GestionarInscripcion.xhtml" />
       </p:panel>
+      <p:panel id="alumnosInscritosPanel"  rendered="#{adminView.showEstudiantesInscritos}">
+         <ui:include src="EstudiantesInscritos.xhtml" />
+      </p:panel>
+
 
 
    </div>
 
 
    <div class="footer">
+      <a  href="index.xhtml"> <img src="images/user.png" alt="user" class="btn-icon"/></a>
+
       <p>
          &copy; 2024 CourseConnect&nbsp; &nbsp;Programación 2&nbsp; &nbsp;Universidad
          El Bosque

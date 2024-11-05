@@ -10,6 +10,16 @@ public class CursosEstudianteDTO {
     private Estudiante estudiante;
     private Curso curso;
 
+    public CursosEstudianteDTO() {
+
+    }
+
+    public CursosEstudianteDTO(String idEstudiante, int idCurso, Estudiante estudiante, Curso curso) {
+        this.idEstudiante = idEstudiante;
+        this.idCurso = idCurso;
+        this.estudiante = estudiante;
+        this.curso = curso;
+    }
 
     public String getIdEstudiante() {
         return idEstudiante;

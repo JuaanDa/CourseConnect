@@ -10,6 +10,8 @@ import co.edu.unbosque.services.CursoService;
 import co.edu.unbosque.services.UsuarioService;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
@@ -151,19 +153,24 @@ public class CursoView implements Serializable {
     }
 
     public String crearCurso() {
+
         UsuarioDTO usuarioDTO = usuarios.get(0);
         Usuario creadoPor = usuarioService.saveUsuario(usuarioDTO);
         cursoDTO.setCreadoPor(creadoPor);
         cursoService.saveCurse(cursoDTO);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Curso Creado Correctamemte"));
         return null;
     }
 
     public String actualizarCurso(int CursoId) {
+        System.out.println(CursoId);
         UsuarioDTO usuarioDTO = usuarios.get(1);
         Usuario creadoPor = usuarioService.updateUsuario(usuarioDTO);
         cursoDTO.setCreadoPor(creadoPor);
         cursoDTO.setId_curso(CursoId);
         cursoService.updateCurso(cursoDTO);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Modificacion Realizada  Correctamemte"));
+
         return null;
     }
     public String actualizarCursoPrecio(int CursoId, double CostoCurso){

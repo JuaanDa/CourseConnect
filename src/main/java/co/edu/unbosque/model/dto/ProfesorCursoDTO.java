@@ -11,6 +11,18 @@ public class ProfesorCursoDTO {
     private Curso curso;
     private Profesor profesor;
 
+    public ProfesorCursoDTO() {
+
+    }
+
+    public ProfesorCursoDTO(int idCurso, String idDocente, String rolDocente, Curso curso, Profesor profesor) {
+        this.idCurso = idCurso;
+        this.idDocente = idDocente;
+        this.rolDocente = rolDocente;
+        this.curso = curso;
+        this.profesor = profesor;
+    }
+
     public int getIdCurso() {
         return idCurso;
     }

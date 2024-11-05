@@ -28,7 +28,7 @@
       <h1 class="titleCurse">#{cursoInfoView.cursoDTO.tituloCurso}</h1>
       <div class="curseInfo">
 
-         <p> Descripción: #{cursoInfoView.temaDTO.nombreTema}</p>
+         <p> Descripción: #{cursoInfoView.temas.get(1).descripcionTema}</p>
       </div>
       <div class="card-img">
          <img src="#{cursoInfoView.cursoDTO.urlImagenCurso}" class="card-img-top" alt="Curso"></img>
@@ -38,43 +38,12 @@
       </div>
       <div class="course-details">
          <div class="cards-course">
-
-            <div class="card-course">
-               <h2>Módulo 1: Introducción a las Pruebas Automatizadas</h2>
-               <p>¿Qué son las pruebas automatizadas? Beneficios y desafíos. Herramientas más populares.</p>
-            </div>
-            <div class="card-course">
-               <h2>Módulo 2: Configuración del Entorno</h2>
-               <p>Instalación de herramientas necesarias (Selenium, JUnit, etc.). Configuración de proyectos.</p>
-            </div>
-            <div class="card-course">
-               <h2>Módulo 3: Tipos de Pruebas Automatizadas</h2>
-               <ul>
-                  <li>Pruebas unitarias</li>
-                  <li>Pruebas de integración</li>
-                  <li>Pruebas funcionales</li>
-               </ul>
-            </div>
-            <div class="card-course">
-               <h2>Módulo 4: Creación de Pruebas Automatizadas</h2>
-               <p>Escritura de pruebas efectivas. Uso de aserciones. Mantenimiento de pruebas.</p>
-            </div>
-            <div class="card-course">
-               <h2>Módulo 5: Mejores Prácticas</h2>
-               <p>Estrategias para mantener la calidad del código. Evitar falsos positivos y negativos. Organización y estructura de pruebas.</p>
-            </div>
-            <div class="card-course">
-               <h2>Módulo 6: Integración Continua</h2>
-               <p>Conceptos de CI/CD. Herramientas para integración continua.</p>
-            </div>
-            <div class="card-course">
-               <h2>Módulo 7: Casos de Estudio</h2>
-               <p>Análisis de ejemplos reales. Lecciones aprendidas.</p>
-            </div>
-            <div class="card-course">
-               <h2>Módulo 8: Proyecto Final</h2>
-               <p>Desarrollo de un proyecto que implemente pruebas automatizadas. Presentación y evaluación del proyecto.</p>
-            </div>
+            <ui:repeat value="#{cursoInfoView.habilidades}" var="habilidad">
+               <div class="card-course">
+                  <h2>Habilidad #{habilidad.idHabilidad}: #{habilidad.nombreHabilidad}</h2>
+                  <p>Descripción: #{habilidad.descripcion}</p>
+               </div>
+            </ui:repeat>
 
          </div></div>
       <div class="content">
@@ -88,7 +57,6 @@
             <ui:repeat value="#{cursoInfoView.profesores}" var="profesor">
 
                <div class="docent-card">
-             <!--     <img src="images/dc.jpeg" alt="Docente 1" class="docent-img"></img>-->
                   <h3>#{profesor.nombre} #{profesor.apellidos}</h3>
                 <!--  <h5>#{profesor.correoElectronico}</h5>-->
                   <p>#{profesor.resumenExperiencia}</p>

@@ -132,6 +132,9 @@
             </p:outputPanel>
 
             <f:facet name="footer">
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate/>
+                </p:messages>
 
                 <p:commandButton value="Actualizar" icon="pi pi-upload" actionListener="#{cursoView.actualizarCurso(adminView.cursoId)}"
                                  update="manage-product-content" process="manage-product-content @this" />

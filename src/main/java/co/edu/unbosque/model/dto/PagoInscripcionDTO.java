@@ -9,6 +9,19 @@ public class PagoInscripcionDTO {
     private int valorPago;
     private String estadoPago;
 
+    public PagoInscripcionDTO() {
+
+    }
+
+    public PagoInscripcionDTO(int idPagoInscripcion, int idCurso, String idEstudiante, String medioPago, int valorPago, String estadoPago) {
+        this.idPagoInscripcion = idPagoInscripcion;
+        this.idCurso = idCurso;
+        this.idEstudiante = idEstudiante;
+        this.medioPago = medioPago;
+        this.valorPago = valorPago;
+        this.estadoPago = estadoPago;
+    }
+
     public int getIdPagoInscripcion() {
         return idPagoInscripcion;
     }

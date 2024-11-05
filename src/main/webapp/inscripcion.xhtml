@@ -44,7 +44,8 @@
             <br /><br />
 
             <div class="field">
-                <p:selectOneMenu id="estado_inscripcion" value="#{inscripcionView.inscripcionDTO.estadoInscripcion}"  label="Estado" style="width: 100%">
+                <p:outputLabel for="estado_inscripcion" value="Estado Inscripcion " styleClass="block" />
+                <p:selectOneMenu id="estado_inscripcion" value="#{inscripcionView.inscripcionDTO.estadoInscripcion}"  label="Estado" >
                     <f:selectItems value="#{inscripcionView.estadoInscripcion}"/>
                 </p:selectOneMenu>
             </div>

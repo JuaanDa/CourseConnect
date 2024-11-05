@@ -12,6 +12,19 @@ public class CalifacionesCursoDTO {
     private Estudiante estudiante;
     private Curso curso;
 
+    public CalifacionesCursoDTO() {
+
+    }
+
+    public CalifacionesCursoDTO(int idCurso, String idEstudiante, float calificacion, String comentarios, Estudiante estudiante, Curso curso) {
+        this.idCurso = idCurso;
+        this.idEstudiante = idEstudiante;
+        this.calificacion = calificacion;
+        this.comentarios = comentarios;
+        this.estudiante = estudiante;
+        this.curso = curso;
+    }
+
     public int getIdCurso() {
         return idCurso;
     }

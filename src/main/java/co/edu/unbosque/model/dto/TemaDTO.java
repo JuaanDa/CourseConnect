@@ -12,6 +12,18 @@ public class TemaDTO {
     private String nombreTema;
     private String descripcionTema;
 
+    public TemaDTO() {
+
+    }
+
+    public TemaDTO(int idTema, LocalDate fechaCreacion, Usuario creadoPor, String nombreTema, String descripcionTema) {
+        this.idTema = idTema;
+        this.fechaCreacion = fechaCreacion;
+        this.creadoPor = creadoPor;
+        this.nombreTema = nombreTema;
+        this.descripcionTema = descripcionTema;
+    }
+
     public int getIdTema() {
         return idTema;
     }
