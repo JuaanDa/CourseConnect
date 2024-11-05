@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "HABILIDADES_CURSO")
-//@IdClass(HabilidadesCursoId.class) // Clase para la clave compuesta
+@IdClass(HabilidadesCursoId.class) // Clase para la clave compuesta
 public class HabilidadesCurso {
 
     @Id
