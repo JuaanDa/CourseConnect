@@ -32,6 +32,9 @@ public class CursoInfoView implements Serializable {
     @Inject
     private HabilidadesService habilidadesService;
     private int cursoId;
+    @Named
+    @Inject
+    private ProfesoresService profesoresService;
 
     public CursoInfoView() {
         cursoDTO = new CursoDTO();
@@ -42,10 +45,10 @@ public class CursoInfoView implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         cursoId = Integer.parseInt(context.getExternalContext().getRequestParameterMap().get("cursoId"));
         cursoDTO = cursoService.getCurso(cursoId);
-        profesores = (ArrayList<ProfesorDTO>) cursoService.getAllProfesores();
+        profesores = (ArrayList<ProfesorDTO>) profesoresService.getProfesorPorCurso(cursoId);
         estudiantes = (ArrayList<EstudianteDTO>) estudianteService.getAllStudents();
-        temas = (ArrayList<TemaDTO>) temaService.getAllTemas();
-        habilidades = (ArrayList<HabilidadDTO>) habilidadesService.getAllHabilidades();
+        temaDTO = temaService.getTemaPorCurso(cursoId);
+        habilidades = (ArrayList<HabilidadDTO>) habilidadesService.getHabilidadPorCurso(cursoId);
     }
 
     public CursoDTO getCursoDTO() {

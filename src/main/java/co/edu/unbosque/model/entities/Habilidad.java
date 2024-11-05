@@ -3,6 +3,8 @@ package co.edu.unbosque.model.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "HABILIDADES")
 @NamedQueries({
@@ -22,6 +24,8 @@ public class Habilidad {
     @Column(name = "descripcion", length = 255)
     private String descripcion;
 
+    @OneToMany(mappedBy = "habilidad")
+    private List<HabilidadesCurso> habilidadesCursos;
 
     public Habilidad() {
 
@@ -56,5 +60,13 @@ public class Habilidad {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public List<HabilidadesCurso> getHabilidadesCursos() {
+        return habilidadesCursos;
+    }
+
+    public void setHabilidadesCursos(List<HabilidadesCurso> habilidadesCursos) {
+        this.habilidadesCursos = habilidadesCursos;
     }
 }

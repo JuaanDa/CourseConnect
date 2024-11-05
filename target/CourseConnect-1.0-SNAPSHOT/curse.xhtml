@@ -27,8 +27,9 @@
       <h1 class="curse">Curso</h1>
       <h1 class="titleCurse">#{cursoInfoView.cursoDTO.tituloCurso}</h1>
       <div class="curseInfo">
-
-         <p> Descripción: #{cursoInfoView.temas.get(1).descripcionTema}</p>
+         <h:panelGrid columns="1">
+            <p>#{cursoInfoView.temaDTO.descripcionTema}</p>
+         </h:panelGrid>
       </div>
       <div class="card-img">
          <img src="#{cursoInfoView.cursoDTO.urlImagenCurso}" class="card-img-top" alt="Curso"></img>

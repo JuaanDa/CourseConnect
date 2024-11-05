@@ -2,6 +2,7 @@ package co.edu.unbosque.model.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "TEMAS")
@@ -27,6 +28,9 @@ public class Tema {
 
     @Column(name = "descripcion_tema", length = 255)
     private String descripcionTema;
+
+    @OneToMany(mappedBy = "tema")
+    private List<TemasCurso> temasCurso;  // Relación con TemasCurso
 
 
     public Tema() {
@@ -79,5 +83,13 @@ public class Tema {
 
     public void setDescripcionTema(String descripcionTema) {
         this.descripcionTema = descripcionTema;
+    }
+
+    public List<TemasCurso> getTemasCurso() {
+        return temasCurso;
+    }
+
+    public void setTemasCurso(List<TemasCurso> temasCurso) {
+        this.temasCurso = temasCurso;
     }
 }

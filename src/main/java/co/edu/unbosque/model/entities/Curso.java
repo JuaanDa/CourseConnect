@@ -2,14 +2,15 @@ package co.edu.unbosque.model.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "CURSOS")
 @NamedQueries({
         @NamedQuery(name="Curso.findAll", query = "SELECT c FROM Curso c"),
-        @NamedQuery(name = "Curso.findByFilters", query = "SELECT c FROM Curso c WHERE "
+        @NamedQuery(name = "Curso.findByFilters", query = "SELECT c FROM Curso c JOIN c.temasCurso tc JOIN tc.tema t WHERE "
                 + "(:tipo IS NULL OR c.tipoCurso = :tipo) AND "
-                + "(:tema IS NULL OR c.horarioCurso = :tema) AND "
+                + "(:tema IS NULL OR t.nombreTema = :tema) AND "
                 + "(:habilidad IS NULL OR c.tituloCurso = :habilidad) AND "
                 + "(:fecha IS NULL OR c.fechaInicio = :fecha) AND "
                 + "(:modalidad IS NULL OR c.modalidadCurso = :modalidad)")
@@ -59,8 +60,19 @@ public class Curso {
     @JoinColumn(name = "creado_por", nullable = false, referencedColumnName = "username")
     private Usuario creadoPor; // Relación con la entidad Usuario
 
+    @OneToMany(mappedBy = "curso", fetch = FetchType.EAGER)
+    private List<TemasCurso> temasCurso;  // Relación con TemasCurso
+
+    @OneToMany(mappedBy = "curso", fetch = FetchType.EAGER )
+    private List<HabilidadesCurso> habilidadesCurso; // Relacion con habilidades
+
+    @OneToMany(mappedBy = "curso", fetch = FetchType.EAGER)
+    private List<ProfesoresCurso> profesoresCurso;
+
+
     public Curso() {
     }
+
 
 
     public Curso(int id_curso, String tituloCurso, String urlImagenCurso, String tipoCurso, String modalidadCurso, String horarioCurso, LocalDate fechaInicio, LocalDate fechaFin, int horasCurso, double costoCurso, String estadoCurso, LocalDate fechaCreacion, Usuario creadoPor) {
@@ -181,5 +193,29 @@ public class Curso {
 
     public void setCreadoPor(Usuario creadoPor) {
         this.creadoPor = creadoPor;
+    }
+
+    public List<TemasCurso> getTemasCurso() {
+        return temasCurso;
+    }
+
+    public void setTemasCurso(List<TemasCurso> temasCurso) {
+        this.temasCurso = temasCurso;
+    }
+
+    public List<HabilidadesCurso> getHabilidadesCurso() {
+        return habilidadesCurso;
+    }
+
+    public void setHabilidadesCurso(List<HabilidadesCurso> habilidadesCurso) {
+        this.habilidadesCurso = habilidadesCurso;
+    }
+
+    public List<ProfesoresCurso> getProfesoresCurso() {
+        return profesoresCurso;
+    }
+
+    public void setProfesoresCurso(List<ProfesoresCurso> profesoresCurso) {
+        this.profesoresCurso = profesoresCurso;
     }
 }

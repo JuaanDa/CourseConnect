@@ -4,14 +4,15 @@ import java.io.Serializable;
 
 public class CalificacionesCursoId implements Serializable {
     private int idCurso;
-    private String idStudiante;
+    private String idEstudiante;
+
     public CalificacionesCursoId() {
 
     }
 
-    public CalificacionesCursoId(int idCurso, String idStudiante) {
+    public CalificacionesCursoId(int idCurso, String idEstudiante) {
         this.idCurso = idCurso;
-        this.idStudiante = idStudiante;
+        this.idEstudiante = idEstudiante;
     }
 
     public int getIdCurso() {
@@ -22,11 +23,11 @@ public class CalificacionesCursoId implements Serializable {
         this.idCurso = idCurso;
     }
 
-    public String getIdStudiante() {
-        return idStudiante;
+    public String getIdEstudiante() {
+        return idEstudiante;
     }
 
-    public void setIdStudiante(String idStudiante) {
-        this.idStudiante = idStudiante;
+    public void setIdEstudiante(String idEstudiante) {
+        this.idEstudiante = idEstudiante;
     }
 }
