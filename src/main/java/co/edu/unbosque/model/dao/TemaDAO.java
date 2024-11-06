@@ -24,10 +24,6 @@ public class TemaDAO implements DAO<Tema, Integer>{
 
     }
 
-    @Override
-    public void delete(Tema entity) {
-
-    }
 
     @Override
     public Tema find(Integer id) {

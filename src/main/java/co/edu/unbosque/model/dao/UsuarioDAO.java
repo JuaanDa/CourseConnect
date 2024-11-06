@@ -24,10 +24,7 @@ public class UsuarioDAO implements DAO<Usuario, String>  {
 
     }
 
-    @Override
-    public void delete(Usuario entity) {
 
-    }
 
     @Override
     public Usuario find(String id) {
@@ -43,8 +40,6 @@ public class UsuarioDAO implements DAO<Usuario, String>  {
     public List<Usuario> findCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
         return List.of();
     }
-
-
 
 
 }

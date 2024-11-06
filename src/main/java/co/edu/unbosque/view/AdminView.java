@@ -77,6 +77,7 @@ public class AdminView implements Serializable {
     }
 
 
+
     public boolean isShowDashboardPanel() {
         return showDashboardPanel;
     }
@@ -144,7 +145,7 @@ public class AdminView implements Serializable {
     }
     public void editarCurso(int idCurso){
         this.cursoDTO = cursoService.getCurso(idCurso);
-        setCursoId(idCurso); // Asignar el valor a CursoId
+        setCursoId(idCurso);
 
     }
     public void editarCursoPrice(int idCurso){
@@ -166,9 +167,7 @@ public class AdminView implements Serializable {
          setCursoId(idCurso);
          setEstudianteId(idEstudiante);
     }
-    public void estudiantesInscritos(int idCurso){
 
-    }
     public void crearComentario(int idCurso, String idEstudiante){
         CalificacionesCursoId calificacionesCursoId = new CalificacionesCursoId(idCurso,idEstudiante);
         calificacionesCursoDTO.setComentarios(calificacionesCursoDTO.getComentarios());

@@ -8,6 +8,5 @@ import java.util.List;
 public interface UsuarioServiceinterface {
     Usuario saveUsuario(UsuarioDTO usuario);
     List<UsuarioDTO> getUsuarios();
-    void deleteUsuario(int id);
     Usuario updateUsuario(UsuarioDTO usuario);
 }

@@ -24,10 +24,6 @@ public class CalificacionDAO implements DAO<CalificacionesCurso, CalificacionesC
 
     }
 
-    @Override
-    public void delete(CalificacionesCurso entity) {
-
-    }
 
     @Override
     public CalificacionesCurso find(CalificacionesCursoId calificacionesCursoId) {
@@ -43,4 +39,6 @@ public class CalificacionDAO implements DAO<CalificacionesCurso, CalificacionesC
     public List<CalificacionesCurso> findCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
         return List.of();
     }
+
+
 }

@@ -9,7 +9,6 @@ public interface InscripcionServiceInterface {
       void saveInscripcion(InscripcionDTO inscripcionDTO);
       InscripcionDTO getInscripcionById(InscripcionId inscripcionId);
       List<InscripcionDTO> getInscripciones();
-      void deleteInscripcionById(int id);
       void updateInscripcion(InscripcionDTO inscripcionDTO);
 
 }

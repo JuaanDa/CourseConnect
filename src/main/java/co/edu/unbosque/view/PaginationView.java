@@ -16,12 +16,11 @@ import java.util.List;
 @ViewScoped
 public class PaginationView implements Serializable {
     private ArrayList<CursoDTO> cursos;
-    private ArrayList<CursoDTO> allCursos; // Para almacenar todos los cursos
+    private ArrayList<CursoDTO> allCursos;
 
     //paginacion
     private int currentPage = 0;
     private int pageSize = 4;
-    private int totalPages;
     @Inject
     private CursoService cursoService;
 
@@ -78,8 +77,8 @@ public class PaginationView implements Serializable {
     }
 
     public void setCursos(List<CursoDTO> cursos) {
-        this.cursos = new ArrayList<>(cursos); // Actualiza la lista de cursos
-        this.currentPage = 0; // Reinicia la página al filtrar
+        this.cursos = new ArrayList<>(cursos);
+        this.currentPage = 0;
     }
 }
 

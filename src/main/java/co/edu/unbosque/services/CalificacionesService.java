@@ -40,15 +40,7 @@ public class CalificacionesService implements CalificacionesServiceInterface {
         return dataMapper.map(calificacionesCurso, CalificacionesCursoDTO.class);
     }
 
-    @Override
-    public List<CalificacionesCursoDTO> getAllCalificacionesCurso() {
-    List<CalificacionesCurso> calificacionesCursos = daoCalificacion.findAll();
-    List<CalificacionesCursoDTO> calificacionesCursoDTOs = new ArrayList<>();
-    for(CalificacionesCurso calificacionesCurso : calificacionesCursos) {
-        calificacionesCursoDTOs.add(dataMapper.map(calificacionesCurso, CalificacionesCursoDTO.class));
-    }
-    return calificacionesCursoDTOs;
-    }
+
     public List<CalificacionesCursoDTO> getAllCalificacionPorCurso(int cursoId) {
         List<CalificacionesCursoDTO> calificacionesCursoDTO = new ArrayList<>();
         List<Curso> cursos = daoCurso.findAll();

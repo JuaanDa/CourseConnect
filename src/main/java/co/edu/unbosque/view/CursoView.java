@@ -134,7 +134,6 @@ public class CursoView implements Serializable {
     public String filtrar() {
         List<CursoDTO> filteredCursos = (ArrayList<CursoDTO>) cursoService.getCursos(cursoDTO.getTipoCurso(), cursoDTO.getTituloCurso(),cursoDTO.getTituloCurso(), cursoDTO.getFechaInicio(), cursoDTO.getModalidadCurso());
         filtroAplicado = true;
-        // Actualiza la lista de cursos en PaginationView
         paginationView.setCursos(filteredCursos);
 
         return null;
@@ -144,11 +143,6 @@ public class CursoView implements Serializable {
         return usuarioService.saveUsuario(usuarioDTO);
 
 
-    }
-
-    public void quitarFiltro() {
-        cursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
-        filtroAplicado = false; // Restablece el estado del filtro
     }
 
     public String crearCurso() {

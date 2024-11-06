@@ -23,11 +23,6 @@ public class HabilidadDAO implements DAO<Habilidad, Integer> {
     }
 
     @Override
-    public void delete(Habilidad entity) {
-
-    }
-
-    @Override
     public Habilidad find(Integer id) {
         return em.find(Habilidad.class, id);
     }
@@ -41,4 +36,5 @@ public class HabilidadDAO implements DAO<Habilidad, Integer> {
     public List<Habilidad> findCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
         return List.of();
     }
+
 }

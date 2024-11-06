@@ -8,5 +8,4 @@ import java.util.List;
 public interface CalificacionesServiceInterface {
     void saveComentario(CalificacionesCursoDTO calificaciones);;
     CalificacionesCursoDTO  getCalificacionesCurso(CalificacionesCursoId calificacionCursoid);
-    List<CalificacionesCursoDTO> getAllCalificacionesCurso();
 }

@@ -22,7 +22,6 @@ public class InscripcionView implements Serializable {
     @Inject
     private InscripcionService inscripcionService;
     private Map<String, String> estadoInscripcion = new HashMap<>();
-    @Named
     @Inject
     private CursoService cursoService;
 

@@ -47,10 +47,6 @@ public class UsuarioService  implements UsuarioServiceinterface {
         return List.of();
     }
 
-    @Override
-    public void deleteUsuario(int id) {
-
-    }
 
 
 }

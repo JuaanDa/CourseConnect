@@ -25,10 +25,7 @@ public class ProfesorDAO implements DAO<Profesor, String> {
 
     }
 
-    @Override
-    public void delete(Profesor entity) {
 
-    }
 
     @Override
     public Profesor find(String id) {

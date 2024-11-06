@@ -26,10 +26,7 @@ public class CursoDAO implements DAO<Curso, Integer>{
 
     }
 
-    @Override
-    public void delete(Curso entity) {
 
-    }
 
     @Override
     public Curso find(Integer id) {
@@ -40,7 +37,6 @@ public class CursoDAO implements DAO<Curso, Integer>{
     public List<Curso> findAll() {
         return em.createNamedQuery("Curso.findAll", Curso.class).getResultList();
     }
-
     @Override
     public List<Curso> findCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
         TypedQuery<Curso> query = em.createNamedQuery("Curso.findByFilters", Curso.class);

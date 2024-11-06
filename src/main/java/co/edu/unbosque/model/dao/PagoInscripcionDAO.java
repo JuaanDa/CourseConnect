@@ -23,10 +23,7 @@ public class PagoInscripcionDAO implements DAO<PagoInscripcion, String>{
 
     }
 
-    @Override
-    public void delete(PagoInscripcion entity) {
 
-    }
 
     @Override
     public PagoInscripcion find(String id) {

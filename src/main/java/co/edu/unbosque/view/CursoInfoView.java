@@ -25,9 +25,8 @@ public class CursoInfoView implements Serializable {
     private CalificacionesCursoDTO calificacionesCursoDTO;
     private ArrayList<ProfesorDTO> profesores;
     private ArrayList<EstudianteDTO> estudiantes;
-    private ArrayList<TemaDTO> temas;
     private ArrayList<HabilidadDTO> habilidades;
-    private ProfesorCursoDTO profesorCurso;
+    private ProfesorCursoDTO profesorCursoDTO;
     private ArrayList<CalificacionesCursoDTO> calificaciones;
     @Inject
     private CursoService cursoService;
@@ -86,6 +85,14 @@ public class CursoInfoView implements Serializable {
         this.calificacionesCursoDTO = calificacionesCursoDTO;
     }
 
+    public ProfesorCursoDTO getProfesorCursoDTO() {
+        return profesorCursoDTO;
+    }
+
+    public void setProfesorCursoDTO(ProfesorCursoDTO profesorCursoDTO) {
+        this.profesorCursoDTO = profesorCursoDTO;
+    }
+
     public List<ProfesorDTO> getProfesores() {
         return profesores;
     }
@@ -100,13 +107,7 @@ public class CursoInfoView implements Serializable {
         this.estudiantes = estudiantes;
     }
 
-    public List<TemaDTO> getTemas() {
-        return temas;
-    }
 
-    public void setTemas(ArrayList<TemaDTO> temas) {
-        this.temas = temas;
-    }
 
     public List<HabilidadDTO> getHabilidades() {
         return habilidades;
@@ -124,16 +125,9 @@ public class CursoInfoView implements Serializable {
         this.calificaciones = calificaciones;
     }
 
-    public ProfesorCursoDTO getProfesorCurso() {
-        return profesorCurso;
-    }
 
-    public void setProfesorCurso(ProfesorCursoDTO profesorCurso) {
-        this.profesorCurso = profesorCurso;
-    }
     public String createComentario(){
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Comentario Correctamente Publicado"));
-        System.out.println("creando");
          calificacionesService.saveComentario(calificacionesCursoDTO);
         return null;
     }

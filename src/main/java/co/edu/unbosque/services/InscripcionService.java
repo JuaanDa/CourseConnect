@@ -50,14 +50,6 @@ public class InscripcionService implements InscripcionServiceInterface {
     }
 
 
-
-
-
-    @Override
-    public void deleteInscripcionById(int id) {
-
-    }
-
     @Override
     public void updateInscripcion(InscripcionDTO inscripcionDTO) {
         Inscripcion inscripcion = dataMapper.map(inscripcionDTO, Inscripcion.class);

@@ -69,21 +69,9 @@ public class CursoService implements CursoServiceInterface {
         }
         return usuarioDTOs;
     }
-    public List<ProfesorDTO> getAllProfesores() {
-        List<Profesor> profesores = daoProfesor.findAll();
-        List<ProfesorDTO> profesorDTOs = new ArrayList<>();
-        for (Profesor profesor : profesores) {
-            profesorDTOs.add(dataMapper.map(profesor, ProfesorDTO.class));
-        }
-        return profesorDTOs;
-    }
 
 
 
-    @Override
-    public void deleteCurso(int id) {
-
-    }
 
     @Override
     public void updateCurso(CursoDTO cursoDTO) {

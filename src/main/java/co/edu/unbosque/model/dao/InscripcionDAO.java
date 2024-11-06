@@ -25,11 +25,6 @@ public class InscripcionDAO implements DAO<Inscripcion, InscripcionId> {
     }
 
     @Override
-    public void delete(Inscripcion entity) {
-
-    }
-
-    @Override
     public Inscripcion find(InscripcionId inscripcionId) {
         return em.find(Inscripcion.class, inscripcionId);
     }
