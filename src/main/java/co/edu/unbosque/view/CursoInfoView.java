@@ -24,6 +24,7 @@ public class CursoInfoView implements Serializable {
     private TemaDTO temaDTO;
     private CalificacionesCursoDTO calificacionesCursoDTO;
     private ArrayList<ProfesorDTO> profesores;
+    private ArrayList<ProfesorCursoDTO> profesoresRol;
     private ArrayList<EstudianteDTO> estudiantes;
     private ArrayList<HabilidadDTO> habilidades;
     private ProfesorCursoDTO profesorCursoDTO;
@@ -54,6 +55,7 @@ public class CursoInfoView implements Serializable {
         cursoId = Integer.parseInt(context.getExternalContext().getRequestParameterMap().get("cursoId"));
         cursoDTO = cursoService.getCurso(cursoId);
         profesores = (ArrayList<ProfesorDTO>) profesoresService.getProfesorPorCurso(cursoId);
+        profesoresRol = (ArrayList<ProfesorCursoDTO>) profesoresService.getRolProfesorPorCurso(cursoId);
         estudiantes = (ArrayList<EstudianteDTO>) estudianteService.getAllStudents();
         temaDTO = temaService.getTemaPorCurso(cursoId);
         habilidades = (ArrayList<HabilidadDTO>) habilidadesService.getHabilidadPorCurso(cursoId);
@@ -103,6 +105,15 @@ public class CursoInfoView implements Serializable {
     public List<EstudianteDTO> getEstudiantes() {
         return estudiantes;
     }
+
+    public ArrayList<ProfesorCursoDTO> getProfesoresRol() {
+        return profesoresRol;
+    }
+
+    public void setProfesoresRol(ArrayList<ProfesorCursoDTO> profesoresRol) {
+        this.profesoresRol = profesoresRol;
+    }
+
     public void setEstudiantes(ArrayList<EstudianteDTO> estudiantes) {
         this.estudiantes = estudiantes;
     }

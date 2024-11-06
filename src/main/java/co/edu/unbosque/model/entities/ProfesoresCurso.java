@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "PROFESORES_CURSO")
 @IdClass(ProfesoresCursoId.class)
+@NamedQueries({
+        @NamedQuery(name="ProfesoresCurso.findAll", query = "SELECT p FROM ProfesoresCurso p")
+})
 public class ProfesoresCurso {
 
     @Id

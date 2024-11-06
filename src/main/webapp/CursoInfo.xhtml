@@ -59,10 +59,13 @@
 
                <div class="docent-card">
                   <h3>#{profesor.nombre} #{profesor.apellidos}</h3>
-                <!--  <h5>#{profesor.correoElectronico}</h5>-->
                   <p>#{profesor.resumenExperiencia}</p>
                   <p>#{profesor.correoElectronico}</p>
-              <!--     <p>#{cursoInfoView.profesorCursoDTO.rolDocente}</p>-->
+                  <ui:repeat value="#{cursoInfoView.profesoresRol}" var="rol">
+                     <ui:fragment rendered="#{rol.idDocente == profesor.idDocente}">
+                        <p>#{rol.rolDocente}</p>
+                     </ui:fragment>
+                  </ui:repeat>
 
                </div>
             </ui:repeat>
