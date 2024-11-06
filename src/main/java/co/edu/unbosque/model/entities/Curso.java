@@ -8,9 +8,9 @@ import java.util.List;
 @Table(name = "CURSOS")
 @NamedQueries({
         @NamedQuery(name="Curso.findAll", query = "SELECT c FROM Curso c"),
-        @NamedQuery(name = "Curso.findByFilters", query = "SELECT c FROM Curso c JOIN c.temasCurso tc JOIN tc.tema t WHERE "
+        @NamedQuery(name = "Curso.findByFilters", query = "SELECT c FROM Curso c WHERE "
                 + "(:tipo IS NULL OR c.tipoCurso = :tipo) AND "
-                + "(:tema IS NULL OR t.nombreTema = :tema) AND "
+                + "(:tema IS NULL OR c.tituloCurso = :tema) AND "
                 + "(:habilidad IS NULL OR c.tituloCurso = :habilidad) AND "
                 + "(:fecha IS NULL OR c.fechaInicio = :fecha) AND "
                 + "(:modalidad IS NULL OR c.modalidadCurso = :modalidad)")
@@ -69,6 +69,8 @@ public class Curso {
     @OneToMany(mappedBy = "curso", fetch = FetchType.EAGER)
     private List<ProfesoresCurso> profesoresCurso;
 
+    @OneToMany(mappedBy = "curso", fetch = FetchType.EAGER)
+    private List<CalificacionesCurso> calificacionesCurso;
 
     public Curso() {
     }
@@ -217,5 +219,13 @@ public class Curso {
 
     public void setProfesoresCurso(List<ProfesoresCurso> profesoresCurso) {
         this.profesoresCurso = profesoresCurso;
+    }
+
+    public List<CalificacionesCurso> getCalificacionesCurso() {
+        return calificacionesCurso;
+    }
+
+    public void setCalificacionesCurso(List<CalificacionesCurso> calificacionesCurso) {
+        this.calificacionesCurso = calificacionesCurso;
     }
 }

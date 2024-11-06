@@ -1,9 +1,12 @@
 package co.edu.unbosque.view;
 
 
+import co.edu.unbosque.model.dto.CalificacionesCursoDTO;
 import co.edu.unbosque.model.dto.CursoDTO;
 import co.edu.unbosque.model.dto.InscripcionDTO;
+import co.edu.unbosque.model.entities.CalificacionesCursoId;
 import co.edu.unbosque.model.entities.InscripcionId;
+import co.edu.unbosque.services.CalificacionesService;
 import co.edu.unbosque.services.CursoService;
 import co.edu.unbosque.services.InscripcionService;
 import jakarta.enterprise.context.RequestScoped;
@@ -20,20 +23,24 @@ public class AdminView implements Serializable {
     private  CursoService cursoService;
     private CursoDTO cursoDTO;
     private InscripcionDTO inscripcionDTO;
+    private CalificacionesCursoDTO calificacionesCursoDTO;
     private boolean showDashboardPanel, showCrearCurso, showModificarCurso, showModificarPrecio, showModificarModalidades, showGestionarinscripcion, showEstudiantesInscritos;
     private int CursoId;
     private String EstudianteId;
-    @Named("inscripcionView")
     @Inject
     private InscripcionView inscripcionView;
     @Named
     @Inject
     private InscripcionService inscripcionService;
+    @Named
+    @Inject
+    private CalificacionesService calificacionesService;
 
 
     public AdminView(){
         cursoDTO = new CursoDTO();
         inscripcionDTO = new InscripcionDTO();
+        calificacionesCursoDTO = new CalificacionesCursoDTO();
         showDashboardPanel = true;
 
     }
@@ -152,15 +159,22 @@ public class AdminView implements Serializable {
         this.cursoDTO = cursoService.getCurso(idCurso);
         setCursoId(idCurso);
     }
-    public void editarInscripcion(int idCurso, String idStudiante){
-        InscripcionId inscripcionId = new InscripcionId(idCurso,idStudiante);
+    public void editarInscripcion(int idCurso, String idEstudiante){
+        InscripcionId inscripcionId = new InscripcionId(idCurso,idEstudiante);
         inscripcionDTO.setEstadoInscripcion(inscripcionDTO.getEstadoInscripcion());
         this.inscripcionDTO = inscripcionService.getInscripcionById(inscripcionId);
          setCursoId(idCurso);
-         setEstudianteId(idStudiante);
+         setEstudianteId(idEstudiante);
     }
     public void estudiantesInscritos(int idCurso){
 
+    }
+    public void crearComentario(int idCurso, String idEstudiante){
+        CalificacionesCursoId calificacionesCursoId = new CalificacionesCursoId(idCurso,idEstudiante);
+        calificacionesCursoDTO.setComentarios(calificacionesCursoDTO.getComentarios());
+        this.calificacionesCursoDTO = calificacionesService.getCalificacionesCurso(calificacionesCursoId);
+        setCursoId(idCurso);
+        setEstudianteId(idEstudiante);
     }
 
 

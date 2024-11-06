@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <p:panel toggleable="true" styleClass="content">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <ui:repeat value="#{cursoInfoView.calificaciones}" var="calificacion">
+            <p:card class="comment">
+                    <p><strong>#{calificacion.estudiante.username} </strong></p>
+                    <p><strong>Calificación Obtenida: #{calificacion.calificacion} </strong> </p>
+                <p>#{calificacion.comentarios}</p>
+
+            </p:card>
+            </ui:repeat>
+
+            <h:outputLabel value="No se encontraron calificaciones." rendered="#{empty cursoInfoView.calificaciones}" />
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+            <p:commandButton value="Realizar Comentar" icon="pi pi-pen-to-square"
+                             styleClass="ui-button-raised"
+                             action="#{adminView.crearComentario(cursoInfoView.cursoDTO.idCurso, cursoInfoView.estudiantes.get(1).username)}"
+                             onclick="PF('createComentarioDialog').show(); return false;"
+                             style="padding: 5px; color: #ffffff; background-color: #813a77; border: 1px solid #813a77;"/>
+        </div>
+    </p:panel>
+
+
+    <h:form>
+
+        <p:dialog header="Nuevo Comentario" showEffect="fade" widgetVar="createComentarioDialog" modal="true">
+           <p:outputPanel>
+               <h:panelGrid columns="2">
+                <h:outputLabel for="id_curso" value="#{cursoInfoView.cursoDTO.idCurso}" />
+                <p:inputText id="id_curso" value="#{cursoInfoView.calificacionesCursoDTO.idCurso}" required="true" />
+
+                <h:outputLabel for="id_estudiante" value="#{cursoInfoView.estudiantes.get(1).idEstudiante}" />
+                <p:inputText id="id_estudiante" value="#{cursoInfoView.calificacionesCursoDTO.idEstudiante}" required="true" />
+
+                <h:outputLabel for="calificacion" value="Calificación" />
+                <p:inputText id="calificacion" value="#{cursoInfoView.calificacionesCursoDTO.calificacion}" required="true" />
+
+                <h:outputLabel for="comentarios" value="Comentario" />
+                <p:inputText id="comentarios" value="#{cursoInfoView.calificacionesCursoDTO.comentarios}" required="true" />
+            </h:panelGrid>
+           </p:outputPanel>
+
+            <f:facet name="footer">
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate/>
+                </p:messages>
+
+
+                <p:commandButton value="Comentar" actionListener="#{cursoInfoView.createComentario()}" oncomplete="location.reload();" style="color: #ffffff; background-color: #2B7B8C;     border: 1px solid #2B7B8C;"/>
+
+                <p:commandButton value="Cancelar" onclick="PF('createPostDialog').hide();" type="button" style="color: #ffffff; background-color: #2B7B8C;     border: 1px solid #2B7B8C;"/>
+                </f:facet>
+
+        </p:dialog>
+    </h:form>
+
+
+
+
+</html>

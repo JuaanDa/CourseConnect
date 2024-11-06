@@ -16,7 +16,7 @@
         <p:panel header="Modificar Modalidades" styleClass="modalidad-panel">
             <p:dataTable value="#{cursoView.cursos}" var="curso" rowKey="#{curso.idCurso}">
                 <p:column headerText="ID">
-                    <h:outputText value="#{curso.id_curso}" />
+                    <h:outputText value="#{curso.idCurso}" />
                 </p:column>
                 <p:column headerText="Título">
                     <h:outputText value="#{curso.tituloCurso}" />
@@ -26,7 +26,7 @@
                 </p:column>
                 <p:column headerText="Modificar Modalidad">
                     <p:commandButton icon="pi pi-pencil"
-                                     action="#{adminView.editarCursoModalidades(curso.id_curso)}"
+                                     action="#{adminView.editarCursoModalidades(curso.idCurso)}"
                                      oncomplete="PF('modalidadDialog').show()"
                                      styleClass="edit-button rounded-button ui-button-success"
                                      update="@form" />
@@ -34,7 +34,7 @@
             </p:dataTable>
         </p:panel>
 
-        <p:dialog header="Modificar Modalidad Curso" widgetVar="modalidadDialog" modal="true" responsive="true">
+        <p:dialog header="Modificar Modalidad Curso" showEffect="fade" widgetVar="modalidadDialog" modal="true" responsive="true">
             <p:outputPanel id="modalidad-content" class="ui-fluid">
                 <div class="field">
                     <p:outputLabel for="modalidad_curso" value="Modalidad de Curso " styleClass="block" />

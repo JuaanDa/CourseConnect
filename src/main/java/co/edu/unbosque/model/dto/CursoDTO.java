@@ -3,10 +3,11 @@ package co.edu.unbosque.model.dto;
 import co.edu.unbosque.model.entities.Usuario;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class CursoDTO {
 
-    private int id_curso;
+    private int idCurso;
     private String tituloCurso;
     private String urlImagenCurso;
     private String tipoCurso;
@@ -19,13 +20,13 @@ public class CursoDTO {
     private String estadoCurso;
     private LocalDate fechaCreacion;
     private Usuario creadoPor;
-
+    private List<String> temasCurso;
     public CursoDTO(){
 
     }
 
     public CursoDTO(int id_curso, String tituloCurso, String urlImagenCurso, String tipoCurso, String modalidadCurso, String horarioCurso, LocalDate fechaInicio, LocalDate fechaFin, int horasCurso, double costoCurso, String estadoCurso, LocalDate fechaCreacion, Usuario creadoPor) {
-        this.id_curso = id_curso;
+        this.idCurso = id_curso;
         this.tituloCurso = tituloCurso;
         this.urlImagenCurso = urlImagenCurso;
         this.tipoCurso = tipoCurso;
@@ -40,12 +41,12 @@ public class CursoDTO {
         this.creadoPor = creadoPor;
     }
 
-    public int getId_curso() {
-        return id_curso;
+    public int getIdCurso() {
+        return idCurso;
     }
 
-    public void setId_curso(int id_curso) {
-        this.id_curso = id_curso;
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
     }
 
     public String getTituloCurso() {

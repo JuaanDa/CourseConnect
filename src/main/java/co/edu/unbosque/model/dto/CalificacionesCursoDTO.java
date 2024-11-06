@@ -3,7 +3,7 @@ package co.edu.unbosque.model.dto;
 import co.edu.unbosque.model.entities.Curso;
 import co.edu.unbosque.model.entities.Estudiante;
 
-public class CalifacionesCursoDTO {
+public class CalificacionesCursoDTO {
 
     private int idCurso;
     private String idEstudiante;
@@ -12,11 +12,11 @@ public class CalifacionesCursoDTO {
     private Estudiante estudiante;
     private Curso curso;
 
-    public CalifacionesCursoDTO() {
+    public CalificacionesCursoDTO() {
 
     }
 
-    public CalifacionesCursoDTO(int idCurso, String idEstudiante, float calificacion, String comentarios, Estudiante estudiante, Curso curso) {
+    public CalificacionesCursoDTO(int idCurso, String idEstudiante, float calificacion, String comentarios, Estudiante estudiante, Curso curso) {
         this.idCurso = idCurso;
         this.idEstudiante = idEstudiante;
         this.calificacion = calificacion;

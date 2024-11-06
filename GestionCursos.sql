@@ -1,6 +1,6 @@
 DROP DATABASE courseconnect;
-CREATE DATABASE courseconnect;
-USE courseconnect;
+	CREATE DATABASE courseconnect;
+	USE courseconnect;
 
 CREATE TABLE USUARIOS(
                          username VARCHAR(15) NOT NULL UNIQUE,
@@ -113,7 +113,7 @@ CREATE TABLE CURSOS_ESTUDIANTE(
 CREATE TABLE CALIFICACIONES_CURSO(
                                      id_curso INT NOT NULL,
                                      id_estudiante VARCHAR(15) NOT NULL,
-                                     calificacion DECIMAL NOT NULL,
+                                     calificacion DECIMAL(2,1) NOT NULL,
                                      comentarios VARCHAR(255) NOT NULL,
 
                                      PRIMARY KEY (id_curso,id_estudiante),

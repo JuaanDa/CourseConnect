@@ -45,7 +45,7 @@
 
 
             <p:dataTable id="dt-courses" widgetVar="dtCourses" var="curso" value="#{cursoView.cursos}"
-                         paginator="true" rows="5" selection="#{cursoView.cursos}" rowKey="#{curso.id_curso}" paginatorPosition="bottom" >
+                         paginator="true" rows="5" selection="#{cursoView.cursos}" rowKey="#{curso.idCurso}" paginatorPosition="bottom" >
                 <f:facet name="header">
                     <div class="courses-table-header">
                         <span style="font-weight: bold">CURSOS</span>
@@ -57,8 +57,8 @@
                 <p:ajax event="rowUnselect" update="@all" />
 
 
-                <p:column headerText="Id" sortBy="#{curso.id_curso}" filterBy="#{curso.id_curso}">
-                    <h:outputText value="#{curso.id_curso}" />
+                <p:column headerText="Id" sortBy="#{curso.idCurso}" filterBy="#{curso.idCurso}">
+                    <h:outputText value="#{curso.idCurso}" />
                 </p:column>
 
 

@@ -62,6 +62,7 @@
                 <!--  <h5>#{profesor.correoElectronico}</h5>-->
                   <p>#{profesor.resumenExperiencia}</p>
                   <p>#{profesor.correoElectronico}</p>
+                <!--  <p>#{cursoInfoView.profesorCurso.rolDocente}</p>-->
 
                </div>
             </ui:repeat>
@@ -91,24 +92,9 @@
          <h3> Comentarios Y calificaciones</h3>
       </div>
       <div class="card-coments">
-         <p:card class="comment">
-            <p><strong>Estudiante 1 </strong> <span class="rating"></span></p>
-            <p:rating id="ratingReadOnly" value="#{ratingView.rating3}" readonly="true"/>
-            <p>Un curso excelente, muy recomendado.</p>
-         </p:card>
+      
+         <ui:include src="Calificaciones.xhtml" />
 
-         <p:card class="comment">
-            <p><strong>Estudiante 1 </strong> <span class="rating"></span></p>
-            <p:rating id="ratingReadOnly2" value="#{ratingView.rating3}" readonly="true"/>
-            <p>Muy interesante, aunque podría ser más extenso.</p>
-         </p:card>
-
-         <p:card class="comment">
-
-            <p><strong>Estudiante 1 </strong> <span class="rating"></span></p>
-            <p:rating id="ratingReadOnly3" value="#{ratingView.rating3}" readonly="true"/>
-            <p>Los profesores son muy buenos y se explican muy bien.</p>
-         </p:card>
       </div>
    </div>
    <div class="footer">

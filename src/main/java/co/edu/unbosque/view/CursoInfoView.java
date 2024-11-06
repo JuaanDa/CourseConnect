@@ -1,11 +1,14 @@
 package co.edu.unbosque.view;
 
 import co.edu.unbosque.model.dto.*;
+import co.edu.unbosque.model.entities.CalificacionesCursoId;
+import co.edu.unbosque.model.entities.InscripcionId;
 import co.edu.unbosque.services.*;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.faces.annotation.ManagedProperty;
+import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
@@ -14,15 +17,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Named("cursoInfoView")
-@RequestScoped
+@ViewScoped
 public class CursoInfoView implements Serializable {
 
     private CursoDTO cursoDTO;
     private TemaDTO temaDTO;
+    private CalificacionesCursoDTO calificacionesCursoDTO;
     private ArrayList<ProfesorDTO> profesores;
     private ArrayList<EstudianteDTO> estudiantes;
     private ArrayList<TemaDTO> temas;
     private ArrayList<HabilidadDTO> habilidades;
+    private ProfesorCursoDTO profesorCurso;
+    private ArrayList<CalificacionesCursoDTO> calificaciones;
     @Inject
     private CursoService cursoService;
     @Inject
@@ -31,14 +37,17 @@ public class CursoInfoView implements Serializable {
     private TemaService temaService;
     @Inject
     private HabilidadesService habilidadesService;
+    @Inject
+    private CalificacionesService calificacionesService;
     private int cursoId;
-    @Named
+
     @Inject
     private ProfesoresService profesoresService;
 
     public CursoInfoView() {
         cursoDTO = new CursoDTO();
         temaDTO = new TemaDTO();
+        calificacionesCursoDTO = new CalificacionesCursoDTO();
     }
     @PostConstruct
     public void init() {
@@ -49,6 +58,8 @@ public class CursoInfoView implements Serializable {
         estudiantes = (ArrayList<EstudianteDTO>) estudianteService.getAllStudents();
         temaDTO = temaService.getTemaPorCurso(cursoId);
         habilidades = (ArrayList<HabilidadDTO>) habilidadesService.getHabilidadPorCurso(cursoId);
+        calificaciones = (ArrayList<CalificacionesCursoDTO>) calificacionesService.getAllCalificacionPorCurso(cursoId);
+
     }
 
     public CursoDTO getCursoDTO() {
@@ -65,6 +76,14 @@ public class CursoInfoView implements Serializable {
 
     public void setTemaDTO(TemaDTO temaDTO) {
         this.temaDTO = temaDTO;
+    }
+
+    public CalificacionesCursoDTO getCalificacionesCursoDTO() {
+        return calificacionesCursoDTO;
+    }
+
+    public void setCalificacionesCursoDTO(CalificacionesCursoDTO calificacionesCursoDTO) {
+        this.calificacionesCursoDTO = calificacionesCursoDTO;
     }
 
     public List<ProfesorDTO> getProfesores() {
@@ -95,5 +114,27 @@ public class CursoInfoView implements Serializable {
 
     public void setHabilidades(ArrayList<HabilidadDTO> habilidades) {
         this.habilidades = habilidades;
+    }
+
+    public List<CalificacionesCursoDTO> getCalificaciones() {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(ArrayList<CalificacionesCursoDTO> calificaciones) {
+        this.calificaciones = calificaciones;
+    }
+
+    public ProfesorCursoDTO getProfesorCurso() {
+        return profesorCurso;
+    }
+
+    public void setProfesorCurso(ProfesorCursoDTO profesorCurso) {
+        this.profesorCurso = profesorCurso;
+    }
+    public String createComentario(){
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Comentario Correctamente Publicado"));
+        System.out.println("creando");
+         calificacionesService.saveComentario(calificacionesCursoDTO);
+        return null;
     }
 }

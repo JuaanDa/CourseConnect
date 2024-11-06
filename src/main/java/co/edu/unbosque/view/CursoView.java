@@ -4,7 +4,6 @@ import co.edu.unbosque.model.dto.CursoDTO;
 import co.edu.unbosque.model.dto.HabilidadDTO;
 import co.edu.unbosque.model.dto.TemaDTO;
 import co.edu.unbosque.model.dto.UsuarioDTO;
-import co.edu.unbosque.model.entities.Curso;
 import co.edu.unbosque.model.entities.Usuario;
 import co.edu.unbosque.services.CursoService;
 import co.edu.unbosque.services.UsuarioService;
@@ -133,7 +132,7 @@ public class CursoView implements Serializable {
 
 
     public String filtrar() {
-        List<CursoDTO> filteredCursos = (ArrayList<CursoDTO>) cursoService.getCursos(cursoDTO.getTipoCurso(), cursoDTO.getTituloCurso(), cursoDTO.getTituloCurso(), cursoDTO.getFechaInicio(), cursoDTO.getModalidadCurso());
+        List<CursoDTO> filteredCursos = (ArrayList<CursoDTO>) cursoService.getCursos(cursoDTO.getTipoCurso(), cursoDTO.getTituloCurso(),cursoDTO.getTituloCurso(), cursoDTO.getFechaInicio(), cursoDTO.getModalidadCurso());
         filtroAplicado = true;
         // Actualiza la lista de cursos en PaginationView
         paginationView.setCursos(filteredCursos);
@@ -167,7 +166,7 @@ public class CursoView implements Serializable {
         UsuarioDTO usuarioDTO = usuarios.get(1);
         Usuario creadoPor = usuarioService.updateUsuario(usuarioDTO);
         cursoDTO.setCreadoPor(creadoPor);
-        cursoDTO.setId_curso(CursoId);
+        cursoDTO.setIdCurso(CursoId);
         cursoService.updateCurso(cursoDTO);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Modificacion Realizada  Correctamemte"));
 
@@ -175,7 +174,7 @@ public class CursoView implements Serializable {
     }
     public String actualizarCursoPrecio(int CursoId, double CostoCurso){
         CursoDTO curso = cursoService.getCurso(CursoId);
-        cursoDTO.setId_curso(CursoId);
+        cursoDTO.setIdCurso(CursoId);
         System.out.println(CursoId);
         curso.setCostoCurso(CostoCurso);
         System.out.println(curso.getCostoCurso());
@@ -185,7 +184,7 @@ public class CursoView implements Serializable {
     }
     public String actualizarCursoModalidad(int CursoId, String CursoModalidad){
         CursoDTO curso = cursoService.getCurso(CursoId);
-        cursoDTO.setId_curso(CursoId);
+        cursoDTO.setIdCurso(CursoId);
         curso.setModalidadCurso(CursoModalidad);
         cursoService.updateCurso(curso);
         return null;
