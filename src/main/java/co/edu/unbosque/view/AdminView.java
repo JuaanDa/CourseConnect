@@ -197,6 +197,7 @@ public class AdminView implements Serializable {
     public void finalizarCurso(int idCurso){
         cursoDTO.setEstadoCurso(cursoDTO.getEstadoCurso());
         this.cursoDTO = cursoService.getCurso(idCurso);
+        setCursoId(idCurso);
         //this.temaDTO = (temaService.getTemaPorCurso(idCurso));
        // TemasCursoId temasCursoId = new TemasCursoId(idCurso,idCurso);
 

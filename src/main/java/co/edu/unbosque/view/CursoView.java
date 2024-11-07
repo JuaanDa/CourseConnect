@@ -225,9 +225,9 @@ public class CursoView implements Serializable {
         CursoDTO curso = cursoService.getCurso(CursoId);
         cursoDTO.setId_Curso(CursoId);
         curso.setEstadoCurso(CursoEstado);
+        System.out.println(curso.getEstadoCurso());
 
-
-      //  cursoService.updateCurso(curso);
+        cursoService.updateCurso(curso);
         return null;
     }
 
