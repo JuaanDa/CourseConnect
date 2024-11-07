@@ -7,13 +7,13 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Modificar Modalidades</title>
+    <title>Modificar Estados</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
 </h:head>
 
 <h:body>
-    <h:form id="ModalidadForm">
-        <p:panel header="Modificar Modalidades" styleClass="modalidad-panel">
+    <h:form id="FinalizarCursoForm">
+        <p:panel header="Finalizar Curso" styleClass="finalizar-panel">
             <p:dataTable value="#{cursoView.cursos}" var="curso" rowKey="#{curso.id_Curso}">
                 <p:column headerText="ID">
                     <h:outputText value="#{curso.id_Curso}" />
@@ -21,35 +21,35 @@
                 <p:column headerText="Título">
                     <h:outputText value="#{curso.tituloCurso}" />
                 </p:column>
-                <p:column headerText="Modalidad">
-                    <h:outputText value="#{curso.modalidadCurso}" />
+                <p:column headerText="Estado">
+                    <h:outputText value="#{curso.estadoCurso}" />
                 </p:column>
-                <p:column headerText="Modificar Modalidad">
+                <p:column headerText="Finalizar Curso">
                     <p:commandButton icon="pi pi-pencil"
-                                     action="#{adminView.editarCursoModalidades(curso.id_Curso)}"
-                                     oncomplete="PF('modalidadDialog').show()"
+                                     action="#{adminView.finalizarCurso(curso.id_Curso)}"
+                                     oncomplete="PF('estadoDialog').show()"
                                      styleClass="edit-button rounded-button ui-button-success"
                                      update="@form" />
                 </p:column>
             </p:dataTable>
         </p:panel>
 
-        <p:dialog header="Modificar Modalidad Curso" showEffect="fade" widgetVar="modalidadDialog" modal="true" responsive="true">
-            <p:outputPanel id="modalidad-content" class="ui-fluid">
+        <p:dialog header="Finalizar Curso" showEffect="fade" widgetVar="estadoDialog" modal="true" responsive="true">
+            <p:outputPanel id="estado-content" class="ui-fluid">
                 <div class="field">
-                    <p:outputLabel for="modalidad_curso" value="Modalidad de Curso " styleClass="block" />
-                    <p:selectOneMenu id="modalidad_curso" value="#{cursoView.cursoDTO.modalidadCurso}"  label="Modalidad" >
-                        <f:selectItems value="#{cursoView.cursosModalidad}"/>
+                    <p:outputLabel for="estado_curso" value="Estado Curso " styleClass="block" />
+                    <p:selectOneMenu id="estado_curso" value="#{cursoView.cursoDTO.estadoCurso}"  label="Estado" >
+                        <f:selectItems value="#{cursoView.cursoEstado}"/>
                     </p:selectOneMenu>
                 </div>
             </p:outputPanel>
 
             <f:facet name="footer">
-                <p:commandButton value="Actualizar Modalidad" icon="pi pi-upload"
-                                 actionListener="#{cursoView.actualizarCursoModalidad(adminView.cursoId, cursoView.cursoDTO.modalidadCurso)}"
-                                 update="modalidad-content" process="@form" />
+                <p:commandButton value="Cambiar Estado Curso" icon="pi pi-upload"
+                                 actionListener="#{cursoView.finalizarCursoEstado(adminView.cursoId, cursoView.cursoDTO.estadoCurso)}"
+                                 update="estado-content" process="@form" />
                 <p:commandButton value="Cancelar" icon="pi pi-times"
-                                 onclick="PF('modalidadDialog').hide()"
+                                 onclick="PF('estadoDialog').hide()"
                                  class="ui-button-secondary" type="button" />
             </f:facet>
         </p:dialog>

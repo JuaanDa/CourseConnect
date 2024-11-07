@@ -36,11 +36,9 @@ public class Curso {
     private String horarioCurso;
 
     @Column(name = "fecha_inicio", nullable = false)
-  //  @Temporal(TemporalType.DATE)
     private LocalDate fechaInicio;
 
     @Column(name = "fecha_fin", nullable = false)
-   // @Temporal(TemporalType.DATE)
     private LocalDate fechaFin;
 
     @Column(name = "horas_curso", nullable = false)
@@ -53,7 +51,6 @@ public class Curso {
     private String estadoCurso;
 
     @Column(name = "fecha_creacion", nullable = false)
-   // @Temporal(TemporalType.DATE)
     private LocalDate fechaCreacion;
 
     @ManyToOne
@@ -228,4 +225,5 @@ public class Curso {
     public void setCalificacionesCurso(List<CalificacionesCurso> calificacionesCurso) {
         this.calificacionesCurso = calificacionesCurso;
     }
+
 }

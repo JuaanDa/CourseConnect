@@ -1,6 +1,7 @@
 package co.edu.unbosque.model.dao;
 
 import co.edu.unbosque.model.entities.Tema;
+import co.edu.unbosque.model.entities.TemasCursoId;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -21,7 +22,7 @@ public class TemaDAO implements DAO<Tema, Integer>{
 
     @Override
     public void update(Tema entity) {
-
+        em.merge(entity);
     }
 
 

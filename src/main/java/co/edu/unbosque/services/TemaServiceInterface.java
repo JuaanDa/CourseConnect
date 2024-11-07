@@ -7,4 +7,5 @@ import java.util.List;
 public interface TemaServiceInterface {
     TemaDTO getTema(int id);
     List<TemaDTO> getAllTemas();
+    void updateTema(TemaDTO tema);
 }

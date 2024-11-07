@@ -1,14 +1,15 @@
 package co.edu.unbosque.view;
 
 
-import co.edu.unbosque.model.dto.CalificacionesCursoDTO;
-import co.edu.unbosque.model.dto.CursoDTO;
-import co.edu.unbosque.model.dto.InscripcionDTO;
+import co.edu.unbosque.model.dto.*;
 import co.edu.unbosque.model.entities.CalificacionesCursoId;
 import co.edu.unbosque.model.entities.InscripcionId;
+import co.edu.unbosque.model.entities.TemasCurso;
+import co.edu.unbosque.model.entities.TemasCursoId;
 import co.edu.unbosque.services.CalificacionesService;
 import co.edu.unbosque.services.CursoService;
 import co.edu.unbosque.services.InscripcionService;
+import co.edu.unbosque.services.TemaService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -22,11 +23,13 @@ public class AdminView implements Serializable {
     @Inject
     private  CursoService cursoService;
     private CursoDTO cursoDTO;
+    private TemaDTO temaDTO;
     private InscripcionDTO inscripcionDTO;
     private CalificacionesCursoDTO calificacionesCursoDTO;
-    private boolean showDashboardPanel, showCrearCurso, showModificarCurso, showModificarPrecio, showModificarModalidades, showGestionarinscripcion, showEstudiantesInscritos;
+    private boolean showDashboardPanel, showCrearCurso, showModificarCurso, showModificarPrecio, showModificarModalidades, showGestionarinscripcion, showEstudiantesInscritos, showCursoPorVencer, showFinalizarCurso;
     private int CursoId;
     private String EstudianteId;
+    private TemasCursoId temasCursoId;
     @Inject
     private InscripcionView inscripcionView;
     @Named
@@ -35,11 +38,16 @@ public class AdminView implements Serializable {
     @Named
     @Inject
     private CalificacionesService calificacionesService;
+    @Named
+    @Inject
+    private TemaService temaService;
 
 
     public AdminView(){
         cursoDTO = new CursoDTO();
+        temaDTO = new TemaDTO();
         inscripcionDTO = new InscripcionDTO();
+        temasCursoId = new TemasCursoId();
         calificacionesCursoDTO = new CalificacionesCursoDTO();
         showDashboardPanel = true;
 
@@ -75,7 +83,14 @@ public class AdminView implements Serializable {
         hideAllPanels();
         showEstudiantesInscritos = true;
     }
-
+    public void cursosPorVencer(){
+        hideAllPanels();
+        showCursoPorVencer = true;
+    }
+    public void finalizarCurso(){
+        hideAllPanels();
+        showFinalizarCurso = true;
+    }
 
 
     public boolean isShowDashboardPanel() {
@@ -133,6 +148,22 @@ public class AdminView implements Serializable {
         this.showEstudiantesInscritos = showEstudiantesInscritos;
     }
 
+    public boolean isShowCursoPorVencer() {
+        return showCursoPorVencer;
+    }
+
+    public void setShowCursoPorVencer(boolean showCursoPorVencer) {
+        this.showCursoPorVencer = showCursoPorVencer;
+    }
+
+    public boolean isShowFinalizarCurso() {
+        return showFinalizarCurso;
+    }
+
+    public void setShowFinalizarCurso(boolean showFinalizarCurso) {
+        this.showFinalizarCurso = showFinalizarCurso;
+    }
+
     private void hideAllPanels() {
             showDashboardPanel = false;
           showCrearCurso = false;
@@ -141,6 +172,8 @@ public class AdminView implements Serializable {
           showModificarModalidades = false;
           showGestionarinscripcion = false;
           showEstudiantesInscritos = false;
+          showCursoPorVencer = false;
+          showFinalizarCurso = false;
 
     }
     public void editarCurso(int idCurso){
@@ -152,13 +185,22 @@ public class AdminView implements Serializable {
         cursoDTO.setCostoCurso(cursoDTO.getCostoCurso());
         this.cursoDTO = cursoService.getCurso(idCurso);
         setCursoId(idCurso);
+      //  this.temaDTO = (temaService.getTemaPorCurso(idCurso));
+       // TemasCursoId temasCursoId = new TemasCursoId(temaDTO.getIdTema(),idCurso);
 
     }
     public void editarCursoModalidades(int idCurso){
         cursoDTO.setModalidadCurso(cursoDTO.getModalidadCurso());
-        System.out.println(cursoDTO.getModalidadCurso());
         this.cursoDTO = cursoService.getCurso(idCurso);
         setCursoId(idCurso);
+    }
+    public void finalizarCurso(int idCurso){
+        cursoDTO.setEstadoCurso(cursoDTO.getEstadoCurso());
+        this.cursoDTO = cursoService.getCurso(idCurso);
+        //this.temaDTO = (temaService.getTemaPorCurso(idCurso));
+       // TemasCursoId temasCursoId = new TemasCursoId(idCurso,idCurso);
+
+
     }
     public void editarInscripcion(int idCurso, String idEstudiante){
         InscripcionId inscripcionId = new InscripcionId(idCurso,idEstudiante);
@@ -178,12 +220,21 @@ public class AdminView implements Serializable {
 
 
 
+
     public int getCursoId() {
         return CursoId;
     }
 
     public void setCursoId(int cursoId) {
         CursoId = cursoId;
+    }
+
+    public TemasCursoId getTemasCursoId() {
+        return temasCursoId;
+    }
+
+    public void setTemasCursoId(TemasCursoId temasCursoId) {
+        this.temasCursoId = temasCursoId;
     }
 
     public String getEstudianteId() {

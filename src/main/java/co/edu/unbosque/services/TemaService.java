@@ -1,10 +1,12 @@
 package co.edu.unbosque.services;
 
 import co.edu.unbosque.model.dao.DAO;
+import co.edu.unbosque.model.dao.TemasCursoDAO;
 import co.edu.unbosque.model.dto.TemaDTO;
 import co.edu.unbosque.model.entities.Curso;
 import co.edu.unbosque.model.entities.Tema;
 import co.edu.unbosque.model.entities.TemasCurso;
+import co.edu.unbosque.model.entities.TemasCursoId;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -22,6 +24,8 @@ public class TemaService implements TemaServiceInterface {
     private DAO<Tema, Integer> daoTema;
     @Inject
     private DAO<Curso, Integer> daoCurso;
+    @Inject
+    private DAO<TemasCursoId, TemasCursoId> daotemaCurso;
 
 
     private final ModelMapper dataMapper;
@@ -44,6 +48,14 @@ public class TemaService implements TemaServiceInterface {
         }
         return temasDTO;
     }
+
+    @Override
+    public void updateTema(TemaDTO temaDTO) {
+        Tema tema = dataMapper.map(temaDTO, Tema.class);
+        daoTema.update(tema);
+    }
+   
+
     public TemaDTO getTemaPorCurso(int cursoId) {
         List<TemaDTO> temasDTO = new ArrayList<>();
         List<Curso> cursos = daoCurso.findAll(); // O usa una consulta personalizada si es necesario

@@ -56,9 +56,33 @@ public class CursoService implements CursoServiceInterface {
         List<Curso> cursos = daoCurso.findAll();
         List<CursoDTO> cursoDTOs = new ArrayList<>();
         for (Curso curso : cursos) {
-            cursoDTOs.add(dataMapper.map(curso, CursoDTO.class));
+
+                cursoDTOs.add(dataMapper.map(curso, CursoDTO.class));
         }
         return cursoDTOs;
+    }
+    public List<CursoDTO> getAllCursosActivos() {
+        List<Curso> cursos = daoCurso.findAll();
+        List<CursoDTO> cursoDTOs = new ArrayList<>();
+        for (Curso curso : cursos) {
+            if(curso.getEstadoCurso().equals("ACTIVO"))
+                cursoDTOs.add(dataMapper.map(curso, CursoDTO.class));
+        }
+        return cursoDTOs;
+    }
+
+    public List<CursoDTO> getCursoPorVencer(){
+        LocalDate fechaCorte = LocalDate.of(2024, 4, 30);
+        LocalDate fechaLimite = fechaCorte.minusDays(30);
+
+        List<Curso> cursos = daoCurso.findAll();
+        List<CursoDTO> cursoDTOs = new ArrayList<>();
+        for (Curso curso : cursos) {
+            if (!curso.getFechaFin().isBefore(fechaLimite) && !curso.getFechaFin().isAfter(fechaCorte)) {
+                cursoDTOs.add(dataMapper.map(curso, CursoDTO.class));
+            }
+        }
+            return cursoDTOs;
     }
     public List<UsuarioDTO> getAllUsuarios() {
         List<Usuario> usuarios = daoUsuario.findAll();
@@ -75,10 +99,10 @@ public class CursoService implements CursoServiceInterface {
 
     @Override
     public void updateCurso(CursoDTO cursoDTO) {
+
         Curso curso = dataMapper.map(cursoDTO, Curso.class);
+
         daoCurso.update(curso);
-
-
     }
     public List<CursoDTO> getCursos(String tipo, String tema, String habilidad, LocalDate fecha, String modalidad) {
         List<Curso> cursos = daoCurso.findCursos(tipo, tema, habilidad, fecha, modalidad);

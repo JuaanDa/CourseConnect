@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Administrar Cursos</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+</h:head>
+
+<h:body>
+    <h:form id="cursoPorVencer">
+        <p:panel header="Cursos por Vencer (2024-04-31)" styleClass="cursos-panel">
+
+            <p:dataTable value="#{cursoView.cursosPorVencer}" var="curso" rowKey="#{curso.id_cursp}">
+                <p:column headerText="ID">
+                    <h:outputText value="#{curso.id_Curso}" />
+                </p:column>
+                <p:column headerText="Título">
+                    <h:outputText value="#{curso.tituloCurso}" />
+                </p:column>
+                <p:column headerText="Fecha Incio">
+                    <h:outputText value="#{curso.fechaInicio}" />
+                </p:column>
+                <p:column headerText="Fecha Fin">
+                    <h:outputText value="#{curso.fechaFin}" />
+                </p:column>
+
+
+
+            </p:dataTable>
+        </p:panel>
+
+    </h:form>
+</h:body>
+</html>

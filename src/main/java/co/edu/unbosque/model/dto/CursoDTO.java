@@ -1,5 +1,7 @@
 package co.edu.unbosque.model.dto;
 
+import co.edu.unbosque.model.entities.TemasCurso;
+import co.edu.unbosque.model.entities.TemasCursoId;
 import co.edu.unbosque.model.entities.Usuario;
 
 import java.time.LocalDate;
@@ -7,7 +9,7 @@ import java.util.List;
 
 public class CursoDTO {
 
-    private int idCurso;
+    private int id_Curso;
     private String tituloCurso;
     private String urlImagenCurso;
     private String tipoCurso;
@@ -20,13 +22,13 @@ public class CursoDTO {
     private String estadoCurso;
     private LocalDate fechaCreacion;
     private Usuario creadoPor;
-    private List<String> temasCurso;
-    public CursoDTO(){
+
+    public CursoDTO() {
 
     }
 
-    public CursoDTO(int id_curso, String tituloCurso, String urlImagenCurso, String tipoCurso, String modalidadCurso, String horarioCurso, LocalDate fechaInicio, LocalDate fechaFin, int horasCurso, double costoCurso, String estadoCurso, LocalDate fechaCreacion, Usuario creadoPor) {
-        this.idCurso = id_curso;
+    public CursoDTO(int id_Curso, String tituloCurso, String urlImagenCurso, String tipoCurso, String modalidadCurso, String horarioCurso, LocalDate fechaInicio, LocalDate fechaFin, int horasCurso, double costoCurso, String estadoCurso, LocalDate fechaCreacion, Usuario creadoPor) {
+        this.id_Curso = id_Curso;
         this.tituloCurso = tituloCurso;
         this.urlImagenCurso = urlImagenCurso;
         this.tipoCurso = tipoCurso;
@@ -41,12 +43,12 @@ public class CursoDTO {
         this.creadoPor = creadoPor;
     }
 
-    public int getIdCurso() {
-        return idCurso;
+    public int getId_Curso() {
+        return id_Curso;
     }
 
-    public void setIdCurso(int idCurso) {
-        this.idCurso = idCurso;
+    public void setId_Curso(int id_Curso) {
+        this.id_Curso = id_Curso;
     }
 
     public String getTituloCurso() {
@@ -144,4 +146,6 @@ public class CursoDTO {
     public void setCreadoPor(Usuario creadoPor) {
         this.creadoPor = creadoPor;
     }
+
+
 }

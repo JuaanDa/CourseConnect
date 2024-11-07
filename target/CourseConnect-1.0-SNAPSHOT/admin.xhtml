@@ -39,13 +39,14 @@
                      <p:menuitem value="Editar Curso" action="#{adminView.modificarCurso()}" icon="pi pi-file-plus" update="@all"/>
                      <p:menuitem value="Editar Precio" action="#{adminView.modificarPrecio()}" icon="pi pi-money-bill" update="@all"/>
                      <p:menuitem value="Editar Modalidad" action="#{adminView.modificarModalidades()}" icon="pi pi-tag" update="@all"/>
+                     <p:menuitem value="Finalizar Curso" action="#{adminView.finalizarCurso()}" icon="pi pi-delete-left" update="@all"/>
                   </p:submenu>
                   <p:submenu label="Gestión de Inscripciones">
                      <p:menuitem value="Inscripciones" action="#{adminView.gestionarinscripcion()}" icon="pi pi-address-book" update="@all"/>
                   </p:submenu>
                   <p:submenu label="Reportes">
                      <p:menuitem value="Curso Más Vendido" action="#{adminView.bestSellingCourse}"/>
-                     <p:menuitem value="Cursos por Vencer" action="#{adminView.expiringCourses}"/>
+                     <p:menuitem value="Cursos por Vencer" action="#{adminView.cursosPorVencer()}" icon="pi pi-file-excel" update="@all"/>
                   </p:submenu>
                   <p:submenu label="Gestión Estudiantes">
                      <p:menuitem value="Alumnos Inscritos" action="#{adminView.estudiantesInscritos()}" icon="pi pi-user-edit" update="@all"/>
@@ -83,11 +84,19 @@
       <p:panel id="modifcarModalidadesPanel"  rendered="#{adminView.showModificarModalidades}">
          <ui:include src="ModificarModalidades.xhtml" />
       </p:panel>
+
+      <p:panel id="FinalizarCursoPanel"  rendered="#{adminView.showFinalizarCurso}">
+         <ui:include src="FinalizarCurso.xhtml" />
+      </p:panel>
       <p:panel id="gestionarInscrpcionPanel"  rendered="#{adminView.showGestionarinscripcion}">
          <ui:include src="GestionarInscripcion.xhtml" />
       </p:panel>
       <p:panel id="alumnosInscritosPanel"  rendered="#{adminView.showEstudiantesInscritos}">
          <ui:include src="EstudiantesInscritos.xhtml" />
+      </p:panel>
+
+      <p:panel id="CursoPorVencerPanel"  rendered="#{adminView.showCursoPorVencer}">
+         <ui:include src="CursoPorVencer.xhtml" />
       </p:panel>
 
 

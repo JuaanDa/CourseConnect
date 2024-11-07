@@ -29,4 +29,12 @@ public class TemasCursoId implements Serializable {
     public void setIdCurso(int idCurso) {
         this.idCurso = idCurso;
     }
+
+    @Override
+    public String toString() {
+        return "TemasCursoId{" +
+                "idTema=" + idTema +
+                ", idCurso=" + idCurso +
+                '}';
+    }
 }

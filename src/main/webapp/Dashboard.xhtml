@@ -23,7 +23,7 @@
                 <p:toolbarGroup>
                     <!-- Botón para crear un nuevo curso -->
                     <p:commandButton value="Nuevo Curso" icon="pi pi-plus" action="#{adminView.crearCurso()}"
-                                     update="@all" oncomplete="PF('manageCourseDialog').show()"
+                                     update="@all"
                                      styleClass="ui-button-success" style="margin-right: 10px;" />
 
                     <!-- Botón para modificar un curso -->
@@ -39,13 +39,18 @@
                     <!-- Botón para modificar modalidades -->
                     <p:commandButton value="Modificar Modalidad" icon="pi pi-tags" action="#{adminView.modificarModalidades()}"
                                      update="@all"
-                                     styleClass="ui-button-secondary" />
+                                     styleClass="ui-button-secondary" style="margin-right: 10px;" />
+                    <!-- Botón para finalizar curso -->
+                    <p:commandButton value="Finalizar Curso" icon="pi pi-cloud-download" action="#{adminView.finalizarCurso()}"
+                                     update="@all"
+                                     styleClass="ui-button-danger" />
+
                 </p:toolbarGroup>
             </p:toolbar>
 
 
             <p:dataTable id="dt-courses" widgetVar="dtCourses" var="curso" value="#{cursoView.cursos}"
-                         paginator="true" rows="5" selection="#{cursoView.cursos}" rowKey="#{curso.idCurso}" paginatorPosition="bottom" >
+                         paginator="true" rows="5" selection="#{cursoView.cursos}" rowKey="#{curso.id_Curso}" paginatorPosition="bottom" >
                 <f:facet name="header">
                     <div class="courses-table-header">
                         <span style="font-weight: bold">CURSOS</span>
@@ -57,8 +62,8 @@
                 <p:ajax event="rowUnselect" update="@all" />
 
 
-                <p:column headerText="Id" sortBy="#{curso.idCurso}" filterBy="#{curso.idCurso}">
-                    <h:outputText value="#{curso.idCurso}" />
+                <p:column headerText="Id" sortBy="#{curso.id_Curso}" filterBy="#{curso.id_Curso}">
+                    <h:outputText value="#{curso.id_Curso}" />
                 </p:column>
 
 

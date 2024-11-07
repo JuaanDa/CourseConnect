@@ -14,9 +14,9 @@
 <h:body>
     <h:form id="precioForm">
         <p:panel header="Modificar Precio" styleClass="precio-panel">
-            <p:dataTable value="#{cursoView.cursos}" var="curso" rowKey="#{curso.idCurso}">
+            <p:dataTable value="#{cursoView.cursos}" var="curso" rowKey="#{curso.id_Curso}">
                 <p:column headerText="ID">
-                    <h:outputText value="#{curso.idCurso}" />
+                    <h:outputText value="#{curso.id_Curso}" />
                 </p:column>
                 <p:column headerText="Título">
                     <h:outputText value="#{curso.tituloCurso}" />
@@ -26,7 +26,7 @@
                 </p:column>
                 <p:column headerText="Modificar Precio">
                     <p:commandButton icon="pi pi-tag"
-                                     action="#{adminView.editarCursoPrice(curso.idCurso)}"
+                                     action="#{adminView.editarCursoPrice(curso.id_Curso)}"
                                      oncomplete="PF('precioDialog').show()"
                                      styleClass="edit-button rounded-button ui-button-success"
                                      update="@form" />

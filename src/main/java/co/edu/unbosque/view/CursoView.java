@@ -4,8 +4,9 @@ import co.edu.unbosque.model.dto.CursoDTO;
 import co.edu.unbosque.model.dto.HabilidadDTO;
 import co.edu.unbosque.model.dto.TemaDTO;
 import co.edu.unbosque.model.dto.UsuarioDTO;
-import co.edu.unbosque.model.entities.Usuario;
+import co.edu.unbosque.model.entities.*;
 import co.edu.unbosque.services.CursoService;
+import co.edu.unbosque.services.TemaService;
 import co.edu.unbosque.services.UsuarioService;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
@@ -24,13 +25,17 @@ import java.util.Map;
 @RequestScoped
 public class CursoView implements Serializable {
     private ArrayList<CursoDTO> cursos;
+    private ArrayList<CursoDTO> cursosPorVencer;
     private ArrayList<UsuarioDTO> usuarios;
     private CursoDTO cursoDTO;
     private TemaDTO temaDTO;
     private UsuarioDTO usuarioDTO;
     private HabilidadDTO habilidadDTO;
-    private Map<String, String> cursosTipo = new HashMap<>();
-    private Map<String, String> cursosModalidad = new HashMap<>();
+    private TemasCursoId temasCursoId;
+
+    private Map<String, String> cursosTipo;
+    private Map<String, String> cursosModalidad;
+    private Map<String, String> cursoEstado;
     private boolean filtroAplicado;
 
 
@@ -40,6 +45,9 @@ public class CursoView implements Serializable {
     private UsuarioService usuarioService;
     @Inject
     private PaginationView paginationView;
+    @Named
+    @Inject
+    private TemaService temaService;
 
     @PostConstruct
     public void init() {
@@ -54,7 +62,13 @@ public class CursoView implements Serializable {
         cursosModalidad.put("Online en vivo", "online_vivo");
         cursosModalidad.put("Virtual", "virtual");
 
+        cursoEstado = new HashMap<>();
+        cursoEstado.put("ACTIVO", "ACTIVO");
+        cursoEstado.put("FINALIZADO", "FINALIZADO");
+
+
         cursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
+        cursosPorVencer = (ArrayList<CursoDTO>) cursoService.getCursoPorVencer();
         usuarios = (ArrayList<UsuarioDTO>) cursoService.getAllUsuarios();
         filtroAplicado = false;
 
@@ -66,6 +80,7 @@ public class CursoView implements Serializable {
         temaDTO = new TemaDTO();
         habilidadDTO = new HabilidadDTO();
         usuarioDTO = new UsuarioDTO();
+        temasCursoId = new TemasCursoId();
 
 
     }
@@ -78,6 +93,14 @@ public class CursoView implements Serializable {
         this.cursos = cursos;
     }
 
+    public ArrayList<CursoDTO> getCursosPorVencer() {
+        return cursosPorVencer;
+    }
+
+    public void setCursosPorVencer(ArrayList<CursoDTO> cursosPorVencer) {
+        this.cursosPorVencer = cursosPorVencer;
+    }
+
     public Map<String, String> getCursosTipo() {
         return cursosTipo;
     }
@@ -88,6 +111,22 @@ public class CursoView implements Serializable {
 
     public Map<String, String> getCursosModalidad() {
         return cursosModalidad;
+    }
+
+    public Map<String, String> getCursoEstado() {
+        return cursoEstado;
+    }
+
+    public void setCursoEstado(Map<String, String> cursoEstado) {
+        this.cursoEstado = cursoEstado;
+    }
+
+    public TemasCursoId getTemasCursoId() {
+        return temasCursoId;
+    }
+
+    public void setTemasCursoId(TemasCursoId temasCursoId) {
+        this.temasCursoId = temasCursoId;
     }
 
     public void setCursosModalidad(Map<String, String> cursosModalidad) {
@@ -156,11 +195,10 @@ public class CursoView implements Serializable {
     }
 
     public String actualizarCurso(int CursoId) {
-        System.out.println(CursoId);
         UsuarioDTO usuarioDTO = usuarios.get(1);
         Usuario creadoPor = usuarioService.updateUsuario(usuarioDTO);
         cursoDTO.setCreadoPor(creadoPor);
-        cursoDTO.setIdCurso(CursoId);
+        cursoDTO.setId_Curso(CursoId);
         cursoService.updateCurso(cursoDTO);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Modificacion Realizada  Correctamemte"));
 
@@ -168,19 +206,28 @@ public class CursoView implements Serializable {
     }
     public String actualizarCursoPrecio(int CursoId, double CostoCurso){
         CursoDTO curso = cursoService.getCurso(CursoId);
-        cursoDTO.setIdCurso(CursoId);
-        System.out.println(CursoId);
         curso.setCostoCurso(CostoCurso);
-        System.out.println(curso.getCostoCurso());
-
+        curso.setId_Curso(CursoId);
+     //   TemaDTO tema = (temaService.getTemaPorCurso(CursoId));
+       //TemasCursoId temasCursoId = new TemasCursoId(tema.getIdTema(), CursoId);
         cursoService.updateCurso(curso);
         return null;
     }
     public String actualizarCursoModalidad(int CursoId, String CursoModalidad){
         CursoDTO curso = cursoService.getCurso(CursoId);
-        cursoDTO.setIdCurso(CursoId);
+        cursoDTO.setId_Curso(CursoId);
         curso.setModalidadCurso(CursoModalidad);
         cursoService.updateCurso(curso);
+        return null;
+    }
+    public String finalizarCursoEstado(int CursoId, String CursoEstado){
+
+        CursoDTO curso = cursoService.getCurso(CursoId);
+        cursoDTO.setId_Curso(CursoId);
+        curso.setEstadoCurso(CursoEstado);
+
+
+      //  cursoService.updateCurso(curso);
         return null;
     }
 
