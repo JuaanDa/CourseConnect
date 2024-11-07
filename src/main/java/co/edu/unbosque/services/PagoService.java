@@ -56,7 +56,7 @@ public class PagoService implements PagoServiceInterface{
 
     @Override
     public List<PagoInscripcionDTO> obtenerPagos() {
-        List<PagoInscripcion> pagos = daoPagoInscripcion.findAll(); // Método para obtener todos los pagos
+        List<PagoInscripcion> pagos = daoPagoInscripcion.findAll(); // Metodo para obtener todos los pagos
         List<PagoInscripcionDTO> pagoDTOs = new ArrayList<>();
 
         for (PagoInscripcion pago : pagos) {
@@ -68,7 +68,7 @@ public class PagoService implements PagoServiceInterface{
 
     @Override
     public PagoInscripcionDTO obtenerPagoPorId(int id) {
-        PagoInscripcion pago = daoPagoInscripcion.find(id); // Método para encontrar un pago por ID
+        PagoInscripcion pago = daoPagoInscripcion.find(id); // Metodo para encontrar un pago por ID
         return dataMapper.map(pago, PagoInscripcionDTO.class);
     }
 }
