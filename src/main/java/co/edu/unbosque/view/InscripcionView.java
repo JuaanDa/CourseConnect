@@ -86,27 +86,16 @@ public class InscripcionView implements Serializable {
     public void setUrlLinkConfirmacion(String urlLinkConfirmacion) {
         this.urlLinkConfirmacion = urlLinkConfirmacion;
     }
-    public void correoConfirmacion(){
-        try {
-            String correoEstudiante = estudianteService.getAllStudents().get(0).getCorreoElectronico();
-            int idCurso = inscripcionDTO.getIdCurso();
-            String estado = inscripcionDTO.getEstadoInscripcion();
-            clientEmail.enviarLinkInscripcion(correoEstudiante, idCurso);
-            String url =clientEmail.enviarLinkInscripcion(correoEstudiante, idCurso);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "El link de inscripción fue enviado correctamente."));
-        } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Warn", "Error al Enviar EL correo"));
-
-        }
-    }
 
     public String crearInscripción() throws Exception {
 
         int idCurso = inscripcionDTO.getIdCurso();
         String correoEstudiante = estudianteService.getAllStudents().get(0).getCorreoElectronico();
         String url = clientEmail.enviarLinkInscripcion(correoEstudiante, idCurso);
-        String estado = inscripcionDTO.getEstadoInscripcion();
         inscripcionDTO.setUrlLinkConfirmacion(url);
+        inscripcionDTO.setCodigoParaPago(pago);
+        String pago = inscripcionDTO.getCodigoParaPago();
+        System.out.println(pago);
 
         System.out.println("creando");
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "inscripcion Correcta, Verifique su correo"));
