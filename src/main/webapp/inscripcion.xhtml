@@ -26,7 +26,6 @@
         </div>
 
         <h:form>
-            <p>#{cursoInfoView.estudiantes.get(0).correoElectronico}</p>
             <p:outputLabel for="id_curso" value="Identificación del curso: #{cursoInfoView.cursoDTO.id_Curso}" styleClass="block" />
             <p:inputText id="id_curso" value="#{inscripcionView.inscripcionDTO.idCurso}"  />
             <br /><br />
@@ -37,30 +36,13 @@
 
             <p:outputLabel for="fecha_inscripcion" value="Fecha de inscripción" styleClass="block" />
             <p:calendar id="fecha_inscripcion" value="#{inscripcionView.inscripcionDTO.fechaInscripcion}" required="true" style="width: 100%"
-                          />
+               />
             <br /><br />
 
-            <!--
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
 
-            <p:outputLabel for="url_link_confirmacion" value="URL de confirmación" styleClass="block" />
-            <p:inputText id="url_link_confirmacion" value="#{inscripcionView.inscripcionDTO.urlLinkConfirmacion}" required="true" />
-            <br /><br />
-
-            <div class="field">
-                <p:outputLabel for="estado_inscripcion" value="Estado Inscripcion " styleClass="block" />
-                <p:selectOneMenu id="estado_inscripcion" value="#{inscripcionView.inscripcionDTO.estadoInscripcion}"  label="Estado" >
-                    <f:selectItems value="#{inscripcionView.estadoInscripcion}"/>
-                </p:selectOneMenu>
-            </div>
-            <br /><br />
-
-            <p:outputLabel for="codigo_para_pago" value="Código para pago" styleClass="block" />
-            <p:inputText id="codigo_para_pago" value="#{inscripcionView.inscripcionDTO.codigoParaPago}" required="true" />
-            <br /><br />
-
--->
-                <p:commandButton value="Correo" action="#{inscripcionView.correoConfirmacion()}"
-                                 styleClass="submit-button" />
                 <p:commandButton value="Enviar" action="#{inscripcionView.crearInscripción()}"
                                  styleClass="submit-button" />
 

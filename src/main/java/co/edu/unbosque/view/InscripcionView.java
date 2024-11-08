@@ -2,8 +2,10 @@ package co.edu.unbosque.view;
 
 import co.edu.unbosque.api.ClientEmail;
 import co.edu.unbosque.model.dto.InscripcionDTO;
+import co.edu.unbosque.model.entities.Inscripcion;
 import co.edu.unbosque.model.entities.InscripcionId;
 import co.edu.unbosque.services.CursoService;
+import co.edu.unbosque.services.EstudianteService;
 import co.edu.unbosque.services.InscripcionService;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
@@ -13,6 +15,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,16 +32,26 @@ public class InscripcionView implements Serializable {
     private CursoService cursoService;
     @Inject
     private ClientEmail clientEmail;
+    @Named
+    @Inject
+    private EstudianteService estudianteService;
+    private String urlLinkConfirmacion;
+
     public InscripcionView() {
         inscripcionDTO = new InscripcionDTO();
     }
+
     @PostConstruct
     public void init() {
         inscripciones = (ArrayList<InscripcionDTO>) inscripcionService.getInscripciones();
         estadoInscripcion = new HashMap<>();
-        estadoInscripcion.put("Pagada", "PAGADA");
-        estadoInscripcion.put("Solicitada", "SOLICITADA");
-        estadoInscripcion.put("Confirmada", "CONFIRMADA");
+        estadoInscripcion.put("PAGADA", "PAGADA");
+        estadoInscripcion.put("SOLICITADA", "SOLICITADA");
+        estadoInscripcion.put("CONFIRMADA", "CONFIRMADA");
+        inscripcionDTO.setEstadoInscripcion("SOLICITADA");
+        inscripcionDTO.setCodigoParaPago("1");
+        inscripcionDTO.setUrlLinkConfirmacion("1");
+
 
     }
 
@@ -66,37 +79,52 @@ public class InscripcionView implements Serializable {
         this.estadoInscripcion = estadoInscripcion;
     }
 
-    public String crearInscripción(){
-
-        System.out.println("creando");
-        inscripcionService.saveInscripcion(inscripcionDTO);
-       return null;
+    public String getUrlLinkConfirmacion() {
+        return urlLinkConfirmacion;
     }
-    public String actualizarInscripcion(int CursoId, String EstId, String Estado) {
-        System.out.println("actualizando");
-        InscripcionId inscripcionId = new InscripcionId(CursoId, EstId);
-         InscripcionDTO inscripcion = inscripcionService.getInscripcionById(inscripcionId);
-         inscripcionDTO.setIdCurso(CursoId);
-         inscripcion.setEstadoInscripcion(Estado);
-        inscripcionService.updateInscripcion(inscripcion);
-        return null;
+
+    public void setUrlLinkConfirmacion(String urlLinkConfirmacion) {
+        this.urlLinkConfirmacion = urlLinkConfirmacion;
     }
     public void correoConfirmacion(){
         try {
-            // Obtener los datos del formulario
-            String correoEstudiante = "nacional0831@gmail.com";  // Lo ideal sería obtener esto de tu formulario JSF
-            int idCurso = 5;  // Igualmente, se obtiene del formulario
-
-            // Llamar al método que envía el link de inscripción
+            String correoEstudiante = estudianteService.getAllStudents().get(0).getCorreoElectronico();
+            int idCurso = inscripcionDTO.getIdCurso();
+            String estado = inscripcionDTO.getEstadoInscripcion();
             clientEmail.enviarLinkInscripcion(correoEstudiante, idCurso);
-
-            // Mostrar un mensaje de éxito (por ejemplo, con PrimeFaces o FacesContext)
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("El link de inscripción fue enviado correctamente."));
+            String url =clientEmail.enviarLinkInscripcion(correoEstudiante, idCurso);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "El link de inscripción fue enviado correctamente."));
         } catch (Exception e) {
-            e.printStackTrace();
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al enviar el correo", e.getMessage()));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Warn", "Error al Enviar EL correo"));
+
         }
     }
+
+    public String crearInscripción() throws Exception {
+
+        int idCurso = inscripcionDTO.getIdCurso();
+        String correoEstudiante = estudianteService.getAllStudents().get(0).getCorreoElectronico();
+        String url = clientEmail.enviarLinkInscripcion(correoEstudiante, idCurso);
+        String estado = inscripcionDTO.getEstadoInscripcion();
+        inscripcionDTO.setUrlLinkConfirmacion(url);
+
+        System.out.println("creando");
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "inscripcion Correcta, Verifique su correo"));
+
+        inscripcionService.saveInscripcion(inscripcionDTO);
+        return null;
+    }
+
+    public String actualizarInscripcion(int CursoId, String EstId, String Estado) {
+        System.out.println("actualizando");
+        InscripcionId inscripcionId = new InscripcionId(CursoId, EstId);
+        InscripcionDTO inscripcion = inscripcionService.getInscripcionById(inscripcionId);
+        inscripcionDTO.setIdCurso(CursoId);
+        inscripcion.setEstadoInscripcion(Estado);
+        inscripcionService.updateInscripcion(inscripcion);
+        return null;
+    }
+
     }
 
 

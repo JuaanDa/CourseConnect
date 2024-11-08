@@ -178,11 +178,6 @@ public class CursoView implements Serializable {
         return null;
     }
 
-    public Usuario convertUsuario(UsuarioDTO usuarioDTO) {
-        return usuarioService.saveUsuario(usuarioDTO);
-
-
-    }
 
     public String crearCurso() {
 
@@ -208,8 +203,7 @@ public class CursoView implements Serializable {
         CursoDTO curso = cursoService.getCurso(CursoId);
         curso.setCostoCurso(CostoCurso);
         curso.setId_Curso(CursoId);
-     //   TemaDTO tema = (temaService.getTemaPorCurso(CursoId));
-       //TemasCursoId temasCursoId = new TemasCursoId(tema.getIdTema(), CursoId);
+
         cursoService.updateCurso(curso);
         return null;
     }

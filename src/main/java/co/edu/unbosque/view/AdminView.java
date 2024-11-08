@@ -185,8 +185,6 @@ public class AdminView implements Serializable {
         cursoDTO.setCostoCurso(cursoDTO.getCostoCurso());
         this.cursoDTO = cursoService.getCurso(idCurso);
         setCursoId(idCurso);
-      //  this.temaDTO = (temaService.getTemaPorCurso(idCurso));
-       // TemasCursoId temasCursoId = new TemasCursoId(temaDTO.getIdTema(),idCurso);
 
     }
     public void editarCursoModalidades(int idCurso){
@@ -198,8 +196,6 @@ public class AdminView implements Serializable {
         cursoDTO.setEstadoCurso(cursoDTO.getEstadoCurso());
         this.cursoDTO = cursoService.getCurso(idCurso);
         setCursoId(idCurso);
-        //this.temaDTO = (temaService.getTemaPorCurso(idCurso));
-       // TemasCursoId temasCursoId = new TemasCursoId(idCurso,idCurso);
 
 
     }
