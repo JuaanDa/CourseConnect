@@ -25,7 +25,7 @@
         <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
             <p:commandButton value="Comentar" icon="pi pi-pen-to-square"
                              styleClass="ui-button-raised"
-                             action="#{adminView.crearComentario(cursoInfoView.cursoDTO.idCurso, cursoInfoView.estudiantes.get(1).username)}"
+                             action="#{adminView.crearComentario(cursoInfoView.cursoDTO.id_Curso, cursoInfoView.estudiantes.get(1).username)}"
                              onclick="PF('createComentarioDialog').show(); return false;"
                              style="padding: 5px; color: #ffffff; background-color: #813a77; border: 1px solid #813a77;"/>
         </div>
@@ -37,7 +37,7 @@
         <p:dialog header="Nuevo Comentario" showEffect="fade" widgetVar="createComentarioDialog" modal="true">
            <p:outputPanel>
                <h:panelGrid columns="2">
-                <h:outputLabel for="id_curso" value="#{cursoInfoView.cursoDTO.idCurso}" />
+                <h:outputLabel for="id_curso" value="#{cursoInfoView.cursoDTO.id_Curso}" />
                 <p:inputText id="id_curso" value="#{cursoInfoView.calificacionesCursoDTO.idCurso}" required="true" />
 
                 <h:outputLabel for="id_estudiante" value="#{cursoInfoView.estudiantes.get(1).idEstudiante}" />

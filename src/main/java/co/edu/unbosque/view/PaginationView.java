@@ -27,7 +27,7 @@ public class PaginationView implements Serializable {
     @PostConstruct
     public void init() {
         allCursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
-        cursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
+        cursos = (ArrayList<CursoDTO>) cursoService.getAllCursosActivos();
         cursos.sort(Comparator.comparing(CursoDTO::getTituloCurso, String.CASE_INSENSITIVE_ORDER));
 
     }

@@ -1,11 +1,14 @@
 package co.edu.unbosque.view;
 
+import co.edu.unbosque.api.ClientEmail;
 import co.edu.unbosque.model.dto.InscripcionDTO;
 import co.edu.unbosque.model.entities.InscripcionId;
 import co.edu.unbosque.services.CursoService;
 import co.edu.unbosque.services.InscripcionService;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
@@ -24,7 +27,8 @@ public class InscripcionView implements Serializable {
     private Map<String, String> estadoInscripcion = new HashMap<>();
     @Inject
     private CursoService cursoService;
-
+    @Inject
+    private ClientEmail clientEmail;
     public InscripcionView() {
         inscripcionDTO = new InscripcionDTO();
     }
@@ -63,9 +67,10 @@ public class InscripcionView implements Serializable {
     }
 
     public String crearInscripción(){
+
         System.out.println("creando");
         inscripcionService.saveInscripcion(inscripcionDTO);
-        return null;
+       return null;
     }
     public String actualizarInscripcion(int CursoId, String EstId, String Estado) {
         System.out.println("actualizando");
@@ -76,6 +81,23 @@ public class InscripcionView implements Serializable {
         inscripcionService.updateInscripcion(inscripcion);
         return null;
     }
+    public void correoConfirmacion(){
+        try {
+            // Obtener los datos del formulario
+            String correoEstudiante = "nacional0831@gmail.com";  // Lo ideal sería obtener esto de tu formulario JSF
+            int idCurso = 5;  // Igualmente, se obtiene del formulario
 
-}
+            // Llamar al método que envía el link de inscripción
+            clientEmail.enviarLinkInscripcion(correoEstudiante, idCurso);
+
+            // Mostrar un mensaje de éxito (por ejemplo, con PrimeFaces o FacesContext)
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("El link de inscripción fue enviado correctamente."));
+        } catch (Exception e) {
+            e.printStackTrace();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al enviar el correo", e.getMessage()));
+        }
+    }
+    }
+
+
 

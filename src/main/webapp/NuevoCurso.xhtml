@@ -51,8 +51,10 @@
         <br /><br/>
 
 
-        <p:outputLabel for="estado_curso" value="Estado curso " styleClass="block" required="true"/>
-        <p:inputText id="estado_curso" value="#{cursoView.cursoDTO.estadoCurso}" />
+        <p:outputLabel for="estado_curso" value="Estado Curso " styleClass="block" required="true" />
+        <p:selectOneMenu id="estado_curso" value="#{cursoView.cursoDTO.estadoCurso}"  label="Estado" >
+            <f:selectItems value="#{cursoView.cursoEstado}"/>
+        </p:selectOneMenu>
         <br /><br/>
 
         <h:outputLabel for="fecha_creacion" value="Fecha Creacion " styleClass="block" required="true"/>

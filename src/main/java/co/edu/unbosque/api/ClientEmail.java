@@ -55,4 +55,30 @@ public class ClientEmail {
             throw new RuntimeException("Error al confirmar inscripción: " + responseCode);
         }
     }
+    // NUEVO: Método para enviar solo el link de inscripción
+    public void enviarLinkInscripcion(String emailEstudiante, int idCurso) throws Exception {
+        // Llamar al endpoint de la API que solo envía el link de inscripción
+        URL url = new URL("http://localhost:8081/api/enviar-link");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        connection.setDoOutput(true);
+
+        // Crear el cuerpo de la solicitud con los parámetros email y idCurso
+        String data = String.format("emailEstudiante=%s&idCurso=%d", emailEstudiante, idCurso);
+
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = data.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
+        }
+
+        // Verificar el código de respuesta
+        int responseCode = connection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            // No es necesario retornar nada, solo enviar el link.
+            System.out.println("Link de inscripción enviado correctamente.");
+        } else {
+            throw new RuntimeException("Error al enviar el link de inscripción: " + responseCode);
+        }
+    }
 }

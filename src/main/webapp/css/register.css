@@ -10,6 +10,7 @@
     text-align: center;
     font-size: 1rem;
     color: #ffffff;
+    flex: 1;
 }
 
 .header-banner h1 {
@@ -52,6 +53,8 @@ form .submit-button {
     color: #ffffff;
     border: 1px solid #ff7900;
     text-transform: uppercase;
+    display: inline-block;
+    margin: 20px;
 }
 
 form .submit-button:hover {
