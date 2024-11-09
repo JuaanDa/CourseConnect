@@ -26,7 +26,7 @@ public class AdminView implements Serializable {
     private TemaDTO temaDTO;
     private InscripcionDTO inscripcionDTO;
     private CalificacionesCursoDTO calificacionesCursoDTO;
-    private boolean showDashboardPanel, showCrearCurso, showModificarCurso, showModificarPrecio, showModificarModalidades, showGestionarinscripcion, showEstudiantesInscritos, showCursoPorVencer, showFinalizarCurso;
+    private boolean showDashboardPanel, showCrearCurso, showModificarCurso, showModificarPrecio, showModificarModalidades, showGestionarinscripcion, showEstudiantesInscritos, showCursoPorVencer, showFinalizarCurso, showPagosRealizados;
     private int CursoId;
     private String EstudianteId;
     private TemasCursoId temasCursoId;
@@ -90,6 +90,10 @@ public class AdminView implements Serializable {
     public void finalizarCurso(){
         hideAllPanels();
         showFinalizarCurso = true;
+    }
+    public void pagosRealizados(){
+        hideAllPanels();
+        showPagosRealizados = true;
     }
 
 
@@ -164,6 +168,14 @@ public class AdminView implements Serializable {
         this.showFinalizarCurso = showFinalizarCurso;
     }
 
+    public boolean isShowPagosRealizados() {
+        return showPagosRealizados;
+    }
+
+    public void setShowPagosRealizados(boolean showPagosRealizados) {
+        this.showPagosRealizados = showPagosRealizados;
+    }
+
     private void hideAllPanels() {
             showDashboardPanel = false;
           showCrearCurso = false;
@@ -174,6 +186,7 @@ public class AdminView implements Serializable {
           showEstudiantesInscritos = false;
           showCursoPorVencer = false;
           showFinalizarCurso = false;
+          showPagosRealizados = false;
 
     }
     public void editarCurso(int idCurso){
@@ -196,7 +209,6 @@ public class AdminView implements Serializable {
         cursoDTO.setEstadoCurso(cursoDTO.getEstadoCurso());
         this.cursoDTO = cursoService.getCurso(idCurso);
         setCursoId(idCurso);
-
 
     }
     public void editarInscripcion(int idCurso, String idEstudiante){

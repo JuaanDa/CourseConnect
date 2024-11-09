@@ -1,14 +1,15 @@
 package co.edu.unbosque.model.dao;
 
 import co.edu.unbosque.model.entities.PagoInscripcion;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 import java.time.LocalDate;
 import java.util.List;
 
-
-public class PagoInscripcionDAO implements DAO<PagoInscripcion, String>{
+@Stateless
+public class PagoInscripcionDAO implements DAO<PagoInscripcion, Integer>{
 
     @PersistenceContext(unitName = "CourseConnect")
     private EntityManager em;
@@ -23,16 +24,17 @@ public class PagoInscripcionDAO implements DAO<PagoInscripcion, String>{
 
     }
 
-
-
     @Override
-    public PagoInscripcion find(String id) {
+    public PagoInscripcion find(Integer id) {
         return em.find(PagoInscripcion.class, id);
     }
 
+
+
     @Override
     public List<PagoInscripcion> findAll() {
-        return List.of();
+
+        return em.createNamedQuery("PagoInscripcion.findAll", PagoInscripcion.class).getResultList();
     }
 
     @Override

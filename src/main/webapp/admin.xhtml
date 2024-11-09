@@ -50,7 +50,7 @@
                   </p:submenu>
                   <p:submenu label="Gestión Estudiantes">
                      <p:menuitem value="Alumnos Inscritos" action="#{adminView.estudiantesInscritos()}" icon="pi pi-user-edit" update="@all"/>
-                     <p:menuitem value="Pagos Realizados" action="#{adminView.completedPayments}"/>
+                     <p:menuitem value="Pagos Realizados" action="#{adminView.pagosRealizados()}" icon="pi pi-wallet" update="@all"/>
                      <p:menuitem value="Pagos Pendientes" action="#{adminView.pendingPayments}"/>
                   </p:submenu>
                </p:panelMenu>
@@ -97,6 +97,9 @@
 
       <p:panel id="CursoPorVencerPanel"  rendered="#{adminView.showCursoPorVencer}">
          <ui:include src="CursoPorVencer.xhtml" />
+      </p:panel>
+      <p:panel id="PagosRealizados"  rendered="#{adminView.showPagosRealizados}">
+         <ui:include src="PagosRealizados.xhtml" />
       </p:panel>
 
 

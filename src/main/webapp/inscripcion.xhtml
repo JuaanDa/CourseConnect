@@ -44,11 +44,18 @@
             </p:messages>
 
                 <p:commandButton value="Enviar" action="#{inscripcionView.crearInscripción()}"
-                                 styleClass="submit-button" />
+                                 styleClass="submit-button" update="@all"/>
+
 
 
         </h:form>
+
     </div>
+
+    <p:panel id="ProcesarPago" rendered="#{inscripcionView.procesarPago}">
+        <ui:include src="ProcesarPago.xhtml" />
+    </p:panel>
+
 
     <div class="footer">
         <p>

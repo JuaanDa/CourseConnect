@@ -21,6 +21,7 @@ public class PagoService implements PagoServiceInterface{
 
     @Inject
     private ClientPago apiClient;
+    @Inject
     private DAO<PagoInscripcion, Integer> daoPagoInscripcion;
 
     private final ModelMapper dataMapper;
@@ -60,8 +61,7 @@ public class PagoService implements PagoServiceInterface{
         List<PagoInscripcionDTO> pagoDTOs = new ArrayList<>();
 
         for (PagoInscripcion pago : pagos) {
-            PagoInscripcionDTO dto = dataMapper.map(pago, PagoInscripcionDTO.class);
-            pagoDTOs.add(dto);
+            pagoDTOs.add(dataMapper.map(pago, PagoInscripcionDTO.class));
         }
         return pagoDTOs;
     }

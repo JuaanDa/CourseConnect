@@ -36,7 +36,7 @@ public class InscripcionView implements Serializable {
     @Inject
     private EstudianteService estudianteService;
     private String urlLinkConfirmacion;
-
+    private boolean ProcesarPago;
     public InscripcionView() {
         inscripcionDTO = new InscripcionDTO();
     }
@@ -51,8 +51,7 @@ public class InscripcionView implements Serializable {
         inscripcionDTO.setEstadoInscripcion("SOLICITADA");
         inscripcionDTO.setCodigoParaPago("1");
         inscripcionDTO.setUrlLinkConfirmacion("1");
-
-
+        ProcesarPago = false;
     }
 
     public InscripcionDTO getInscripcionDTO() {
@@ -87,6 +86,14 @@ public class InscripcionView implements Serializable {
         this.urlLinkConfirmacion = urlLinkConfirmacion;
     }
 
+    public boolean isProcesarPago() {
+        return ProcesarPago;
+    }
+
+    public void setProcesarPago(boolean procesarPago) {
+        ProcesarPago = procesarPago;
+    }
+
     public String crearInscripción() throws Exception {
 
         int idCurso = inscripcionDTO.getIdCurso();
@@ -96,9 +103,8 @@ public class InscripcionView implements Serializable {
 
         System.out.println("creando");
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "inscripcion Correcta, Verifique su correo"));
-
         inscripcionService.saveInscripcion(inscripcionDTO);
-        System.out.println(url);
+        ProcesarPago = true;
         return null;
 
     }

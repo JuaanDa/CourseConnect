@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>CourseConnect - Registro</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/register.css" />
+    <link rel="icon" type="icon" href="images/icon.png" />
+</h:head>
+<h:body>
+
+
+    <div class="registerContainer">
+        <div class="header-banner">
+            <h1>Pago de Inscripción</h1>
+        </div>
+
+        <h:form>
+
+            <!-- Identificación del curso -->
+            <p:outputLabel for="id_curso" value="Identificación del curso:" styleClass="block" />
+            <p:inputText id="id_curso" value="#{pagoView.pagoInscripcionDTO.idCurso}" required="true" />
+            <br /><br />
+
+            <!-- Identificación del estudiante -->
+            <p:outputLabel for="id_estudiante" value="Identificación del estudiante:" styleClass="block" />
+            <p:inputText id="id_estudiante" value="#{pagoView.pagoInscripcionDTO.idEstudiante}" required="true" />
+            <br /><br />
+
+            <!-- Medio de pago -->
+            <p:outputLabel for="medio_pago" value="Medio de pago:" styleClass="block" />
+            <p:inputText id="medio_pago" value="#{pagoView.pagoInscripcionDTO.medioPago}" required="true" />
+
+            <br /><br />
+
+            <!-- Valor de pago -->
+            <p:outputLabel for="valor_pago" value="Valor del pago:" styleClass="block" />
+            <p:inputText id="valor_pago" value="#{pagoView.pagoInscripcionDTO.valorPago}" required="true" />
+            <br /><br />
+
+            <!-- Estado del pago -->
+            <p:outputLabel for="estado_pago" value="Estado del pago:" styleClass="block" />
+            <p:inputText id="estado_pago" value="#{pagoView.pagoInscripcionDTO.estadoPago}" required="true" />
+
+            <br /><br />
+
+
+            <!-- Botón Enviar -->
+            <p:commandButton value="Pagar" action="#{pagoView.pagarInscripcion()}" styleClass="submit-button" update="@all" />
+
+        </h:form>
+
+    </div>
+
+</h:body>
+</html>
