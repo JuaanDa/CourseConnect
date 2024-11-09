@@ -36,7 +36,7 @@
                 <p:column headerText="Editar">
                     <p:commandButton icon="pi pi-pencil"
                                      action="#{adminView.editarInscripcion(inscripcion.idCurso, inscripcion.idEstudiante)}"
-                                     c="PF('manageInscripcionDialog').show()"
+                                     oncomplete="PF('manageInscripcionDialog').show()"
                                      styleClass="edit-button rounded-button ui-button-success"
                                      update="@form" />
                 </p:column>
