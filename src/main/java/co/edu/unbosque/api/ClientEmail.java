@@ -42,5 +42,24 @@ public class ClientEmail {
         return jsonResponse;
     }
 
+    public String confirmarInscripcion(String urlLinkConfirmacion) throws Exception {
+        // Llamar al endpoint de confirmación
+        URL url = new URL("http://localhost:8081/api/confirmar/" + urlLinkConfirmacion);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+
+        // Verificar el código de respuesta
+        int responseCode = connection.getResponseCode();
+        String jsonResponse;
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            jsonResponse = new String(connection.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+            // Procesar la respuesta (puedes mapearla a un objeto DTO si es necesario)
+            System.out.println("Inscripción confirmada: " + jsonResponse);
+        } else {
+            throw new RuntimeException("Error al confirmar la inscripción: " + responseCode);
+        }
+        return jsonResponse;
+    }
+
 
 }

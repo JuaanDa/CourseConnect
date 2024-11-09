@@ -93,16 +93,16 @@ public class InscripcionView implements Serializable {
         String correoEstudiante = estudianteService.getAllStudents().get(0).getCorreoElectronico();
         String url = clientEmail.enviarLinkInscripcion(correoEstudiante, idCurso);
         inscripcionDTO.setUrlLinkConfirmacion(url);
-        inscripcionDTO.setCodigoParaPago(pago);
-        String pago = inscripcionDTO.getCodigoParaPago();
-        System.out.println(pago);
 
         System.out.println("creando");
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "inscripcion Correcta, Verifique su correo"));
 
         inscripcionService.saveInscripcion(inscripcionDTO);
+        System.out.println(url);
         return null;
+
     }
+
 
     public String actualizarInscripcion(int CursoId, String EstId, String Estado) {
         System.out.println("actualizando");

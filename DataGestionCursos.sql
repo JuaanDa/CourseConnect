@@ -69,7 +69,7 @@ INSERT INTO TEMAS_CURSO (id_tema, id_curso) VALUES (3, 3);
 INSERT INTO TEMAS_CURSO (id_tema, id_curso) VALUES (1, 4);
 INSERT INTO TEMAS_CURSO (id_tema, id_curso) VALUES (3, 5);
 
-INSERT INTO PROFESORES (id_docente, nombre, apellidos, correo_electronico, resumen_experiencia, username) VALUES ('10101', 'Juan', 'Pérez', 'juan.pérez@educursos.com', 'Juan Pérez es un profesor con amplia experiencia en su campo, habiendo trabajado en diversas instituciones educativas y proyectos tecnológicos.', 'prof001');
+INSERT INTO PROFESORES (id_docente, nombre, apellidos, correo_electronico, resumen_experiencia, username) VALUES ('10101', 'Juan', 'Pérez', 'nacional0831@gmail.com', 'Juan Pérez es un profesor con amplia experiencia en su campo, habiendo trabajado en diversas instituciones educativas y proyectos tecnológicos.', 'prof001');
 INSERT INTO PROFESORES (id_docente, nombre, apellidos, correo_electronico, resumen_experiencia, username) VALUES ('10102', 'Ana', 'García', 'ana.garcía@educursos.com', 'Ana García es un profesor con amplia experiencia en su campo, habiendo trabajado en diversas instituciones educativas y proyectos tecnológicos.', 'prof002');
 INSERT INTO PROFESORES (id_docente, nombre, apellidos, correo_electronico, resumen_experiencia, username) VALUES ('10103', 'Carlos', 'Rodríguez', 'carlos.rodríguez@educursos.com', 'Carlos Rodríguez es un profesor con amplia experiencia en su campo, habiendo trabajado en diversas instituciones educativas y proyectos tecnológicos.', 'prof003');
 INSERT INTO PROFESORES (id_docente, nombre, apellidos, correo_electronico, resumen_experiencia, username) VALUES ('10104', 'Luisa', 'Martínez', 'luisa.martínez@educursos.com', 'Luisa Martínez es un profesor con amplia experiencia en su campo, habiendo trabajado en diversas instituciones educativas y proyectos tecnológicos.', 'prof004');
@@ -96,7 +96,7 @@ INSERT INTO PROFESORES_CURSO (id_curso, id_docente, rol_docente) VALUES (3, '101
 INSERT INTO PROFESORES_CURSO (id_curso, id_docente, rol_docente) VALUES (4, '101010', 'Asistente');
 INSERT INTO PROFESORES_CURSO (id_curso, id_docente, rol_docente) VALUES (5, '10101', 'Asistente');
 
-INSERT INTO ESTUDIANTES (id_estudiante, nombre, apellidos, correo_electronico, celular, username) VALUES ('10201', 'Daniel', 'Ramírez', 'daniel.ramírez@alumno.com', '3624266822', 'est001');
+INSERT INTO ESTUDIANTES (id_estudiante, nombre, apellidos, correo_electronico, celular, username) VALUES ('10201', 'Daniel', 'Ramírez', 'nacional0831@gmail.com', '3624266822', 'est001');
 INSERT INTO ESTUDIANTES (id_estudiante, nombre, apellidos, correo_electronico, celular, username) VALUES ('10202', 'Santiago', 'Ortiz', 'santiago.ortiz@alumno.com', '3144059077', 'est002');
 INSERT INTO ESTUDIANTES (id_estudiante, nombre, apellidos, correo_electronico, celular, username) VALUES ('10203', 'Valentina', 'Cruz', 'valentina.cruz@alumno.com', '3332530809', 'est003');
 INSERT INTO ESTUDIANTES (id_estudiante, nombre, apellidos, correo_electronico, celular, username) VALUES ('10204', 'Camila', 'Ruiz', 'camila.ruiz@alumno.com', '3601995052', 'est004');
@@ -185,7 +185,7 @@ INSERT INTO CERTIFICADOS_CURSO (id_curso, id_estudiante, fecha_expedicion_certif
 INSERT INTO CERTIFICADOS_CURSO (id_curso, id_estudiante, fecha_expedicion_certificado, url_descarga_certificado) VALUES (2, '10209', '2024-08-28', 'https://example.com/certificado/72487a17-079b-4fd1-a992-19ee032b5741');
 INSERT INTO CERTIFICADOS_CURSO (id_curso, id_estudiante, fecha_expedicion_certificado, url_descarga_certificado) VALUES (1, '10210', '2024-09-05', 'https://example.com/certificado/e3a1276e-443b-4105-8ea5-3794c0a5f4cc');
 INSERT INTO CERTIFICADOS_CURSO (id_curso, id_estudiante, fecha_expedicion_certificado, url_descarga_certificado) VALUES (3, '10211', '2024-08-20', 'https://example.com/certificado/1a5362b4-090e-4f80-b243-522afa5e5c1e');
-INSERT INTO CERTIFICADOS_CURSO (id_curso, id_estudiante, fecha_expedicion_certificado, url_descarga_certificado) VALUES (3, '10212', '2024-08-16', 'https://example.com/certificado/7927cb24-5406-4109-94be-e809195f1f0b');
+INSERT INTO CERTIFICADOS_CURSO (id_curso, id_estudiante, fecha_expedicion_certificado, url_descarga_certificado) VALUES (3, '10212', '2024-08-16', '	');
 INSERT INTO CERTIFICADOS_CURSO (id_curso, id_estudiante, fecha_expedicion_certificado, url_descarga_certificado) VALUES (5, '10213', '2024-10-03', 'https://example.com/certificado/5392bb55-f370-47bb-9cb2-a17ab462c14c');
 INSERT INTO CERTIFICADOS_CURSO (id_curso, id_estudiante, fecha_expedicion_certificado, url_descarga_certificado) VALUES (2, '10214', '2024-08-22', 'https://example.com/certificado/f8a33e63-b8d0-4ccd-bd0c-e655693c1cbe');
 INSERT INTO CERTIFICADOS_CURSO (id_curso, id_estudiante, fecha_expedicion_certificado, url_descarga_certificado) VALUES (1, '10215', '2024-09-23', 'https://example.com/certificado/4b837a45-13f2-43c6-963b-2c3cb1671501');
