@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Administrar Inscripciones</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+</h:head>
+
+<h:body>
+    <h:form id="pagospendientesForm">
+        <p:panel header="Lista de Pagos Realizados" styleClass="pagos-panel">
+            <p:dataTable value="#{pagoView.pagosPendientes}" var="pagos" rowKey="#{pagos.idPagoInscripcion}">
+                <p:column headerText="ID Pago Inscripcion">
+                    <h:outputText value="#{pagos.idPagoInscripcion}" />
+                </p:column>
+                <p:column headerText="ID Estudiante">
+                    <h:outputText value="#{pagos.idEstudiante}" />
+                </p:column>
+                <p:column headerText="Medio De Pago">
+                    <h:outputText value="#{pagos.medioPago}" />
+                </p:column>
+                <p:column headerText="Valor Pago">
+                    <h:outputText value="#{pagos.valorPago}" />
+                </p:column>
+                <p:column headerText="Estado Inscripción">
+                    <h:outputText value="#{pagos.estadoPago}" />
+                </p:column>
+
+            </p:dataTable>
+        </p:panel>
+
+    </h:form>
+</h:body>
+</html>

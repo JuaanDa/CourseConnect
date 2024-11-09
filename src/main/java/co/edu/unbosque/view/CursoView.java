@@ -26,6 +26,7 @@ import java.util.Map;
 public class CursoView implements Serializable {
     private ArrayList<CursoDTO> cursos;
     private ArrayList<CursoDTO> cursosPorVencer;
+    private ArrayList<CursoDTO> cursosMasVendidos;
     private ArrayList<UsuarioDTO> usuarios;
     private CursoDTO cursoDTO;
     private TemaDTO temaDTO;
@@ -69,6 +70,7 @@ public class CursoView implements Serializable {
 
         cursos = (ArrayList<CursoDTO>) cursoService.getAllCursos();
         cursosPorVencer = (ArrayList<CursoDTO>) cursoService.getCursoPorVencer();
+        cursosMasVendidos = (ArrayList<CursoDTO>) cursoService.getCursosMasVendidos();
         usuarios = (ArrayList<UsuarioDTO>) cursoService.getAllUsuarios();
         filtroAplicado = false;
 
@@ -99,6 +101,14 @@ public class CursoView implements Serializable {
 
     public void setCursosPorVencer(ArrayList<CursoDTO> cursosPorVencer) {
         this.cursosPorVencer = cursosPorVencer;
+    }
+
+    public ArrayList<CursoDTO> getCursosMasVendidos() {
+        return cursosMasVendidos;
+    }
+
+    public void setCursosMasVendidos(ArrayList<CursoDTO> cursosMasVendidos) {
+        this.cursosMasVendidos = cursosMasVendidos;
     }
 
     public Map<String, String> getCursosTipo() {

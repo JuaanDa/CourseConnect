@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class PagoView implements Serializable {
     private PagoInscripcionDTO pagoInscripcionDTO;
     private ArrayList<PagoInscripcionDTO> pagoInscripciones;
+    private ArrayList<PagoInscripcionDTO> pagosPendientes;
     @Inject
     private PagoService pagoService;
     public PagoView() {
@@ -24,6 +25,7 @@ public class PagoView implements Serializable {
     @PostConstruct
     public void init() {
         pagoInscripciones = (ArrayList<PagoInscripcionDTO>)  pagoService.obtenerPagos();
+        pagosPendientes = (ArrayList<PagoInscripcionDTO>)  pagoService.obtenerPagosPendientes();
         pagoInscripcionDTO.setMedioPago("TarjetaCredito");
         pagoInscripcionDTO.setEstadoPago("Confirmado");
 
@@ -44,6 +46,15 @@ public class PagoView implements Serializable {
     public void setPagoInscripciones(ArrayList<PagoInscripcionDTO> pagoInscripciones) {
         this.pagoInscripciones = pagoInscripciones;
     }
+
+    public ArrayList<PagoInscripcionDTO> getPagosPendientes() {
+        return pagosPendientes;
+    }
+
+    public void setPagosPendientes(ArrayList<PagoInscripcionDTO> pagosPendientes) {
+        this.pagosPendientes = pagosPendientes;
+    }
+
     public String pagarInscripcion(){
         System.out.println(pagoInscripcionDTO.getMedioPago());
         return null;

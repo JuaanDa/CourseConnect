@@ -45,13 +45,13 @@
                      <p:menuitem value="Inscripciones" action="#{adminView.gestionarinscripcion()}" icon="pi pi-address-book" update="@all"/>
                   </p:submenu>
                   <p:submenu label="Reportes">
-                     <p:menuitem value="Curso Más Vendido" action="#{adminView.bestSellingCourse}"/>
+                     <p:menuitem value="Curso Más Vendido" action="#{adminView.cursosMasVendidos()}" icon="pi pi-paperclip" update="@all"/>
                      <p:menuitem value="Cursos por Vencer" action="#{adminView.cursosPorVencer()}" icon="pi pi-file-excel" update="@all"/>
                   </p:submenu>
                   <p:submenu label="Gestión Estudiantes">
                      <p:menuitem value="Alumnos Inscritos" action="#{adminView.estudiantesInscritos()}" icon="pi pi-user-edit" update="@all"/>
                      <p:menuitem value="Pagos Realizados" action="#{adminView.pagosRealizados()}" icon="pi pi-wallet" update="@all"/>
-                     <p:menuitem value="Pagos Pendientes" action="#{adminView.pendingPayments}"/>
+                     <p:menuitem value="Pagos Pendientes" action="#{adminView.pagosPendientes()}" icon="pi pi-money-bill" update="@all"/>
                   </p:submenu>
                </p:panelMenu>
             </h:form>
@@ -91,6 +91,10 @@
       <p:panel id="gestionarInscrpcionPanel"  rendered="#{adminView.showGestionarinscripcion}">
          <ui:include src="GestionarInscripcion.xhtml" />
       </p:panel>
+      <p:panel id="cursosMasVendidodPanel"  rendered="#{adminView.showCursosMasVendidos}">
+         <ui:include src="CursoMasVendidos.xhtml" />
+      </p:panel>
+
       <p:panel id="alumnosInscritosPanel"  rendered="#{adminView.showEstudiantesInscritos}">
          <ui:include src="EstudiantesInscritos.xhtml" />
       </p:panel>
@@ -100,6 +104,9 @@
       </p:panel>
       <p:panel id="PagosRealizados"  rendered="#{adminView.showPagosRealizados}">
          <ui:include src="PagosRealizados.xhtml" />
+      </p:panel>
+      <p:panel id="PagosPendientes"  rendered="#{adminView.showPagosPendientes}">
+         <ui:include src="PagosPendientes.xhtml" />
       </p:panel>
 
 
