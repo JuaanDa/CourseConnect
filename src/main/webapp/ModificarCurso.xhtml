@@ -120,8 +120,10 @@
                         <p:inputText id="costo_curso" value="#{cursoView.cursoDTO.costoCurso}" />
                     </div>
                     <div class="field">
-                        <p:outputLabel for="estado_curso" value="Estado Curso"/>
-                        <p:inputText id="estado_curso" value="#{cursoView.cursoDTO.estadoCurso}" />
+                        <p:outputLabel for="estado_curso" value="Estado Curso " styleClass="block" required="true" />
+                        <p:selectOneMenu id="estado_curso" value="#{cursoView.cursoDTO.estadoCurso}"  label="Estado" >
+                            <f:selectItems value="#{cursoView.cursoEstado}"/>
+                        </p:selectOneMenu>
                     </div>
                     <div class="field">
                         <p:outputLabel for="fecha_creacion" value="Fecha Creacion Curso"/>

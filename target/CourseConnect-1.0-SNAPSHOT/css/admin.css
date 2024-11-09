@@ -7,6 +7,13 @@ body.menu-open {
     margin-left: 200px;
     transition: margin-left 0.5s ease;
 }
+.btn-icon {
+    margin-left: 20px;
+    text-align: right;
+    justify-content: right;
+    width: 30px;
+}
+
 .adminlogo {
     display: block;
     margin: 0 auto;

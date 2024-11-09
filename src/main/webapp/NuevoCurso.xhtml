@@ -5,6 +5,18 @@
       xmlns:p="http://primefaces.org/ui">
 
 
+<h:head>
+    <title>CourseConnect - Crear Curso</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/register.css" />
+    <link rel="icon" type="icon" href="images/icon.png" />
+</h:head>
+<h:body>
+
+<div class="registerContainer">
+    <div class="header-banner">
+        <h1>Nuevo Curso</h1>
+    </div>
     <h:form id="cursoForm" enctype="multipart/form-data">
 
 
@@ -18,7 +30,7 @@
         <br /><br/>
 
         <p:outputLabel for="tipo_curso" value="Tipo de curso " styleClass="block" required="true"/>
-        <p:selectOneMenu id="tipo_curso" value="#{cursoView.cursoDTO.tipoCurso}" required="true" label="Tipo de curso" >
+        <p:selectOneMenu id="tipo_curso" value="#{cursoView.cursoDTO.tipoCurso}" required="true" label="Tipo de curso">
             <f:selectItems value="#{cursoView.cursosTipo}"/>
         </p:selectOneMenu>
         <br /><br/>
@@ -34,11 +46,11 @@
         <p:inputText id="horario_curso" value="#{cursoView.cursoDTO.horarioCurso}" />
         <br /><br/>
 
-        <h:outputLabel for="fecha_inicio" value="Fecha Incio Curso " styleClass="block" required="true"/>
+        <p:outputLabel for="fecha_inicio" value="Fecha Incio Curso " styleClass="block" required="true" />
         <p:calendar id="fecha_inicio" value="#{cursoView.cursoDTO.fechaInicio}" />
         <br /><br/>
 
-        <h:outputLabel for="fecha_fin" value="Fecha Fin Curso " styleClass="block" required="true"/>
+        <p:outputLabel for="fecha_fin" value="Fecha Fin Curso " styleClass="block" required="true"/>
         <p:calendar id="fecha_fin" value="#{cursoView.cursoDTO.fechaFin}"  />
         <br /><br/>
 
@@ -57,14 +69,17 @@
         </p:selectOneMenu>
         <br /><br/>
 
-        <h:outputLabel for="fecha_creacion" value="Fecha Creacion " styleClass="block" required="true"/>
+        <p:outputLabel for="fecha_creacion" value="Fecha Creacion " styleClass="block" required="true" />
         <p:calendar id="fecha_creacion" value="#{cursoView.cursoDTO.fechaCreacion}"  />
         <br /><br/>
         <p:messages id="messages" showDetail="true" closable="true">
             <p:autoUpdate/>
         </p:messages>
-        <p:commandButton value="Crear" action="#{cursoView.crearCurso()}"/>
+        <p:commandButton value="Crear" action="#{cursoView.crearCurso()}"
+                         styleClass="submit-button" update="@all"/>
+
 
     </h:form>
-
+</div>
+</h:body>
 </html>
