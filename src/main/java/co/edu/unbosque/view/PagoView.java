@@ -45,8 +45,16 @@ public class PagoView implements Serializable {
         this.pagoInscripciones = pagoInscripciones;
     }
     public String pagarInscripcion(){
-        System.out.println(pagoInscripcionDTO.getMedioPago());
-        return null;
+
+        String respuesta = pagoService.procesarPago(pagoInscripcionDTO);
+        System.out.println("Respuesta del servicio de pago: " + respuesta);
+
+
+        if (respuesta.contains("exitosamente")) {
+            return "pagoExitoso";
+        } else {
+            return "errorPago";
+        }
     }
 }
 

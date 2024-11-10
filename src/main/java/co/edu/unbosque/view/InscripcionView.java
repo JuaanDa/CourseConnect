@@ -97,7 +97,7 @@ public class InscripcionView implements Serializable {
     public String crearInscripción() throws Exception {
 
         int idCurso = inscripcionDTO.getIdCurso();
-        String correoEstudiante = estudianteService.getAllStudents().get(0).getCorreoElectronico();
+        String correoEstudiante = estudianteService.getAllStudents().get(2).getCorreoElectronico();
         String url = clientEmail.enviarLinkInscripcion(correoEstudiante, idCurso);
         inscripcionDTO.setUrlLinkConfirmacion(url);
 
