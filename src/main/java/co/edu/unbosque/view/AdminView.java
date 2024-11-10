@@ -26,7 +26,7 @@ public class AdminView implements Serializable {
     private TemaDTO temaDTO;
     private InscripcionDTO inscripcionDTO;
     private CalificacionesCursoDTO calificacionesCursoDTO;
-    private boolean showDashboardPanel, showCrearCurso, showModificarCurso, showModificarPrecio, showModificarModalidades, showGestionarinscripcion, showEstudiantesInscritos, showCursoPorVencer, showFinalizarCurso, showPagosRealizados;
+    private boolean showDashboardPanel, showCrearCurso, showModificarCurso, showModificarPrecio, showModificarModalidades, showGestionarinscripcion, showEstudiantesInscritos, showCursoPorVencer, showFinalizarCurso, showPagosRealizados,showPagosPendientes, showCursosMasVendidos;
     private int CursoId;
     private String EstudianteId;
     private TemasCursoId temasCursoId;
@@ -95,7 +95,14 @@ public class AdminView implements Serializable {
         hideAllPanels();
         showPagosRealizados = true;
     }
-
+    public void cursosMasVendidos(){
+        hideAllPanels();
+        showCursosMasVendidos = true;
+    }
+    public void pagosPendientes(){
+        hideAllPanels();
+        showPagosPendientes = true;
+    }
 
     public boolean isShowDashboardPanel() {
         return showDashboardPanel;
@@ -176,6 +183,22 @@ public class AdminView implements Serializable {
         this.showPagosRealizados = showPagosRealizados;
     }
 
+    public boolean isShowPagosPendientes() {
+        return showPagosPendientes;
+    }
+
+    public void setShowPagosPendientes(boolean showPagosPendientes) {
+        this.showPagosPendientes = showPagosPendientes;
+    }
+
+    public boolean isShowCursosMasVendidos() {
+        return showCursosMasVendidos;
+    }
+
+    public void setShowCursosMasVendidos(boolean showCursosMasVendidos) {
+        this.showCursosMasVendidos = showCursosMasVendidos;
+    }
+
     private void hideAllPanels() {
             showDashboardPanel = false;
           showCrearCurso = false;
@@ -187,6 +210,8 @@ public class AdminView implements Serializable {
           showCursoPorVencer = false;
           showFinalizarCurso = false;
           showPagosRealizados = false;
+          showCursosMasVendidos = false;
+          showPagosPendientes = false;
 
     }
     public void editarCurso(int idCurso){

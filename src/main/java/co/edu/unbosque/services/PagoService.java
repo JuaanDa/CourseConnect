@@ -61,6 +61,18 @@ public class PagoService implements PagoServiceInterface{
         List<PagoInscripcionDTO> pagoDTOs = new ArrayList<>();
 
         for (PagoInscripcion pago : pagos) {
+            if(pago.getEstadoPago().equals("Confirmado"))
+
+                pagoDTOs.add(dataMapper.map(pago, PagoInscripcionDTO.class));
+        }
+        return pagoDTOs;
+    }
+    public List<PagoInscripcionDTO> obtenerPagosPendientes() {
+        List<PagoInscripcion> pagos = daoPagoInscripcion.findAll();
+        List<PagoInscripcionDTO> pagoDTOs = new ArrayList<>();
+
+        for (PagoInscripcion pago : pagos) {
+            if(pago.getEstadoPago().equals("Pendiente"))
             pagoDTOs.add(dataMapper.map(pago, PagoInscripcionDTO.class));
         }
         return pagoDTOs;
