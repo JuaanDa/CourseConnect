@@ -97,17 +97,30 @@ public class InscripcionView implements Serializable {
     public String crearInscripción() throws Exception {
 
         int idCurso = inscripcionDTO.getIdCurso();
-        String correoEstudiante = estudianteService.getAllStudents().get(2).getCorreoElectronico();
+        String correoEstudiante = estudianteService.getAllStudents().get(0).getCorreoElectronico();
         String url = clientEmail.enviarLinkInscripcion(correoEstudiante, idCurso);
         inscripcionDTO.setUrlLinkConfirmacion(url);
 
         System.out.println("creando");
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "inscripcion Correcta, Verifique su correo"));
-        inscripcionService.saveInscripcion(inscripcionDTO);
-        ProcesarPago = true;
+
+        try {
+            // Intentamos guardar la inscripción
+            inscripcionService.saveInscripcion(inscripcionDTO);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Inscripción Correcta, Verifique su correo"));
+            ProcesarPago = true;
+        return "ProcesarPago.xhtml";
+        } catch (Exception e) {
+            // En caso de cualquier error (incluyendo duplicados), registramos el error y mostramos un mensaje
+            e.printStackTrace();  // Registrar el error completo para el desarrollador
+
+            // Mostrar un mensaje genérico al usuario
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Advertencia", "La inscripción ya existe para este estudiante y curso."));
+        }
         return null;
 
     }
+
+
 
 
     public String actualizarInscripcion(int CursoId, String EstId, String Estado) {

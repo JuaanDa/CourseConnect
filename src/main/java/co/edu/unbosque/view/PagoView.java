@@ -4,6 +4,8 @@ import co.edu.unbosque.model.dto.PagoInscripcionDTO;
 import co.edu.unbosque.services.PagoService;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
@@ -56,16 +58,18 @@ public class PagoView implements Serializable {
     }
 
     public String pagarInscripcion(){
+        try {
+System.out.println("pago inscripcion");
+        pagoService.procesarPago(pagoInscripcionDTO);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Inscripción Correcta, Verifique su correo"));
 
-        String respuesta = pagoService.procesarPago(pagoInscripcionDTO);
-        System.out.println("Respuesta del servicio de pago: " + respuesta);
+    } catch (Exception e) {
+System.out.println("error inscripcion");
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warn", "error en su pago, intentelo nuevamente."));
+        e.printStackTrace();
+    }
 
-
-        if (respuesta.contains("exitosamente")) {
-            return "pagoExitoso";
-        } else {
-            return "errorPago";
-        }
+       return null;
     }
 }
 

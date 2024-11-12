@@ -16,7 +16,7 @@ public class PagoInscripcionDAO implements DAO<PagoInscripcion, Integer>{
 
     @Override
     public void save(PagoInscripcion entity) {
-
+        em.persist(entity);
     }
 
     @Override

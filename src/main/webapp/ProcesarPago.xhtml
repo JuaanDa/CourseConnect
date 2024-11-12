@@ -15,13 +15,17 @@
 </h:head>
 <h:body>
 
-
+    <div class="header">
+        <div class="logo">
+            <a href="index.xhtml"><img src="images/imagotipo.png" alt="logo"/></a>
+        </div>
+    </div>
     <div class="registerContainer">
         <div class="header-banner">
             <h1>Pago de Inscripción</h1>
         </div>
 
-        <h:form>
+        <h:form id="pago">
 
             <!-- Identificación del curso -->
             <p:outputLabel for="id_curso" value="Identificación del curso:" styleClass="block" />
@@ -52,11 +56,16 @@
 
 
             <!-- Botón Enviar -->
-            <p:commandButton value="Pagar" action="#{pagoView.pagarInscripcion()}" styleClass="submit-button" update="@all" />
+            <p:commandButton value="Pagar" action="#{pagoView.pagarInscripcion()}" styleClass="submit-button" update="@form" />
 
         </h:form>
 
     </div>
 
+    <div class="footer">
+        <p>
+            &copy; 2024 CourseConnect&nbsp; &nbsp;Programación 2&nbsp; &nbsp;Universidad El Bosque
+        </p>
+    </div>
 </h:body>
 </html>

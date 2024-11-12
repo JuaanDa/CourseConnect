@@ -37,22 +37,9 @@ public class PagoService implements PagoServiceInterface{
 
 
     @Override
-    public String procesarPago(PagoInscripcionDTO pagoInscripcionDTO) {
-        try {
-            // Convertir el DTO a JSON
-            String jsonInput = objectMapper.writeValueAsString(pagoInscripcionDTO); // Conversión a JSON
-            // Llamamos a la API para procesar el pago
-            String response = apiClient.realizarPago(jsonInput); // Llama a la API con el JSON
-
-            // Mapeamos el DTO a la entidad y lo guardamos en la base de datos
-            PagoInscripcion pagoInscripcion = dataMapper.map(pagoInscripcionDTO, PagoInscripcion.class);
-            daoPagoInscripcion.save(pagoInscripcion); // Guardar el pago en la base de datos
-
-            return "Respuesta de la API: " + response;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Error procesando el pago: " + e.getMessage(); // Mensaje de error más descriptivo
-        }
+    public void procesarPago(PagoInscripcionDTO pagoInscripcionDTO) {
+        PagoInscripcion pagoInscripcion = dataMapper.map(pagoInscripcionDTO, PagoInscripcion.class);
+        daoPagoInscripcion.save(pagoInscripcion);
     }
 
     @Override
