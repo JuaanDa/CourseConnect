@@ -106,7 +106,6 @@ public class InscripcionView implements Serializable {
         try {
             // Intentamos guardar la inscripción
             inscripcionService.saveInscripcion(inscripcionDTO);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Inscripción Correcta, Verifique su correo"));
             ProcesarPago = true;
         return "ProcesarPago.xhtml";
         } catch (Exception e) {

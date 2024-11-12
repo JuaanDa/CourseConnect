@@ -22,43 +22,27 @@
     </div>
     <div class="registerContainer">
         <div class="header-banner">
-            <h1>Pago de Inscripción</h1>
+            <h1>Pago Confirmacion</h1>
         </div>
 
         <h:form id="pago">
 
             <!-- Identificación del curso -->
-            <p:outputLabel for="id_curso" value="Identificación del curso:" styleClass="block" />
-            <p:inputText id="id_curso" value="#{pagoView.pagoInscripcionDTO.idCurso}" required="true" />
+            <p:outputLabel for="numeroTarjeta" value="Tarjeta de Credito:" styleClass="block" />
+            <p:inputText id="numeroTarjeta" value="#{pagoView.confirmarDTO.tarjetaCredito}" required="true" />
             <br /><br />
 
             <!-- Identificación del estudiante -->
-            <p:outputLabel for="id_estudiante" value="Identificación del estudiante:" styleClass="block" />
-            <p:inputText id="id_estudiante" value="#{pagoView.pagoInscripcionDTO.idEstudiante}" required="true" />
+            <p:outputLabel for="codigo" value="Codigo De pago:" styleClass="block" />
+            <p:inputText id="codigo" value="#{pagoView.confirmarDTO.codigo}" required="true" />
             <br /><br />
 
-            <!-- Medio de pago -->
-            <p:outputLabel for="medio_pago" value="Medio de pago:" styleClass="block" />
-            <p:inputText id="medio_pago" value="#{pagoView.pagoInscripcionDTO.medioPago}" required="true" />
-
-            <br /><br />
-
-            <!-- Valor de pago -->
-            <p:outputLabel for="valor_pago" value="Valor del pago:" styleClass="block" />
-            <p:inputText id="valor_pago" value="#{pagoView.pagoInscripcionDTO.valorPago}" required="true" />
-            <br /><br />
-
-            <!-- Estado del pago -->
-            <p:outputLabel for="estado_pago" value="Estado del pago:" styleClass="block" />
-            <p:inputText id="estado_pago" value="#{pagoView.pagoInscripcionDTO.estadoPago}" required="true" />
-
-            <br /><br />
 
             <p:messages id="messages" showDetail="true" closable="true">
                 <p:autoUpdate/>
             </p:messages>
             <!-- Botón Enviar -->
-            <p:commandButton value="Pagar" action="#{pagoView.pagarInscripcion()}" styleClass="submit-button" update="@form" />
+            <p:commandButton value="Pagar" action="#{pagoView.pagarConfirmacion()}" styleClass="submit-button" update="@form" />
 
         </h:form>
 
