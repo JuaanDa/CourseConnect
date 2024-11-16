@@ -10,6 +10,7 @@ import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -228,7 +229,13 @@ public class CursoView implements Serializable {
         EstudianteDTO estudiante = estudianteService.getStudentById(estudianteId);
         System.out.println(CursoId);
         System.out.println(estudianteId);
-        pdfGeneratorService.createPDF("Certificado.pdf", curso, estudiante);
+        String path = "Certificado-"+estudianteId+"-"+CursoId; // Ruta donde se guarda el PDF
+        pdfGeneratorService.createPDF(path, curso, estudiante);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "info", "Certificado Descargado Correctamente."));
+
+
+
+
         return null;
     }
     public String finalizarCursoEstado(int CursoId, String CursoEstado){

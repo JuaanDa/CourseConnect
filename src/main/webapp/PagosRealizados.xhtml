@@ -49,6 +49,10 @@
 
             </p:outputPanel>
 
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
+
             <f:facet name="footer">
                 <p:commandButton value="Descargar" icon="pi pi-upload"
                                  actionListener="#{cursoView.descargarCertificado(adminView.cursoId, adminView.estudianteId)}"

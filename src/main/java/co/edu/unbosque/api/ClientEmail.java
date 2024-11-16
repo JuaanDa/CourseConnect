@@ -1,7 +1,5 @@
 package co.edu.unbosque.api;
 
-
-import co.edu.unbosque.model.dto.InscripcionDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.enterprise.context.RequestScoped;
 
