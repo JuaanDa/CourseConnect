@@ -36,4 +36,10 @@ public class EstudianteService implements EstudianteServiceInterface{
         }
         return estudianteDTOs;
     }
+
+    @Override
+    public EstudianteDTO getStudentById(String id) {
+        Estudiante estudiante = daoEstudiantes.find(id);
+        return dataMapper.map(estudiante, EstudianteDTO.class);
+    }
 }

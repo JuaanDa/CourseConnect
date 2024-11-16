@@ -6,10 +6,7 @@ import co.edu.unbosque.model.entities.CalificacionesCursoId;
 import co.edu.unbosque.model.entities.InscripcionId;
 import co.edu.unbosque.model.entities.TemasCurso;
 import co.edu.unbosque.model.entities.TemasCursoId;
-import co.edu.unbosque.services.CalificacionesService;
-import co.edu.unbosque.services.CursoService;
-import co.edu.unbosque.services.InscripcionService;
-import co.edu.unbosque.services.TemaService;
+import co.edu.unbosque.services.*;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -23,6 +20,7 @@ public class AdminView implements Serializable {
     @Inject
     private  CursoService cursoService;
     private CursoDTO cursoDTO;
+    private EstudianteDTO estudianteDTO;
     private TemaDTO temaDTO;
     private InscripcionDTO inscripcionDTO;
     private CalificacionesCursoDTO calificacionesCursoDTO;
@@ -41,11 +39,15 @@ public class AdminView implements Serializable {
     @Named
     @Inject
     private TemaService temaService;
+    @Named
+    @Inject
+    private EstudianteService estudianteService;
 
 
     public AdminView(){
         cursoDTO = new CursoDTO();
         temaDTO = new TemaDTO();
+        estudianteDTO = new EstudianteDTO();
         inscripcionDTO = new InscripcionDTO();
         temasCursoId = new TemasCursoId();
         calificacionesCursoDTO = new CalificacionesCursoDTO();
@@ -229,6 +231,12 @@ public class AdminView implements Serializable {
         cursoDTO.setModalidadCurso(cursoDTO.getModalidadCurso());
         this.cursoDTO = cursoService.getCurso(idCurso);
         setCursoId(idCurso);
+    }
+    public void descargarCertificado(int idCurso, String idEstudiante){
+        this.cursoDTO = cursoService.getCurso(idCurso);
+        this.estudianteDTO = estudianteService.getStudentById(idEstudiante);
+        setCursoId(idCurso);
+        setEstudianteId(idEstudiante);
     }
     public void finalizarCurso(int idCurso){
         cursoDTO.setEstadoCurso(cursoDTO.getEstadoCurso());

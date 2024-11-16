@@ -1,13 +1,8 @@
 package co.edu.unbosque.view;
 
-import co.edu.unbosque.model.dto.CursoDTO;
-import co.edu.unbosque.model.dto.HabilidadDTO;
-import co.edu.unbosque.model.dto.TemaDTO;
-import co.edu.unbosque.model.dto.UsuarioDTO;
+import co.edu.unbosque.model.dto.*;
 import co.edu.unbosque.model.entities.*;
-import co.edu.unbosque.services.CursoService;
-import co.edu.unbosque.services.TemaService;
-import co.edu.unbosque.services.UsuarioService;
+import co.edu.unbosque.services.*;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
@@ -49,6 +44,10 @@ public class CursoView implements Serializable {
     @Named
     @Inject
     private TemaService temaService;
+    @Inject
+    private PdfGeneratorService pdfGeneratorService;
+    @Inject
+    private EstudianteService estudianteService;
 
     @PostConstruct
     public void init() {
@@ -222,6 +221,14 @@ public class CursoView implements Serializable {
         cursoDTO.setId_Curso(CursoId);
         curso.setModalidadCurso(CursoModalidad);
         cursoService.updateCurso(curso);
+        return null;
+    }
+    public String descargarCertificado(int CursoId, String estudianteId){
+        CursoDTO curso = cursoService.getCurso(CursoId);
+        EstudianteDTO estudiante = estudianteService.getStudentById(estudianteId);
+        System.out.println(CursoId);
+        System.out.println(estudianteId);
+        pdfGeneratorService.createPDF("Certificado.pdf", curso, estudiante);
         return null;
     }
     public String finalizarCursoEstado(int CursoId, String CursoEstado){

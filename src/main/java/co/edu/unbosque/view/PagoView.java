@@ -41,7 +41,7 @@ public class PagoView implements Serializable {
         pagoInscripciones = (ArrayList<PagoInscripcionDTO>) pagoService.obtenerPagos();
         pagosPendientes = (ArrayList<PagoInscripcionDTO>) pagoService.obtenerPagosPendientes();
         pagoInscripcionDTO.setMedioPago("TarjetaCredito");
-        pagoInscripcionDTO.setEstadoPago("Confirmado");
+        pagoInscripcionDTO.setEstadoPago("Pendiente");
         confirmarDTO.setTarjetaCredito(50200800);
 
     }
@@ -110,6 +110,8 @@ public class PagoView implements Serializable {
             confirmarDTO.setCodigo(confirmarDTO.getCodigo());
             String confirmarPago = clientPago.confirmarPago(parametros2);
             System.out.println(confirmarPago);
+            pagoInscripcionDTO.setEstadoPago("Confirmado");
+
         } catch (Exception e){
             System.out.println("error inscripcion");
         }

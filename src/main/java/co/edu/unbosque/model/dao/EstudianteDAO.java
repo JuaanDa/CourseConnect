@@ -28,7 +28,7 @@ public class EstudianteDAO implements DAO<Estudiante, String> {
 
     @Override
     public Estudiante find(String id) {
-        return null;
+        return em.find(Estudiante.class, id);
     }
 
     @Override

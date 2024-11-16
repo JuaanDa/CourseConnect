@@ -21,6 +21,9 @@
                 <p:column headerText="ID Estudiante">
                     <h:outputText value="#{pagos.idEstudiante}" />
                 </p:column>
+                <p:column headerText="ID Curso">
+                    <h:outputText value="#{pagos.idCurso}" />
+                </p:column>
                 <p:column headerText="Medio De Pago">
                     <h:outputText value="#{pagos.medioPago}" />
                 </p:column>
@@ -30,9 +33,31 @@
                 <p:column headerText="Estado Inscripción">
                     <h:outputText value="#{pagos.estadoPago}" />
                 </p:column>
+                <p:column headerText="Certificado">
+                    <p:commandButton icon="pi pi-download"
+                                     action="#{adminView.descargarCertificado(pagos.idCurso, pagos.idEstudiante)}"
+                                     oncomplete="PF('certificadoDialog').show()"
+                                     styleClass="edit-button rounded-button ui-button-help"
+                                     update="@form" />
+                </p:column>
 
             </p:dataTable>
         </p:panel>
+
+        <p:dialog header="Descargar PDF" showEffect="fade" widgetVar="certificadoDialog" modal="true" responsive="true">
+            <p:outputPanel id="modalidad-content" class="ui-fluid">
+
+            </p:outputPanel>
+
+            <f:facet name="footer">
+                <p:commandButton value="Descargar" icon="pi pi-upload"
+                                 actionListener="#{cursoView.descargarCertificado(adminView.cursoId, adminView.estudianteId)}"
+                                 update="modalidad-content" process="@form" />
+                <p:commandButton value="Cancelar" icon="pi pi-times"
+                                 onclick="PF('certificadoDialog').hide()"
+                                 class="ui-button-secondary" type="button" />
+            </f:facet>
+        </p:dialog>
 
     </h:form>
 </h:body>
